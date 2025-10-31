@@ -1,6 +1,6 @@
 <?php get_header('new'); ?>
 <div class="mainBox">
-	<div class="checkBg"><img src="<?php echo get_template_directory_uri(); ?>/img/common/com_bg05.jpg" alt=""></div>
+	<div class="checkBg"><img src="<?php echo get_template_directory_uri(); ?>/new/img/common/com_bg05.jpg" alt=""></div>
 	<div id="pagePath">
 		<ul>
 			<li><a href="<?php echo home_url();?>">Top</a>/</li>
@@ -10,7 +10,7 @@
 	</div>
 	<div class="pageTtl">
 		<h2><span class="maskFadeH"><?php the_title(); ?></span></h2>
-		<div class="photo"><img src="<?php echo get_template_directory_uri(); ?>/img/services/detail/page_title_bg.jpg" alt="<?php echo strip_tags(get_the_title()); ?>"></div>
+		<div class="photo"><img src="<?php echo get_template_directory_uri(); ?>/new/img/services/detail/page_title_bg.jpg" alt="<?php echo strip_tags(get_the_title()); ?>"></div>
 	</div>
 	<div class="detail">
 		<div class="naviLink">
@@ -31,79 +31,101 @@
 				<?php if( get_row_layout() == 'ff_colum1' ):
 					$colum1_text = get_sub_field('ff_colum1_text');
 				?>
-				<div class="info01" id="a01" data-target="0">
+				<div class="info01">
 					<div class="fadeInUp">
 						<?php echo $colum1_text; ?>
 					</div>
 				</div>
 
-				<?php elseif( get_row_layout() == 'image' ): 
-					$image = get_sub_field('image');
+				<?php elseif( get_row_layout() == 'ff_colum2' ): 
+					$colum2_left = get_sub_field('ff_colum2_left');
+					$colum2_right = get_sub_field('ff_colum2_right');
 				?>
 				<div class="info02 fadeInUp">
 					<div class="imgBox flexB">
-						<div class="lBox"><img class="lazy" data-original="/img/services/detail/photo01.jpg" alt="" data-size="440x244"></div>
+						<div class="lBox"><?php echo $colum2_left; ?></div>
 						<div class="rBox">
-							<p>HIFU（ハイフ）とは、高密度焦点式超音波を意味する英語「High lntensity Focused Ultrasound」の略で、人間の耳では聞こえない高い振動数をもつ超音波を1点に集めて照射する方法です。<br>皮膚表面や他の組織に傷をつけずに人体組織の内部へ浸透します。<br>トランスデューサーから高エネルギーの超音波を発生させ、体内の一点に集まります。<br>その点に集束された部分だけが高温になり、65~75°Cで凝固ゾーンが形成。<br>熱ダメージで創傷治癒によるコラーゲンの増生や皮膚の引き締めが起こります。</p>
+							<?php echo $colum2_right; ?>
 						</div>
 					</div>
 				</div>
-
-				<?php endif; ?>
-
-			<?php endwhile; ?>
-			<div class="info02 fadeInUp">
-				<ul>
-					<li>頬のトップが下がった</li>
-					<li>フェイスラインがもたついて顔が大きくなった</li>
-					<li>ほうれい線が深く長くなった</li>
-					<li>マリオネットラインや口横のたるみ</li>
-					<li>顎裏のボリューム感</li>
-				</ul>
-			</div>
-			<div class="info03">
-				<ul class="fadeInUp">
-					<li>
-						<div class="pho"><img class="lazy" data-original="/img/services/detail/photo02.jpg" alt="" data-size="280x280"></div>
-						<h3>Zigzag</h3>
-						<ul>
-							<li>・小じわの改善、肌の引き締め</li>
-							<li>・くすみ改善、美肌効果に有効</li>
-						</ul>
-					</li>
-					<li>
-						<div class="pho"><img class="lazy" data-original="/img/services/detail/photo03.jpg" alt="" data-size="280x280"></div>
-						<h3>Circular</h3>
-						<ul>
-							<li>・肌の引き締め、脂肪溶解</li>
-							<li>・小顔効果やフェイスラインのもたつきを改善</li>
-						</ul>
-					</li>
-					<li>
-						<div class="pho"><img class="lazy" data-original="/img/services/detail/photo04.jpg" alt="" data-size="280x280"></div>
-						<h3>Mesh</h3>
-						<ul>
-							<li>・たるみの予防、ほうれい線の改善</li>
-							<li>・脂肪溶解や小顔効果</li>
-							<li>・肌のハリ弾力アップに有効</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<div class="info04 simpleBar fadeInUp">
-				<div class="pho"><img class="lazy" data-original="/img/services/detail/photo05.jpg" alt="" data-size="924x476"><span>キャプション</span></div>
-			</div>
-			<div class="info05 fadeInUp"><img class="lazy" data-original="/img/services/detail/photo06.jpg" alt="" data-size="450x485"><span>キャプション</span></div>
-			<div class="info06 fadeInUp">
-				<div class="pho"><img class="lazy" data-original="/img/services/detail/photo07.jpg" alt="" data-size="316x190"><span>キャプション</span></div>
-				<div class="textBox">
-					<h3>01. 韓国本社での研修による技術向上</h3>
-					<p>メーカーのプロトコルに加え、本社で実際に研修を受けることでより安全で高い技術提供を目指しております。</p>
+				
+				<?php elseif( get_row_layout() == 'ff_colum3' ): 
+					$colum3_left = get_sub_field('ff_colum3_left');
+					$colum3_mid = get_sub_field('ff_colum3_mid');
+					$colum3_right = get_sub_field('ff_colum3_right');
+				?>
+				<div class="info03">
+					<ul class="fadeInUp">
+						<li>
+							<?php echo $colum3_left; ?>
+						</li>
+						<li>
+							<?php echo $colum3_mid; ?>
+						</li>
+						<li>
+							<?php echo $colum3_right; ?>
+						</li>
+					</ul>
 				</div>
-			</div>
-			<div class="info07">
-				<div class="movie fadeInUp"><iframe width="560" height="315" src="https://www.youtube.com/embed/8-e2CqmTdeo?si=UrncOry6kDWu-hTX" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-			</div>
+
+
+				<?php elseif( get_row_layout() == 'ff_colum4' ): 
+					$colum4_img = get_sub_field('ff_colum4_img');
+					$colum4_note = get_sub_field('ff_colum4_note');
+				?>
+				<div class="info04 simpleBar fadeInUp">
+					<div class="pho">
+						<img class="lazy" data-original="<?php echo $colum4_img['url']; ?>" alt="<?php echo $colum4_img['alt']; ?>" data-size="<?php echo $colum4_img['width']; ?>x<?php echo $colum4_img['height']; ?>">
+					</div>
+					<?php if($colum4_note) {?>
+					<span><?php echo $colum4_note; ?></span>
+					<?php } ?>
+				</div>
+
+
+				<?php elseif( get_row_layout() == 'ff_colum5' ): 
+					$colum5_img = get_sub_field('ff_colum5_img');
+					$colum5_note = get_sub_field('ff_colum5_note');
+				?>
+				<div class="info05 fadeInUp">
+					<div class="photo">
+						<img class="lazy" data-original="<?php echo $colum5_img['url']; ?>" alt="<?php echo $colum5_img['alt']; ?>" data-size="<?php echo $colum5_img['width']; ?>x<?php echo $colum5_img['height']; ?>">
+					</div>
+					<?php if($colum5_note) {?><span><?php echo $colum5_note; ?></span><?php } ?>
+				</div>
+
+
+				<?php elseif( get_row_layout() == 'ff_colum6' ): 
+					$colum6_img = get_sub_field('ff_colum6_img');
+					$colum6_note = get_sub_field('ff_colum6_note');
+					$colum6_text = get_sub_field('ff_colum6_text');
+				?>
+				<div class="info06 fadeInUp">
+					<div class="pho">
+						<div class="image"><img class="lazy" data-original="<?php echo $colum6_img['url']; ?>" alt="<?php echo $colum6_img['alt']; ?>" data-size="<?php echo $colum6_img['width']; ?>x<?php echo $colum6_img['height']; ?>"></div>
+						<?php if($colum6_note) {?><span><?php echo $colum6_note; ?></span><?php } ?>
+					</div>
+					<div class="textBox">
+						<?php echo $colum6_text; ?>
+					</div>
+				</div>
+
+				
+				<?php elseif( get_row_layout() == 'ff_colum7' ):
+					$youtube = get_sub_field('ff_youtube');
+				?>
+				<div class="info07">
+					<div class="movie fadeInUp"><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $youtube; ?>" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+				</div>
+
+
+
+				
+			
+			
+			
+			
 			<div class="info08" id="a02" data-target="1">
 				<div class="fadeInUp">
 					<h1>料金</h1>
@@ -190,6 +212,11 @@
 					</dl>
 				</div>
 			</div>
+
+			<?php elseif( get_row_layout() == 'ff_colum11' ):
+				$colum11_text = get_sub_field('ff_colum11_text');
+				$staff = get_sub_field('ff_staff');
+			?>
 			<div class="info11">
 				<div class="fadeInUp">
 					<h2>監修者情報</h2>
@@ -202,40 +229,87 @@
 							</div>
 						</div>
 						<div class="textSub">
-							<h3>医師からのメッセージ</h3>
-							<p>リフトアップボトックスは、加齢によって中顔面〜下顔面にかけての下垂に関与している広頸筋にボトックスを打つ施術です。広頸筋は加齢で発達することで、中顔面の脂肪や表情筋を下に引き下げる効果があります。片側4箇所にボトックスを注入することで下に下がる力を抑制し、フェイスラインをすっきりさせ、中顔面の脂肪の引き上げに効果がある治療です。広頸筋 (首の縦じわ) が発達してきた方、お手軽にリフトアップを希望される方にはおすすめの治療となります。</p>
+							<?php echo $colum11_text; ?>
 						</div>
 					</div>
 				</div>
 			</div>
+
+
+			<?php endif; ?>
+
+			<?php endwhile; ?>
+
 		</div>
 		<?php endif; ?>
 	</div>
+
+	<?php 
+		$colum12 = get_field('ff_colum12');
+		if($colum12){
+			$colum12_ttl = get_sub_field('ff_colum12_ttl');
+		}
+		$problem_terms = get_the_terms($post->ID,'problem');
+		$problem_ary = [];
+		if($problem_terms){
+			foreach($problem_terms as $problem_term){
+				array_push($problem_ary,$problem_term->term_id);
+			}
+		}
+		$treatment_terms = get_the_terms($post->ID,'treatment');
+		$treatment_ary = [];
+		if($treatment_terms){
+			foreach($treatment_terms as $treatment_term){
+				array_push($treatment_ary,$treatment_term->term_id);
+			}
+		}
+		$args = array(
+			'post_type' => 'services',
+			'posts_per_page' => 5,
+			'tax_query' => array(
+				'relation' => 'OR',
+				array(
+					'taxonomy' => 'problem',
+					'field'    => 'term_id',
+					'terms'    => $problem_ary,
+				),
+				array(
+					'taxonomy' => 'treatment',
+					'field'    => 'term_id',
+					'terms'    => $treatment_ary,
+				),
+			),
+			'post__not_in' => array(get_the_ID()),
+		);
+		$query = new WP_Query($args);
+		if ( $query->have_posts() ) {
+	?>
 	<div class="info12">
-		<h2 class="fadeInUp">たるみ・しわに効果的な治療</h2>
+		<h2 class="fadeInUp"><?php echo $colum12_ttl; ?>に効果的な治療</h2>
+		<?php 
+			while ( $query->have_posts() ) { $query->the_post();
+				$treatment = get_field('ff_treatment');
+				$treatment_img = $treatment['ff_treatment_img'];
+				$treatment_summary = $treatment['ff_treatment_summary'];
+				$treatment_text = $treatment['ff_treatment_text'];
+		?>
 		<div class="imgBox flexB fadeInUp">
-			<div class="pho"><img class="lazy" data-original="/img/services/detail/photo08.jpg" alt="" data-size="190x217"></div>
+			<?php if($treatment_img) {?>
+			<div class="pho"><img class="lazy" data-original="<?php echo $treatment_img['url']; ?>" alt="<?php echo $treatment_img['alt']; ?>" data-size="<?php echo $treatment_img['width']; ?>x<?php echo $treatment_img['height']; ?>"></div>
+			<?php } ?>
 			<div class="textBox">
-				<h3>サーマジェン</h3>
-				<p>サーマジェンとは、RF（ラジオ波）と呼ばれる高周波エネルギーを肌に照射する美容治療です。</p>
+				<h3><?php the_title(); ?></h3>
+				<p><?php echo $treatment_summary; ?></p>
 				<div class="whiteBg">
-					<p><span>【このようなお悩みにおすすめ】</span>口横たるみ・下膨れの頬・たるみ・ハリ・引締め</p>
+					<p><span>【このようなお悩みにおすすめ】</span><?php echo $treatment_text; ?></p>
 				</div>
-				<div class="comLink"><a href="#">View More</a></div>
+				<div class="comLink"><a href="<?php the_permalink(); ?>">View More</a></div>
 			</div>
 		</div>
-		<div class="imgBox flexB fadeInUp">
-			<div class="pho"><img class="lazy" data-original="/img/services/detail/photo09.jpg" alt="" data-size="190x217"></div>
-			<div class="textBox">
-				<h3>リフトアップボトックス</h3>
-				<p>リフトアップボトックスとは、加齢によって発達した広頚筋という筋肉にボトックスを効かせることで、広頚筋や中顔面の脂肪や表情筋が下に下がる力を抑制し、リフトアップする治療です。<br>首の縦ジワに直接注入することで、首の縦ジワの改善効果も期待できます。</p>
-				<div class="whiteBg">
-					<p><span>【このようなお悩みにおすすめ】</span>たるみ・横じわ・もたつき</p>
-				</div>
-				<div class="comLink"><a href="#">View More</a></div>
-			</div>
-		</div>
+		<?php } ?>
 	</div>
+	<?php } wp_reset_postdata(); ?>
+
 	<?php get_template_part('new/inc/com_reservation'); ?>
 </div>
 <?php get_footer('new'); ?>

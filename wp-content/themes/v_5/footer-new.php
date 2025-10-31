@@ -13,7 +13,7 @@
 <?php if(is_home()||is_front_page()) {?>
 <script src="<?php echo get_template_directory_uri(); ?>/new/js/index.js"></script>
 <?php } ?>
-<?php if(is_post_type_archive('service')) {?>
+<?php if(is_post_type_archive('services')) {?>
 <script>
 	$(function(){
 		$('#main .info dt').on('click',function(){
@@ -25,8 +25,8 @@
 	})
 </script>
 <?php } ?>
-<?php if(is_singular('service')) {?>
-<script src="<?php echo get_template_directory_uri(); ?>/js/services_detail.js"></script>
+<?php if(is_singular('services')) {?>
+<script src="<?php echo get_template_directory_uri(); ?>/new/js/services_detail.js"></script>
 <?php } ?>
 <?php wp_footer(); ?>
 </body>

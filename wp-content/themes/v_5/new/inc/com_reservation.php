@@ -1,11 +1,11 @@
 
 <?php 
-	if(@$pageClass == 'price' || @$pageClass == 'services_detail'){
+	if(is_post_type_archive('price')||is_singular('services')){
 ?>
-	<div class="comBtmLink fadeInUp"><a href="https://lin.ee/U5tTSaw" target="_blank"><img class="lazy" data-original="/img/common/btm_link.jpg" alt="" data-size="900x288"></a></div>
+	<div class="comBtmLink fadeInUp"><a href="https://lin.ee/U5tTSaw" target="_blank"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/new/img/common/btm_link.jpg" alt="" data-size="900x288"></a></div>
 <?php } ?>
 <section class="comReservation">
-	<div class="checkBg"><img class="lazy" data-original="/img/common/com_bg02.jpg" alt=""></div>
+	<div class="checkBg"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/new/img/common/com_bg02.jpg" alt=""></div>
 	<div class="content fadeInUp">
 		<div class="imgBox flexB">
 			<div class="textBox">

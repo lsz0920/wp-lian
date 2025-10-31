@@ -100,13 +100,13 @@
 #main .detailBox .info02 {
 	margin-bottom: 5.6rem;
 }
-#main .detailBox .info02 .pho {
+#main .detailBox .info02 .lBox {
 	width: 44rem;
 }
-#main .detailBox .info02 .pho img {
+#main .detailBox .info02 img {
 	width: 100%;
 }
-#main .detailBox .info02 .textBox {
+#main .detailBox .info02 .rBox {
 	width: calc(100% - 49.2rem);
 	margin-top: -0.5rem;
 }
@@ -580,11 +580,11 @@
 	#main .detailBox .info02 .imgBox {
 		display: block;
 	}
-	#main .detailBox .info02 .pho {
+	#main .detailBox .info02 .lBox {
 		margin: 0 -3rem;
 		width: auto;
 	}
-	#main .detailBox .info02 .textBox {
+	#main .detailBox .info02 .rBox {
 		width: auto;
 		margin-top: 2.5rem;
 	}
