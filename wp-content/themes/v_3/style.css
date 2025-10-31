@@ -1,0 +1,25 @@
+/*!
+Theme Name: v_3
+Author: ICDL
+Author URI: http://ic-design-lab.co.jp
+Description: ic-design-lab.co.jp tokyo
+Version: 1.0.3
+*/
+
+
+.l-ft-inn-nav .sub-toggle {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+    width: 4px;
+    height: 4px;
+    border-top: 1px solid #1b294d;
+    border-right: 1px solid #1b294d;
+    transform: rotate(45deg);
+}
+
+@media screen and (max-width: 768px) {
+.l-ft-inn-nav .sub-toggle {
+    right: 20px;
+}
+}

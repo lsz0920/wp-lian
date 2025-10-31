@@ -1,0 +1,59 @@
+.main-ttl {
+  h2 {
+    font-size: 26px;
+    font-family: yu-mincho-pr6n, sans-serif;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.8rem;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-family: yu-mincho-pr6n, sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: #000000;
+    margin: 10px 0;
+    letter-spacing: 0.05rem;
+
+    span {
+      font-size: 26px;
+      font-weight: 500;
+    }
+  }
+}
+
+.subpage-ttl {
+  h1 {
+    font-size: 26px;
+    font-family: yu-mincho-pr6n, sans-serif;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #1B294D;
+
+    @include mqSp() {
+      letter-spacing: 0.1em;
+    }
+
+    small {
+      @include mqSp() {
+        font-size: 16px;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    font-family: "游ゴシック体", "Hiragino Sans", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", YuGothic, "メイリオ", Meiryo, sans-serif;
+    font-weight: 500;
+    text-align: center;
+    color: #000000;
+    margin: 10px 0;
+    letter-spacing: 0.05rem;
+
+    span {
+      font-size: 26px;
+    }
+  }
+}

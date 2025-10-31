@@ -1,0 +1,654 @@
+.sl {
+  &-inquiry {
+    &-inn {
+      padding: 0px 0 80px;
+
+      &-ttl {}
+
+      &-content {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        background-color: #fff;
+
+        &-wr {
+          max-width: 710px;
+          width: 90%;
+          margin: auto;
+          @include mqSp() {
+             width: 100%;
+           }
+
+          &-form {
+            .contact-form {
+              width: 100%;
+
+              @include mqSp() {
+                display: block;
+              }
+
+              &-wr {
+                width: 100%;
+                align-items: center;
+                border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
+
+                @include mqSp() {
+                  display: block;
+                }
+
+                &:first-child {
+                  border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
+                }
+
+                &-label {
+                  flex: 1 0 0;
+                  margin-left: 35px;
+                  font-family: yu-mincho-pr6n, sans-serif;
+                  font-size: 16px;
+                  font-weight: 500;
+                  letter-spacing: 0.1em;
+
+                  @include mqSp() {
+                    margin-top: 30px;
+                    margin-left: 0;
+                  }
+
+                  span {
+                    color: #F00;
+                    font-size: 12px;
+                    font-weight: 600;
+                    vertical-align: super;
+                  }
+                }
+
+                &-label.textarea-label {
+                  align-self: flex-start;
+                  margin-top: 45px;
+                }
+
+                &-label.textarea-label.confirm {
+                  align-self: flex-start;
+                  margin-top: 30px;
+                }
+
+                &-input {
+                  max-width: 450px;
+                  width: 65%;
+                  margin: 30px 35px;
+
+                  @include mqSp() {
+                    width: 100%;
+                    max-width: 100%;
+                    margin: 3px 0 30px;
+                  }
+
+                  input,
+                  span,
+                  textarea {
+                    display: block;
+                    width: 100%;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                  }
+
+                  input,
+                  textarea {
+                    resize: none;
+                    padding: 9px 20px;
+                    color: #333333;
+                    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    background-color: rgba($color: #000000, $alpha: 0.02);
+                    border: unset;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    -ms-border-radius: 10px;
+                    -o-border-radius: 10px;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+
+                    @include mqSp() {}
+
+                    &::placeholder {
+                      /* Chrome, Firefox, Opera, Safari 10.1+ */
+                      font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", sans-serif;
+                      color: #999999;
+                      opacity: 1;
+                      /* Firefox */
+                    }
+
+                    &:-ms-input-placeholder {
+                      /* Internet Explorer 10-11 */
+                      color: #999999;
+                    }
+
+                    &::-ms-input-placeholder {
+                      /* Microsoft Edge */
+                      color: #999999;
+                    }
+
+                    &:active,
+                    &:focus,
+                    &:hover {
+                      border: none;
+                      outline: none;
+                      box-shadow: unset;
+                    }
+                  }
+
+                  input:-webkit-autofill,
+                  input:-webkit-autofill:active,
+                  input:-webkit-autofill:focus,
+                  input:-webkit-autofill:hover {
+                    box-shadow: 0 0 0 40px rgba(0, 0, 0, 0.02) inset !important;
+                    -webkit-box-shadow: 0 0 0 40px rgba(0, 0, 0, 0.02) inset !important;
+                  }
+
+                  p {
+                    color: #333333;
+                    font-family: yu-mincho-pr6n, sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+
+                    @include mqSp() {}
+                  }
+                }
+
+                &-confirm {
+                  margin-left: 35px;
+                  padding: 30px 0;
+
+                  @include mqSp() {
+                    margin-left: 0;
+                  }
+
+                  p {
+                    font-family: yu-mincho-pr6n, sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    position: relative;
+
+                    .checkbox {
+                      display: inline-block;
+                      margin-right: 10px;
+                    }
+                  }
+
+                  .wpcf7-list-item {
+                    @include mqSp() {
+                      margin: 0;
+                    }
+                  }
+
+                  input {
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+                  }
+
+                  .wpcf7-list-item-label {
+                    font-family: yu-mincho-pr6n, sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    letter-spacing: 0.1em;
+                    line-height: 1.3;
+                    margin-left: 5px;
+                    vertical-align: middle;
+
+                    @include mqSp() {
+                      margin-left: 0;
+                    }
+
+                    @media screen and (max-width: 350px) {
+                      font-size: 12px;
+                    }
+
+                    a {
+                      text-decoration: underline;
+                    }
+                  }
+                }
+              }
+
+              &-btns {
+                margin: 30px 0 0;
+                width: 100%;
+                justify-content: center;
+
+                @include mqSp() {
+                  flex-direction: column-reverse;
+                }
+
+                input {
+                  border: unset;
+                  outline: unset;
+                  width: 100%;
+                  cursor: pointer;
+                  color: #fff;
+                  text-align: center;
+                  font-family: proxima-nova, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 0.2em;
+                  padding: 13px 75px;
+                  border-radius: 25px;
+                  -webkit-border-radius: 25px;
+                  -moz-border-radius: 25px;
+                  -ms-border-radius: 25px;
+                  -o-border-radius: 25px;
+                  background-color: #9F8982;
+                  border: 1px solid #fff;
+                  appearance: none;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+
+                  &:hover {
+                    color: #9F8982;
+                    background-color: #fff;
+                    border-color: #9F8982;
+                  }
+                }
+
+                .next {
+                  width: 50%;
+                  text-align: center;
+
+                  @include mqSp() {
+                    width: 100%;
+                    margin-bottom: 20px;
+                  }
+
+                  .next-btn {
+                    max-width: 170px;
+                    position: relative;
+                    display: inline-block;
+                    width: fit-content;
+
+                    &::after {
+                      content: '';
+                      position: absolute;
+                      top: 49%;
+                      width: 4px;
+                      height: 4px;
+                      right: 15px;
+                      border-top: 1px solid #fff;
+                      border-right: 1px solid #fff;
+                      transform: rotate(45deg) translateY(-50%);
+                      -webkit-transform: rotate(45deg) translateY(-50%);
+                      -moz-transform: rotate(45deg) translateY(-50%);
+                      -ms-transform: rotate(45deg) translateY(-50%);
+                      -o-transform: rotate(45deg) translateY(-50%);
+                    }
+
+                    &:hover {
+                      &::after {
+                        border-color: #DCADA4;
+                      }
+                    }
+
+                    .wpcf7-spinner {
+                      display: none;
+                    }
+                  }
+                }
+
+                .prev {
+                  width: 50%;
+                  text-align: center;
+
+                  @include mqSp() {
+                    width: 100%;
+                  }
+
+                  .prev-btn {
+                    max-width: 170px;
+                    position: relative;
+                    display: inline-block;
+                    width: fit-content;
+
+                    &::after {
+                      content: '';
+                      position: absolute;
+                      top: 49%;
+                      width: 4px;
+                      height: 4px;
+                      left: 15px;
+                      border-top: 1px solid #DCADA4;
+                      border-left: 1px solid #DCADA4;
+                      transform: rotate(-45deg) translateY(-50%);
+                      -webkit-transform: rotate(-45deg) translateY(-50%);
+                      -moz-transform: rotate(-45deg) translateY(-50%);
+                      -ms-transform: rotate(-45deg) translateY(-50%);
+                      -o-transform: rotate(-45deg) translateY(-50%);
+                    }
+
+                    &:hover {
+                      &::after {
+                        border-color: #fff;
+                      }
+                    }
+
+                    .wpcf7-spinner {
+                      display: none;
+                    }
+
+                    input {
+                      color: #9F8982;
+                      border-color: #9F8982;
+                      background-color: #fff;
+                      padding: 12px 75px;
+
+                      &:hover {
+                        color: #fff;
+                        background-color: #9F8982;
+
+                        &::after {
+                          border-color: #fff;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &-ttl {
+            h2 {
+              text-align: center;
+              color: #E5C5BA;
+              font-family: 'Libre Baskerville', serif;
+              font-size: 50px;
+              font-weight: 600;
+              letter-spacing: 0.05em;
+              margin-bottom: 30px;
+
+              @include mqSp() {
+                font-size: 32px;
+              }
+
+              @media screen and (max-width: 350px) {
+                font-size: 28px;
+              }
+            }
+
+            p {
+              text-align: center;
+              font-family: yu-mincho-pr6n, sans-serif;
+              font-size: 16px;
+              font-weight: 500;
+              letter-spacing: 0.1em;
+              line-height: 1.8;
+
+              &:first-of-type {
+                font-weight: 500;
+              }
+            }
+          }
+
+          &-btn {
+            margin-top: 50px;
+            margin-bottom: 10px;
+            text-align: center;
+
+            @include mqSp() {
+              margin-top: 40px;
+            }
+
+            a {
+              display: inline-block;
+              position: relative;
+              color: #9F8982;
+              text-align: center;
+              font-family: proxima-nova, sans-serif;
+              font-size: 10px;
+              font-weight: 600;
+              letter-spacing: 0.2em;
+              padding: 13px 75px;
+              border-radius: 25px;
+              -webkit-border-radius: 25px;
+              -moz-border-radius: 25px;
+              -ms-border-radius: 25px;
+              -o-border-radius: 25px;
+              border: 1px solid #9F8982;
+              background-color: #fff;
+
+              &::after {
+                content: '';
+                position: absolute;
+                top: 49%;
+                width: 4px;
+                height: 4px;
+                right: 15px;
+                border-top: 1px solid #9F8982;
+                border-right: 1px solid #9F8982;
+                transform: rotate(45deg) translateY(-50%);
+                -webkit-transform: rotate(45deg) translateY(-50%);
+                -moz-transform: rotate(45deg) translateY(-50%);
+                -ms-transform: rotate(45deg) translateY(-50%);
+                -o-transform: rotate(45deg) translateY(-50%);
+              }
+
+              &:hover {
+                color: #fff;
+                background-color: #9F8982;
+
+                &::after {
+                  border-color: #fff;
+                }
+              }
+            }
+          }
+        }
+
+        .reservation {
+          border: 2px solid #9F8982;
+          padding: 5px;
+
+          &-wr {
+            padding: 22px;
+            border: 1px solid #9F8982;
+            box-sizing: border-box;
+
+            @include mqSp() {
+              padding: 30px 17px;
+            }
+
+            p {
+              text-align: center;
+              font-size: 14px;
+              line-height: 2.3;
+              letter-spacing: 0.1em;
+
+              @include mqSp() {
+                line-height: 1.8;
+              }
+            }
+
+            h3 {
+              max-width: 600px;
+              margin: auto;
+              text-align: center;
+              color: #DCADA4;
+              font-size: 18px;
+              font-weight: 600;
+              line-height: 1.8;
+              letter-spacing: 0.1em;
+              padding-bottom: 20px;
+              border-bottom: 1px solid #E5C5BA;
+
+              @media screen and (max-width: 350px) {
+                font-size: 14px;
+              }
+            }
+
+            a {
+              display: block;
+              max-width: 277px;
+              margin: 20px auto auto;
+            }
+          }
+        }
+      }
+
+      &-content.reservation-content {
+        padding: 60px 90px;
+        box-sizing: border-box;
+
+        @include mqSp() {
+          padding: 60px 10px;
+        }
+      }
+
+      &-content.inquiry-form {
+        padding: 60px 0;
+      }
+    }
+
+    &-inn.pb-0 {
+      padding-bottom: 0;
+    }
+
+    &-inn.inquiry-form-inn {
+      padding-top: 35px;
+
+      .inquiry-form {
+        &-wr {
+          margin-bottom: 40px;
+
+          &-nav {
+            justify-content: center;
+
+            &-item {
+              position: relative;
+              padding: 0 30px;
+
+              @include mqSp() {
+                width: 33%;
+                padding: 0 10px;
+              }
+
+              &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: -4px;
+                width: 5px;
+                height: 5px;
+                border-top: 1px solid rgba($color: #000, $alpha: 0.2);
+                border-right: 1px solid rgba($color: #000, $alpha: 0.2);
+                transform: rotate(45deg) translateY(-50%);
+                -webkit-transform: rotate(45deg) translateY(-50%);
+                -moz-transform: rotate(45deg) translateY(-50%);
+                -ms-transform: rotate(45deg) translateY(-50%);
+                -o-transform: rotate(45deg) translateY(-50%);
+                z-index: 2;
+              }
+
+              &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 4px;
+                width: 5px;
+                height: 5px;
+                border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
+                border-right: 1px solid rgba($color: #000000, $alpha: 0.2);
+                transform: rotate(45deg) translateY(-50%);
+                -webkit-transform: rotate(45deg) translateY(-50%);
+                -moz-transform: rotate(45deg) translateY(-50%);
+                -ms-transform: rotate(45deg) translateY(-50%);
+                -o-transform: rotate(45deg) translateY(-50%);
+                z-index: 2;
+              }
+
+              &:first-child {
+                padding-left: 0;
+              }
+
+              &:last-child {
+                padding-right: 0;
+
+                &::after,
+                &::before {
+                  display: none;
+                }
+              }
+
+              p {
+                color: rgba($color: #000000, $alpha: 0.2);
+                font-family: yu-mincho-pr6n, sans-serif;
+                font-size: 16px;
+                line-height: 1.3;
+                letter-spacing: 0.1em;
+                padding: 10px 40px;
+                border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
+                border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
+
+                @include mqSp() {
+                  padding: 10px;
+                  letter-spacing: 0;
+                }
+
+                @media screen and (max-width: 350px) {
+                  padding: 5px 10px;
+                  font-size: 12px;
+                }
+              }
+            }
+
+            &-item.current-step {
+
+              &::after,
+              &::before {
+                border-color: #DCADA4;
+              }
+
+              p {
+                color: #DCADA4;
+                border-color: #DCADA4;
+              }
+            }
+          }
+        }
+
+        .required-warn {
+          text-align: center;
+          font-family: yu-mincho-pr6n, sans-serif;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          margin-bottom: 40px;
+
+          @include mqSp() {
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            margin-bottom: 38px;
+          }
+
+          span {
+            color: #F00;
+          }
+        }
+      }
+    }
+
+    &-inn.inquiry-form-inn.confirm {
+      padding-top: 55px;
+
+      @include mqSp() {
+        .sl-inquiry-inn-content-wr-form .contact-form-wr {
+          padding: 0 10px;
+        }
+      }
+    }
+
+    &-inn.inquiry-form-inn.thank-you {
+      padding-top: 60px;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+»dc<?php exit; ?>a:1:{s:7:"content";s:82:"O:8:"stdClass":2:{s:9:"lastCheck";i:1667521369;s:14:"checkedVersion";s:5:"1.6.2";}";}

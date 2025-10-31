@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="97.33" height="97.33" viewBox="0 0 97.33 97.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7edea;
+      }
+
+      .cls-2 {
+        fill: #f4323b;
+        font-size: 14px;
+        font-family: SegoeUI, Segoe UI;
+      }
+
+      .cls-3 {
+        font-family: YuGothicUI-Regular, Yu Gothic UI;
+      }
+    </style>
+  </defs>
+  <g id="Group_508" data-name="Group 508" transform="translate(-507.341 -2991.891)">
+    <g id="Group_507" data-name="Group 507" transform="translate(-1453.42 429.879) rotate(-30)">
+      <path id="Polygon_1" data-name="Polygon 1" class="cls-1" d="M9.975,0,19.95,45.6H0Z" transform="translate(385 3275.6) rotate(-90)"/>
+      <circle id="Ellipse_4" data-name="Ellipse 4" class="cls-1" cx="35.625" cy="35.625" r="35.625" transform="translate(399.25 3230)"/>
+    </g>
+    <text id="_5_500_お得_" data-name="¥5,500
+お得！" class="cls-2" transform="translate(556 3038)"><tspan x="-20.385" y="0">¥5,500</tspan><tspan class="cls-3"><tspan x="-19.643" y="20">お得！</tspan></tspan></text>
+  </g>
+</svg>

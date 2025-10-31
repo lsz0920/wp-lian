@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+
+body {
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-variant-ligatures: none;
+    font-family: "Hiragino Kaku Gothic Pro" , "ヒラギノ角ゴ Pro" , "游ゴシック" , sans-serif;
+    font-style: normal;
+    line-height: 1.6;
+     background: #fbf9f8;
+}

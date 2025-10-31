@@ -1,0 +1,464 @@
+// for common use
+.topic-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 60px;
+
+  @include mqSp {
+    margin-bottom: 75px;
+  }
+
+  &:hover {
+    .image {
+      img {
+        transform: scale(1.15);
+        -webkit-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        -o-transform: scale(1.15);
+      }
+    }
+  }
+
+  .image {
+    width: 38.5%;
+    position: relative;
+
+    figure {
+      overflow: hidden;
+    }
+
+    @include mqSp {
+      width: 35%;
+    }
+
+    &:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      z-index: -1;
+      background: linear-gradient(141deg, rgba(184, 219, 246, 1) 0%, rgba(113, 183, 230, 1) 50%, rgba(32, 143, 211, 1) 100%);
+    }
+
+    img {
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+    }
+  }
+
+  .details-wrap {
+    width: 57%;
+
+    @include mqSp {
+      width: 58%;
+    }
+
+    .detail-text {
+      font-size: 14px;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+
+      @include mqSp {
+        font-size: 11px;
+        font-size: 1.1rem;
+        margin-top: 10px;
+        line-height: 1.7;
+      }
+    }
+
+    .date {
+      margin-bottom: 15px;
+
+      @include mqSp {
+        margin-bottom: 10px;
+      }
+
+      span {
+        display: block;
+        color: #73a2ff;
+        letter-spacing: 0.2em;
+        font-weight: 400;
+        font-family: "Helvetica", sans-serif;
+        font-size: 12px;
+        font-size: 1.2rem;
+
+        @include mqSp {
+          text-align: left;
+          letter-spacing: 0.1em;
+          font-size: 1.0rem;
+        }
+      }
+    }
+  }
+}
+
+// sub page post
+.sl {
+  &-topics {
+    @include mqSp {
+      padding: 50px 0 0;
+    }
+
+    &-inn {
+      &-content {
+        margin-top: 80px;
+
+        @include mqSp {
+          margin: 40px auto 0;
+        }
+
+        .talent-name {
+          margin: 30px 0 0;
+
+          @include mqSp {
+            margin: 20px 0 0;
+          }
+
+          h3 {
+            font-size: 5.0rem;
+            text-align: center;
+
+            @include mqSp {
+              font-size: 2.5rem;
+            }
+          }
+        }
+      }
+
+      &-posts {
+        width: 90%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding-top: 70px;
+
+        @media (max-width: 1280px) {
+          width: 80%;
+        }
+
+        @include mqSp {
+          padding-top: 30px;
+          width: 90%;
+        }
+
+        article {
+          width: 30%;
+          margin-right: 5%;
+
+          @include mqSp {
+            width: 100%;
+            margin-right: 0;
+          }
+
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+
+          .topic-details {
+            display: block;
+
+            .image {
+              width: 100%;
+              margin: 0 auto;
+              border: 1px solid #fff;
+
+              &:after {
+                content: "";
+                width: 97%;
+                position: absolute;
+                top: 6px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                border-bottom: 6px solid #232584;
+                background: transparent;
+              }
+
+              figure {
+                width: 80%;
+                margin: 0 auto;
+              }
+            }
+
+            .details-wrap {
+              width: 100%;
+              margin-top: 30px;
+              padding: 0 20px;
+
+              @include mqSp {
+                margin-top: 15px;
+                padding: 0 15px;
+              }
+
+              .date {
+                margin: 20px 0 0;
+                position: relative;
+
+                @include mqSp {
+                  margin: 10px 0 0;
+                }
+
+                &::after {
+                  content: '';
+                  position: absolute;
+                  width: 65%;
+                  height: 1px;
+                  top: 50%;
+                  left: 0;
+                  background: #73a2ff;
+                  transform: translateY(-50%);
+                  -webkit-transform: translateY(-50%);
+                  -moz-transform: translateY(-50%);
+                  -ms-transform: translateY(-50%);
+                  -o-transform: translateY(-50%);
+
+                  @include mqSp {
+                    width: 70%;
+                  }
+                }
+
+                span {
+                  display: block;
+                  text-align: right;
+                  color: #73a2ff;
+                  font-size: 1.2rem;
+                  letter-spacing: 0.2em;
+                  font-family: "Helvetica", sans-serif;
+
+                  @include mqSp {
+                    letter-spacing: 0.1em;
+                    font-size: 1.2rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &-detail {
+        width: 90%;
+        max-width: 1080px;
+        margin: 80px auto 0;
+
+        @include mqSp {
+          margin: 30px auto 0;
+        }
+
+        .image {
+          width: 100%;
+          border: 1px solid #fff;
+          text-align: center;
+          position: relative;
+          max-height: 590px;
+          height: 45vw;
+
+          @include mqSp() {
+            height: 75vw;
+          }
+
+          &:after {
+            content: "";
+            width: 98%;
+            position: absolute;
+            bottom: -14px;
+            left: 1%;
+            border-bottom: 13px solid #232584;
+            z-index: -1;
+
+            @include mqSp {
+              bottom: -5px;
+              border-bottom: 4px solid #232584;
+            }
+          }
+
+          img {
+            max-width: 100%;
+            height: 100%;
+            width: auto;
+          }
+        }
+
+        .content {
+          padding: 40px 50px;
+          box-sizing: border-box;
+
+          @include mqSp {
+            padding: 45px 0 0;
+          }
+
+          .post-title {
+            padding: 0 50px;
+            font-size: 25px;
+            font-size: 2.5rem;
+            color: #fff;
+            letter-spacing: 0.075em;
+            line-height: 2;
+            font-family: "hiragino-kaku-gothic-pro", sans-serif;
+
+            @include mqSp {
+              padding: 0;
+              font-size: 1.3rem;
+              letter-spacing: 0.01em;
+              line-height: 2;
+            }
+          }
+
+          .date {
+            margin: 20px 0 40px;
+            position: relative;
+
+            @include mqSp {
+              margin: 10px 0 20px;
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              width: 83%;
+              height: 2px;
+              top: 50%;
+              left: 0;
+              background: #73a2ff;
+              transform: translateY(-50%);
+              -webkit-transform: translateY(-50%);
+              -moz-transform: translateY(-50%);
+              -ms-transform: translateY(-50%);
+              -o-transform: translateY(-50%);
+
+              @include mqSp {
+                width: 72%;
+                height: 1px;
+              }
+            }
+
+            span {
+              display: block;
+              text-align: right;
+              color: #73a2ff;
+              font-size: 2.2rem;
+              letter-spacing: 0.2em;
+              font-family: "Helvetica", sans-serif;
+
+              @include mqSp {
+                letter-spacing: 0.1em;
+                font-size: 1.2rem;
+              }
+            }
+          }
+
+          .description {
+            color: #fff;
+            margin-bottom: 100px;
+            font-family: yu-gothic-pr6n, sans-serif;
+
+            @include mqSp {
+              margin-bottom: 50px;
+            }
+
+            p {
+              font-size: 18px;
+              font-size: 1.8rem;
+              letter-spacing: 0;
+              line-height: 2.2;
+              margin-bottom: 20px;
+              font-family: "游ゴシック体", "Hiragino Sans", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", YuGothic, "メイリオ", Meiryo, sans-serif;
+
+              @include mqSp {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+                line-height: 2.3;
+              }
+
+              img {
+                width: 100%;
+                max-width: 716px;
+                margin: 40px auto;
+                display: block;
+
+                @include mqSp {
+                  margin: 25px auto;
+                }
+              }
+            }
+          }
+
+          .custom-link {
+            margin-bottom: 25px;
+
+            @include mqSp {
+              margin-bottom: 10px;
+            }
+
+            a {
+              color: #fff;
+              font-size: 20px;
+              font-size: 2.0rem;
+              letter-spacing: 0.01em;
+              line-height: 1.6;
+              display: inline-block;
+              position: relative;
+              padding-left: 32px;
+              font-weight: 500;
+              font-family: "游ゴシック体", "Hiragino Sans", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", YuGothic, "メイリオ", Meiryo, sans-serif;
+              font-weight: bold;
+
+              @include mqSp {
+                font-size: 1.3rem;
+                letter-spacing: 0.01em;
+                padding-left: 27px;
+              }
+
+              &:before {
+                content: "";
+                width: 22px;
+                height: 22px;
+                background: url('../img/link-icon01.svg')no-repeat;
+                position: absolute;
+                top: 6px;
+                left: 0;
+                transition: 0.5s;
+
+                @include mqSp {
+                  width: 16px;
+                  height: 16px;
+                  top: 2px;
+                }
+              }
+
+              &:hover {
+                color: #c4e1f8;
+
+                &::before {
+                  background: url('../img/link-icon02.svg')no-repeat;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .pagination {
+      margin-top: 70px;
+
+      @include mqSp {
+        margin-top: 5px;
+      }
+    }
+  }
+}

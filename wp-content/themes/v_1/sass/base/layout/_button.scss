@@ -1,0 +1,61 @@
+.more-btn {
+  a {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    max-width: 170px;
+    width: 100%;
+    color: #fff;
+    border: 1px solid #1b294d;
+    background: #1b294d;
+    font-family: proxima-nova, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 11px;
+    box-sizing: border-box;
+    letter-spacing: 0.2rem;
+    border-radius: 45px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 8%;
+      margin: auto;
+      width: 3px;
+      height: 3px;
+      border-top: 1px solid #fff;
+      border-right: 1px solid #fff;
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      background: #fff;
+      color: #1b294d;
+
+      @include mqSp {
+        color: #1b294d;
+        background: transparent;
+      }
+      &:after {
+        border-color: #1b294d;
+      }
+    }
+  }
+}
+
+.line-btn {
+  position: fixed;
+  max-width: 270px;
+  bottom: 40px;
+  right: 0;
+  z-index: 9;
+
+  @include mqSp() {
+    width: 90%;
+    left: 0;
+    max-width: 338px;
+    margin: 0 auto;
+  }
+}

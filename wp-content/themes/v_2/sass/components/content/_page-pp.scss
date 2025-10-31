@@ -1,0 +1,71 @@
+.sl {
+  &-pp {
+    &-inn {
+      &-ttl {
+        margin-bottom: 50px;
+      }
+
+      &-content {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        padding: 40px 30px;
+        background-color: #fff;
+        box-sizing: border-box;
+
+        @include mqSp() {
+          padding: 30px 10px;
+        }
+
+        h3 {
+          font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "游ゴシック", sans-serif;
+          color: #333333;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+          margin: 25px 0 20px;
+        }
+
+        p {
+          font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "游ゴシック", sans-serif;
+          color: #333333;
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 1.9;
+        }
+
+        ul {
+          list-style-type: decimal;
+          padding-left: 24px;
+          font-size: 12px;
+          font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "游ゴシック", sans-serif;
+
+          @include mqSp() {
+            padding-left: 15px;
+            line-height: 1.8;
+          }
+
+          li {
+            margin-bottom: 5px;
+
+            ul {
+              list-style-type: none;
+
+              &.charList {
+                @include mqSp() {
+                  padding-left: 0;
+                  margin-left: -13px;
+                }
+              }
+            }
+          }
+        }
+
+        div {
+          margin-top: 15px;
+          margin-bottom: 45px;
+        }
+      }
+    }
+  }
+}

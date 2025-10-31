@@ -1,0 +1,209 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-06-15 08:40:21+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Bogo 3.7\n"
+"Language: en_US\n"
+"Project-Id-Version: WordPress 6.2.2\n"
+
+msgctxt "blogname"
+msgid "blogname"
+msgstr "リアンクリニック | 表参道のたるみ・毛穴・小顔治療に特化した美容皮膚科"
+
+msgctxt "blogdescription"
+msgid "blogdescription"
+msgstr "リアンクリニックは表参道にあるアートメイクをはじめ、たるみ・毛穴・小顔治療に特化した美容皮膚科です。アートメイク症例数1000例以上、美容看護師歴4年以上の熟練したものしか所属していないため、お客様に最高の結果を提供いたします。じめ、リップ・肉割れ・妊娠線・傷跡に対応したアートメイクを提供している美容クリニックです。お客様が輝ける最適なデザインをご提案します。"
+
+msgctxt "category"
+msgid "category:30"
+msgstr "お休み"
+
+msgctxt "category"
+msgid "category:31"
+msgstr "スタッフ"
+
+msgctxt "category"
+msgid "category:1"
+msgstr "ニュース"
+
+msgctxt "post_tag"
+msgid "post_tag:22"
+msgstr "たるみ治療"
+
+msgctxt "post_tag"
+msgid "post_tag:24"
+msgstr "アートメイク"
+
+msgctxt "post_tag"
+msgid "post_tag:21"
+msgstr "エイジングケアに"
+
+msgctxt "post_tag"
+msgid "post_tag:20"
+msgstr "乾燥に"
+
+msgctxt "post_tag"
+msgid "post_tag:23"
+msgstr "小顔"
+
+msgctxt "post_tag"
+msgid "post_tag:25"
+msgstr "注入"
+
+msgctxt "post_tag"
+msgid "post_tag:33"
+msgstr "catalog"
+
+msgctxt "post_tag"
+msgid "post_tag:34"
+msgstr "white"
+
+msgctxt "post_tag"
+msgid "post_tag:35"
+msgstr "whitebg_image"
+
+msgctxt "wp_theme"
+msgid "wp_theme:51"
+msgstr "v_2"
+
+msgctxt "faq_category"
+msgid "faq_category:10"
+msgstr "ボトックス"
+
+msgctxt "faq_category"
+msgid "faq_category:62"
+msgstr "エクソソーム"
+
+msgctxt "faq_category"
+msgid "faq_category:12"
+msgstr "眉"
+
+msgctxt "faq_category"
+msgid "faq_category:46"
+msgstr "アイライン"
+
+msgctxt "faq_category"
+msgid "faq_category:44"
+msgstr "脂肪溶解注射　チンセラ"
+
+msgctxt "faq_category"
+msgid "faq_category:11"
+msgstr "HIFU"
+
+msgctxt "faq_category"
+msgid "faq_category:37"
+msgstr "HIFUリニア"
+
+msgctxt "faq_category"
+msgid "faq_category:43"
+msgstr "リフトアップボトックス"
+
+msgctxt "faq_category"
+msgid "faq_category:45"
+msgstr "リップ"
+
+msgctxt "faq_category"
+msgid "faq_category:39"
+msgstr "ニードルRF"
+
+msgctxt "faq_category"
+msgid "faq_category:40"
+msgstr "ピーリング"
+
+msgctxt "faq_category"
+msgid "faq_category:41"
+msgstr "フォトipl"
+
+msgctxt "faq_category"
+msgid "faq_category:42"
+msgstr "ポアレスボトックス"
+
+msgctxt "faq_category"
+msgid "faq_category:38"
+msgstr "サーマジェン"
+
+msgctxt "faq_category"
+msgid "faq_category:36"
+msgstr "ショートスレッド"
+
+msgctxt "column_category"
+msgid "column_category:6"
+msgstr "アートメイク"
+
+msgctxt "campaign_category"
+msgid "campaign_category:15"
+msgstr "眉"
+
+msgctxt "campaign_category"
+msgid "campaign_category:16"
+msgstr "リップ"
+
+msgctxt "cosmetics_category"
+msgid "cosmetics_category:47"
+msgstr "DRX"
+
+msgctxt "cosmetics_category"
+msgid "cosmetics_category:29"
+msgstr "プラスリストア"
+
+msgctxt "cosmetics_category"
+msgid "cosmetics_category:32"
+msgstr "ガウディスキン"
+
+msgctxt "case_category"
+msgid "case_category:58"
+msgstr "ボトックス"
+
+msgctxt "case_category"
+msgid "case_category:59"
+msgstr "脂肪溶解注射"
+
+msgctxt "case_category"
+msgid "case_category:54"
+msgstr "HIFU"
+
+msgctxt "case_category"
+msgid "case_category:52"
+msgstr "ヒアルロン酸"
+
+msgctxt "case_category"
+msgid "case_category:60"
+msgstr "アートメイク"
+
+msgctxt "case_category"
+msgid "case_category:57"
+msgstr "IPL"
+
+msgctxt "case_category"
+msgid "case_category:61"
+msgstr "たるみセット治療"
+
+msgctxt "case_category"
+msgid "case_category:53"
+msgstr "ショートスレッド"
+
+msgctxt "case_category"
+msgid "case_category:56"
+msgstr "サーマニードル"
+
+msgctxt "case_category"
+msgid "case_category:55"
+msgstr "サーマジェン"
+
+msgctxt "flamingo_inbound_channel"
+msgid "flamingo_inbound_channel:48"
+msgstr "Contact Form 7"
+
+msgctxt "flamingo_inbound_channel"
+msgid "flamingo_inbound_channel:63"
+msgstr "inquiry_en"
+
+msgctxt "flamingo_inbound_channel"
+msgid "flamingo_inbound_channel:50"
+msgstr "inquiry-confirm"
+
+msgctxt "flamingo_inbound_channel"
+msgid "flamingo_inbound_channel:49"
+msgstr "inquiry"

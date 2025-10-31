@@ -1,0 +1,1 @@
+»dc<?php exit; ?>a:1:{s:7:"content";s:308:"a:4:{s:27:"wp-pagenavi/wp-pagenavi.php";s:14:"__return_false";s:59:"intuitive-custom-post-order/intuitive-custom-post-order.php";s:15:"hicpo_uninstall";s:24:"wordpress-seo/wp-seo.php";s:14:"__return_false";s:53:"default-featured-image/set-default-featured-image.php";a:2:{i:0;s:3:"DFI";i:1;s:9:"uninstall";}}";}

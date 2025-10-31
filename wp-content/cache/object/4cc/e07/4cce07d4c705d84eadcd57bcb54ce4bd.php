@@ -1,0 +1,1 @@
+¦Ádc<?php exit; ?>a:1:{s:7:"content";a:3:{s:17:"twentytwentythree";s:7:"/themes";s:3:"v_1";s:7:"/themes";s:3:"v_2";s:7:"/themes";}}
