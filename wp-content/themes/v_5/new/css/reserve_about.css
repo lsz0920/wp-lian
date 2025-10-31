@@ -1,0 +1,215 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	lian-reserve/about
+------------------------------------------------------------*/
+.fNavi li:first-child {
+	opacity: 0.5;
+}
+#main .mainBox {
+	position: relative;
+	background-color: #fff;
+}
+#main .brand {
+	padding: 1.6rem 0 21.7rem;
+	position: relative;
+	overflow: hidden;
+}
+#main .brand .enImg {
+	position: absolute;
+	left: 50%;
+	bottom: 26.1rem;
+	width: 143rem;
+	transform: translateX(-50.6%);
+}
+#main .brand .content {
+	position: relative;
+}
+#main .brand .ttl {
+	color: #26525B;
+	font-size: 5.5rem;
+	font-weight: 400;
+}
+#main .brand .textBox {
+	width: 77.3rem;
+	margin-left: auto;
+}
+#main .brand .title {
+	margin-bottom: 3.1rem;
+	color: #171717;
+	font-size: max(10px,2.8rem);
+	font-weight: 700;
+	letter-spacing: 0.05em;
+}
+#main .brand p {
+	margin-bottom: 3.2rem;
+	color: #171717;
+	line-height: 2.4;
+	letter-spacing: 0.05em;
+}
+#main .brand .text {
+	margin: -1.1rem 0 0;
+}
+#main .brand p span {
+	font-weight: 700;
+}
+#main .phoUl {
+	overflow: hidden;
+	position: relative;
+	z-index: 2;
+}
+#main .phoList {
+	flex-wrap: nowrap;
+}
+#main .phoList.left {
+	margin-bottom: 1.4rem;
+}
+#main .phoList li {
+	margin: 0 0.6rem;
+	height: 37.2rem;
+	flex-shrink: 0;
+}
+#main .phoList img {
+	width: auto;
+	height: 100%;
+}
+#main .phoList.right li {
+	height: 36.7rem;
+}
+#main .message {
+	margin-top: -11.2rem;
+	padding: 23.1rem 0 11.9rem;
+	position: relative;
+}
+#main .message .pho {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+#main .message .pho img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+#main .message .ttl {
+	margin-bottom: 4rem;
+	color: #26525B;
+	font-size: 5.2rem;
+	font-weight: 400;
+}
+#main .message p {
+	margin-bottom: 3.4rem;
+	color: #171717;
+	line-height: 2.35;
+	font-size: max(10px,1.4rem);
+	letter-spacing: 0.04em;
+}
+#main .message p strong {
+	font-weight: 700;
+}
+#main .message .name {
+	margin: 3.9rem 0 0;
+	font-size: max(10px,1.3rem);
+	letter-spacing: 0.03em;
+	font-weight: 500;
+}
+#main .message .name span {
+	margin: -0.5rem 0 0 2.2rem;
+	display: inline-block;
+	vertical-align: middle;
+	letter-spacing: 0.15em;
+	font-weight: 500;
+	font-size: max(10px,2.7rem);
+}
+@media all and (min-width: 1000px) {
+	#main .brand .ttl {
+		height: 50rem;
+		position: absolute;
+		left: 5.7rem;
+		top: 0.8rem;
+		writing-mode: vertical-rl;
+	}
+	#main .message .content {
+		width: 83.4rem;
+	}
+}
+@media all and (max-width: 999px) {
+	#main .brand {
+		padding: 7.7rem 2rem 9.4rem;
+	}
+	#main .brand .enImg {
+		left: auto;
+		right: -2.1rem;
+		bottom: auto;
+		top: -4rem;
+		width: 6.9rem;
+		transform: none;
+	}
+	#main .brand .ttl {
+		margin-bottom: 3.5rem;
+		font-size: 3rem;
+	}
+	#main .brand .textBox {
+		width: auto;
+		margin-left: auto;
+	}
+	#main .brand .title {
+		margin-bottom: 2.7rem;
+		font-size: 2rem;
+		line-height: 1.75;
+		letter-spacing: 0.04em;
+	}
+	#main .brand p {
+		margin-bottom: 2.6rem;
+		font-size: 1.3rem;
+		line-height: 2.23;
+		letter-spacing: 0.03em;
+	}
+	#main .brand .text {
+		margin: -0.3rem 0 0;
+	}
+	#main .phoList.left {
+		margin-bottom: 0.7rem;
+	}
+	#main .phoList li {
+		margin: 0 0.3rem;
+		height: 17.1rem;
+	}
+	#main .phoList.right li {
+		height: 17rem;
+	}
+	#main .message {
+		margin-top: -8.5rem;
+		padding: 17.2rem 2rem 30rem;
+		overflow: hidden;
+	}
+	#main .message .pho {
+		width: 69.8rem;
+		height: 59.5rem;
+	}
+	#main .message .ttl {
+		margin-bottom: 3.4rem;
+		font-size: 3.5rem;
+	}
+	#main .message p {
+		margin-bottom: 2.9rem;
+		line-height: 2;
+		font-size: 1.3rem;
+		letter-spacing: 0.03em;
+	}
+	#main .message .name {
+		margin: 3.8rem 0 0;
+		font-size: 1.2rem;
+		font-weight: 400;
+		font-family: YakuHanMP, "Noto Sans JP", sans-serif;
+	}
+	#main .message .name span {
+		margin: 0.1rem 0 0;
+		display: block;
+		letter-spacing: 0.08em;
+		font-size: 2.2rem;
+		font-weight: 500;
+		font-family: YakuHanMP, "Noto Serif JP",serif; 
+	}
+}

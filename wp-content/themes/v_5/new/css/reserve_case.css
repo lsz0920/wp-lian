@@ -1,0 +1,31 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	lian-reserve/case
+------------------------------------------------------------*/
+.fNavi li:nth-child(3) {
+	opacity: 0.5;
+}
+#main .mainBox {
+	padding: 1.6rem 0 17.9rem;
+	position: relative;
+	background-color: #fff;
+}
+#main #pagePath {
+	padding-bottom: 11.2rem;
+}
+.comCaseList a {
+	background-color: rgba(234,234,234,0.45);
+}
+.wp-pagenavi a,
+.wp-pagenavi span {
+	font-family: "Cinzel", serif;
+}
+.wp-pagenavi .previouspostslink,
+.wp-pagenavi .nextpostslink {
+	font-family: YakuHanMP, "Playfair Display", serif;
+}
+@media all and (max-width: 999px) {
+	#main .mainBox {
+		padding: 6.1rem 2.5rem 12.6rem;
+	}
+}

@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 767px){
+
+}
+
+/* 見出しサイズ */
+.column-content.post h2{
+    margin: 60px 0 48px;
+}
+.column-content.post h2 .su-heading-inner{
+    font-size: 18px;
+    padding: 12px 0;
+}
+.column-content.post h3{
+    margin: 24px 0 32px;
+}
+.column-content.post h3 .su-heading-inner{
+    font-size: 16px;
+}
+.column-content.post h4{
+    font-weight: bold;
+}
+
+.column-content.post h2:not([class]),.column-content.post h2.wp-block-heading{
+    font-size: 18px;
+    padding: 12px 0;
+    border-top: 1px solid #ffa98c;
+    border-bottom: 1px solid #ffa98c;
+    text-align: center;
+    font-weight: bold;
+}
+.column-content.post h3:not([class]),.column-content.post h3.wp-block-heading{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+/* 左右いっぱいに伸びた横線 */
+.column-content.post h3:not([class]),.column-content.post h3.wp-block-heading {
+    align-items: center; /* 横線を上下中央 */
+    display: flex; /* 文字と横線を横並び */
+  }
+  .column-content.post h3:not([class])::before,.column-content.post h3.wp-block-heading::before,
+  .column-content.post h3:not([class])::after,.column-content.post h3.wp-block-heading::after {
+    background-color: #ffa98c;; /* 横線の色 */
+    content: "";
+    flex-grow: 1; /* 横幅いっぱい */
+    height: 1px; /* 横線の高さ */
+  }
+  .column-content.post h3:not([class])::before,.column-content.post h3.wp-block-heading::before {
+    margin-right: 15px; /* 文字との余白 */
+  }
+  .column-content.post h3:not([class])::after,.column-content.post h3.wp-block-heading::after {
+    margin-left: 15px; /* 文字との余白 */
+  }
+
+/* リンクにカラー */
+.column-content.post a:not(.q_button){
+    color: blue;
+    text-decoration: underline;
+}
+
+#toc_container li a{
+    color: #231815;
+    font-size: 14px;
+}
+#toc_container .toc_list li{
+    margin-top: 1em;
+    display: block;
+}
+
+/* 画像サイズ */
+.column-content.post img{
+    max-width: unset;
+    max-inline-size: 100%;
+    block-size: auto;
+    width: auto;
+}
+
+/* リスト */
+.column-content.post ul,.column-content.post ol{
+    list-style: inside;
+    font-size: 14px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+.column-content.post ul li{
+    text-decoration: inherit;
+}
+.column-content.post ol{
+    list-style-type: decimal;
+}
+.column-content.post ol li{
+    text-decoration: inherit;
+}
+
+/* table */
+.column-content.post table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.column-content.post table th {
+    padding: 10px;
+    background: #778ca3;
+    border: solid 1px #666666;
+    color: #ffffff;
+}
+.column-content.post table td {
+    padding: 10px;
+    border: solid 1px #666666;
+}
+.column-content.post table td:first-child {
+    background: #F2EEE7;
+}
+
+.wp-block-image,.wp-block-flexible-table-block-table{
+    margin-top: 24px;
+    margin-bottom: 24px;
+}

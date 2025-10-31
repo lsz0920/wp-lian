@@ -1,0 +1,105 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	case/detail
+------------------------------------------------------------*/
+.fNavi li:nth-child(3) {
+	opacity: 0.5;
+}
+#main .mainBox {
+	padding-top: 10.7rem;
+	position: relative;
+}
+.headLine06 {
+	position: static;
+	font-size: 6rem;
+	color: #13424C;
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	writing-mode: lr-tb;
+	font-family: YakuHanMP, "Playfair Display", serif;
+}
+.headLine06 a {
+	color: #13424C;
+}
+.comCaseDetail .imgBox .textInfo h4 {
+	position: relative;
+}
+.comCaseDetail .imgBox .textInfo h4 small {
+	position: absolute;
+	right: 0;
+	bottom: 1rem;
+	font-size: max(10px,1rem);
+	font-weight: 400;
+	letter-spacing: 0;
+}
+.comCaseDetail .price {
+	background-color: transparent;
+	border: 1px solid #E9E9E9;
+}
+.comTab thead th, 
+.comTab thead td {
+	background-color: #EAEAEA;
+}
+.comCaseDetail .btmBox .headLine07 {
+	margin-bottom: 3.2rem;
+	color: #13424C;
+	letter-spacing: 0.02em;
+	font-family: YakuHanMP, "Playfair Display", serif;
+}
+.comBtn {
+	width: 13.8rem;
+}
+.comBtn a {
+	height: 3.6rem;
+}
+@media all and (min-width: 1000px) {
+	#pagePath.reserve {
+		padding-bottom: 3.5rem;
+	}
+	.headLine06 {
+		width: 116.6rem;
+		margin: 0 auto 7.1rem;
+	}
+	.comCaseDetail .imgBox .listUl {
+		margin-top: 4.2rem;
+	}
+	.comCaseDetail .btmBox {
+		padding: 15.8rem 0 18.1rem;
+	}
+	.comCaseDetail .btmBox .comBtn {
+		position: absolute;
+		right: 0.3rem;
+		top: 0.7rem;
+		margin: 0;
+	}
+}
+@media all and (max-width: 999px) {
+	#main .mainBox {
+		padding-top: 0;
+	}
+	.comCaseDetail .detail {
+		padding: 11.2rem 2.5rem 6.4rem;
+	}
+	.comCaseDetail .detail .headLine06 {
+		text-align: left;
+		margin-bottom: 1rem;
+		font-size: 4.2rem;
+		letter-spacing: 0.03em;
+	}
+	.comCaseDetail .imgBox .textInfo h4 small {
+		font-size: 1rem;
+	}
+	.comCaseDetail .imgBox .listUl {
+		margin-top: 5rem;
+	}
+	.comCaseDetail .btmBox {
+		padding-bottom: 10.2rem;
+	}
+	.comCaseDetail .btmBox .headLine07 {
+		margin-bottom: 2.6rem;
+		font-size: 2.6rem;
+	}
+	.comBtn {
+		width: 12.3rem;
+	}
+}

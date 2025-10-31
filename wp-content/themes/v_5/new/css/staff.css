@@ -1,0 +1,70 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	staff
+------------------------------------------------------------*/
+.comMenuBg .menuSub01 .menuLink li:nth-child(3) a {
+	opacity: 0.5;
+}
+.comMenuBg .spMenuSub .menuLink:first-child li:nth-child(3) a {
+	opacity: 0.5;
+}
+#main .mainBox {
+	padding-bottom: 20.2rem;
+	position: relative;
+}
+#main .textBox {
+	position: relative;
+	padding-left: 33.4rem;
+	margin-bottom: 6.9rem;
+}
+#main .headLine04 {
+	position: absolute;
+	left: -0.2rem;
+	top: -1.3rem;
+	font-size: 8rem;
+	letter-spacing: 0.04em;
+}
+#main .textBox .ttl {
+	margin-bottom: 2.4rem;
+	font-size: max(10px,2.6rem);
+	font-weight: 500;
+	color: #222;
+	letter-spacing: 0.13em;
+}
+#main .textBox p {
+	line-height: 2.2;
+	letter-spacing: 0.03em;
+}
+#main .info:not(:last-child) {
+	margin-bottom: 10.1rem;
+}
+@media all and (max-width: 999px) {
+	#main .mainBox {
+		padding: 11.4rem 2.5rem 12.7rem;
+	}
+	#main .textBox {
+		padding-left: 0;
+		margin-bottom: 7.6rem;
+	}
+	#main .headLine04 {
+		margin-bottom: 2.7rem;
+		text-align: left;
+		position: static;
+		font-size: 4.2rem;
+		letter-spacing: 0.03em;
+	}
+	#main .textBox .ttl {
+		margin-bottom: 2.4rem;
+		font-size: 1.9rem;
+		color: #1D1D1D;
+		letter-spacing: 0.05em;
+	}
+	#main .textBox p {
+		line-height: 2;
+		letter-spacing: 0.02em;
+		font-size: 1.4rem;
+	}
+	#main .info:not(:last-child) {
+		margin-bottom: 7rem;
+	}
+}

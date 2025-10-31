@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+/*
+以下、SPスタイルを主に定義済み
+*/
+
+.sl-pl-inn-content .price-list-wr .price_section{
+    margin-top: 0;
+}
+@media screen and (min-width: 767px){
+
+}
+
+
+.sl-pl-inn-content .price-list-wr .price__title01{
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__title01{
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
+}
+
+.sl-pl-inn-content .price-list-wr .price__group01{
+    padding: 20px 16px 16px;
+    background-color: #FAF9F8;
+    border-top: 1px solid #D5D5D5;
+    border-bottom: 1px solid #D5D5D5;
+}
+
+.sl-pl-inn-content .price-list-wr .price__title02{
+    font-size: 14px;
+    padding-left: 8px;
+    position: relative;
+    line-height: 1;
+}
+.sl-pl-inn-content .price-list-wr .price__title02::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #5C4C46;
+    width: 4px;
+    height: 100%;
+    content: "";
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__group01{
+        padding: 24px 16px 24px;
+    }
+    
+    .sl-pl-inn-content .price-list-wr .price__title02{
+        font-size: 24px;
+        padding-left: 18px;
+    }
+    .sl-pl-inn-content .price-list-wr .price__title02::before{
+        width: 6px;
+    }
+}
+
+.sl-pl-inn-content .price-list-wr .price__treatment-wrap{
+    margin: 20px auto;
+    background-color: #F2EEE8;
+    width: calc(100% - 32px);
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__treatment-wrap{
+        margin: 40px auto;
+    }
+}
+
+.sl-pl-inn-content .price-list-wr .price__caution{
+    font-size: 10px;
+    line-height: 1.5;
+    margin: 0 auto 0 auto;
+    padding: 0;
+    width: calc(100% - 32px);
+    padding-top: 1.5em;
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__caution{
+        font-size: 14px;
+    }
+}
+
+.sl-pl-inn-content .price-list-wr .price__group01 .price__treatment-wrap{
+    width: 100%;
+}
+.sl-pl-inn-content .price-list-wr .price__group01 .price__caution{
+    width: 100%;
+    padding-top: 1.5em;
+}
+
+.sl-pl-inn-content .price-list-wr .price__title03{
+    background-color: #5C4C46;
+    padding: 4px 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    border-bottom: 1px solid #D5D5D5;
+}
+.sl-pl-inn-content .price-list-wr .price__title03 span{
+    font-size: 10px;
+    line-height: 14px;
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__title03{
+        padding: 12px 14px;
+        font-size: 24px;
+    }
+    .sl-pl-inn-content .price-list-wr .price__title03 span{
+        font-size: 14px;
+    }
+}
+
+.sl-pl-inn-content .price-list-wr .price__treatment-description{
+
+}
+.sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con{
+    padding: 4px;
+}
+.sl-pl-inn-content .price-list-wr .price__treatment-description:last-of-type{
+    border-bottom: 1px solid #D5D5D5;
+}
+.sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con h5{
+    font-size: 10px;
+    line-height: 18px;
+    padding-left: 22px;
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+}
+.sl-pl-inn-content .price-list-wr .price__treatment-description:nth-child(1) h5::before{
+    background: url(../img/price-icon01.svg);
+    background-size: cover;
+}
+.sl-pl-inn-content .price-list-wr .price__treatment-description:nth-child(2) h5::before{
+    background: url(../img/price-icon02.svg);
+    background-size: cover;
+}
+.sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con h5::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__treatment-description-wrap{
+        display: flex;
+    }
+    .sl-pl-inn-content .price-list-wr .price__treatment-description{
+        width: 50%;
+    }
+    .sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con{
+        padding: 6px;
+    }
+    .sl-pl-inn-content .price-list-wr .price__treatment-description:last-of-type{
+    }
+    .sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con h5{
+        font-size: 14px;
+        line-height: 24px;
+        padding-left: 32px;
+    }
+    .sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con h5::before{
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con p{
+    background-color: #fff;
+    padding: 4px;
+    font-size: 10px;
+    text-align: left;
+    display: block;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.sl-pl-inn-content .price-list-wr .price__treatment-description:nth-of-type(2) .price__treatment-con p{
+    text-align: center;
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__treatment-description .price__treatment-con p{
+        padding: 6px;
+        font-size: 14px;
+    }
+}
+
+.sl-pl-inn-content .price-list-wr .price__table{
+    width: 100%;
+    margin: 0;
+}
+.sl-pl-inn-content .price-list-wr .price__table thead{
+    background-color: #9C8A84;
+    border-bottom: 1px solid #D5D5D5;
+}
+.sl-pl-inn-content .price-list-wr .price__table thead tr{
+
+}
+.sl-pl-inn-content .price-list-wr .price__table thead tr th{
+    font-size: 10px;
+    line-height: 1;
+    padding: 4px;
+}
+.sl-pl-inn-content .price-list-wr .price__table tbody{
+    
+}
+.sl-pl-inn-content .price-list-wr .price__table tbody tr{
+    border-bottom: 1px solid #D5D5D5;
+}
+.sl-pl-inn-content .price-list-wr .price__table tbody tr td{
+    font-size: 10px;
+    line-height: 1.4;
+    padding: 4px;
+}
+.sl-pl-inn-content .price-list-wr .price__table tbody tr td:nth-last-child(3){
+    
+}
+.sl-pl-inn-content .price-list-wr .price__table tbody tr td:nth-last-child(2){
+    background-color: #fff;
+}
+.sl-pl-inn-content .price-list-wr .price__table tbody tr td:nth-last-child(1){
+    text-align: right;
+}
+@media screen and (min-width: 767px){
+    .sl-pl-inn-content .price-list-wr .price__table thead tr th{
+        font-size: 14px;
+        line-height: 1;
+        padding: 6px;
+    }
+    .sl-pl-inn-content .price-list-wr .price__table tbody tr td{
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+.price__2col-wrap{
+    display: flex;
+}
+.price__2col-wrap table{
+    width: 50%;
+}
+.price__2col-wrap table:nth-child(2){
+    border-left: 1px solid #fff;
+}
+@media screen and (min-width: 767px){
+
+}

@@ -1,0 +1,14 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	case/detail
+------------------------------------------------------------*/
+.comMenuBg .menuSub01 .menuLink li:nth-child(5) a {
+	opacity: 0.5;
+}
+.comMenuBg .spMenuSub .menuLink:first-child li:nth-child(5) a {
+	opacity: 0.5;
+}
+#main .mainBox {
+	position: relative;
+	overflow: hidden;
+}

@@ -1,0 +1,372 @@
+.sl {
+  .sbprice-inn {
+    background-color: unset;
+    margin-top: 0;
+
+    .price_txt{
+      text-align: center;
+      padding-top: 50px;
+      line-height: 1;
+      color: #1B294D;
+      font-size: 14px;
+
+      @include mqSp(){
+        font-size: 12px;
+      }
+    }
+
+    .subpage-ttl {
+      @include mqSp() {}
+    }
+  }
+
+  .sbprice-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 0 0;
+    background-color: #fff;
+    box-sizing: border-box;
+
+    @include mqSp() {
+      padding: 60px 0 0;
+    }
+  }
+
+  &-pl {
+    &-inn.sbprice-inn {
+      @include mqSp() {}
+    }
+
+    &-inn {
+      &-content {
+        .price-list {
+          &-ttl {
+            text-align: center;
+            font-size: 26px;
+            font-family: yu-mincho-pr6n, sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+          }
+
+          &-subttl {
+            text-align: center;
+            margin-top: 8px;
+            font-family: yu-mincho-pr6n, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.4;
+          }
+
+          &-wr {
+            ul {
+              margin: 10px 0;
+
+              @include mqSp() {
+                width: 90%;
+                margin: 10px auto;
+                justify-content: space-between;
+              }
+
+              li {
+                position: relative;
+                width: 17%;
+                margin: 30px 4% 0;
+
+                @include mqSp() {
+                  width: 47%;
+                  margin: 15px 0 0;
+                }
+
+                a {
+                  max-width: 170px;
+                  width: 100%;
+                  display: block;
+                  text-align: center;
+                  padding: 12px;
+                  line-height: 1;
+                  border: 1px solid #1B294D;
+                  color: #1B294D;
+                  border-radius: 20px;
+                  font-size: 14px;
+                  position: relative;
+
+                  @include mqSp() {
+                    max-width: 100%;
+                    padding: 8px;
+                    font-size: 12px;
+                  }
+
+                  &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 8%;
+                    margin: auto;
+                    width: 3px;
+                    height: 3px;
+                    border-top: 1px solid #1B294D;
+                    border-right: 1px solid #1B294D;
+                    transform: rotate(45deg);
+                  }
+
+                  &:hover {
+                    border: 1px solid #1B294D;
+                    color: #fff;
+                    background: #1B294D;
+
+                    @include mqSp() {
+                      border: 1px solid #1B294D;
+                      color: #1B294D;
+                      background: #fff;
+                    }
+
+                    &:after {
+                      border-top: 1px solid #fff;
+                      border-right: 1px solid #fff;
+
+                      @include mqSp() {
+                        border-top: 1px solid #1B294D;
+                        border-right: 1px solid #1B294D;
+                      }
+                    }
+                  }
+                }
+
+                &:before {
+                  content: "";
+                  height: 1px;
+                  background: #1B294D;
+                  position: absolute;
+                  width: 0;
+                  transition: all .1s ease-in;
+                }
+              }
+            }
+
+            section {
+              font-family: yu-mincho-pr6n, sans-serif;
+              margin: 60px 0;
+              @include mqSp() {
+                margin: 40px 0;
+              }
+              // /* width */
+              // ::-webkit-scrollbar {
+              //   height: 4px;
+              //   -webkit-appearance: none;
+              // }
+
+              // /* Track */
+              // ::-webkit-scrollbar-track {
+              //   border: 1px solid #D5D5D5;
+              //   border-radius: 10px;
+              // }
+              
+              // /* Handle */
+              // ::-webkit-scrollbar-thumb {
+              //   background: #D5D5D5; 
+              //   border-radius: 10px;
+              // }
+
+              .section-inner {
+                // overflow: auto;
+                max-width: 1000px;
+                width: 100%;
+                @media(max-width: 1000px) {
+                  width: 100%;
+                  overflow: hidden;
+                }
+                
+                 
+              }
+
+              h2 {
+                font-size: 26px;
+                font-weight: 600;
+                text-align: center;
+                color: #1B294D;
+                margin-bottom: 40px;
+                @include mqSp() {
+                  font-size: 20px;
+                  margin-bottom: 30px;
+                }
+              }
+
+              table {
+                width: 100%;
+                @media(max-width: 1000px) {
+                  width: 750px;
+                  margin: 0 2%;
+                  margin-bottom: 10px;
+                }
+
+                
+
+                thead {
+                  background: #9F8982;
+
+                  th {
+                    font-size: 14px;
+                    color: #fff;
+                    text-align: center;
+                    vertical-align: middle;
+                    position: relative;
+                    padding: 10px 20px;
+                    box-sizing: border-box;
+
+                    @include mqSp() {
+                      font-size: 12px;
+                      padding: 6px 0;
+                      font-weight: bold;
+                    }
+
+                    span {
+                      position: relative;
+                      display: inline-block;
+
+                      small {
+                        font-size: 10px;
+                        position: absolute;
+                        top: -3px;
+                        right: -18px;
+                        @include mqSp() {
+                          transform: scale(.7);
+                        }
+                      }
+                    }
+                  }
+                }
+
+                tbody {
+                  tr.bg {
+                    background: #FAF9F8;
+                  }
+
+                  tr {
+                    border-bottom: 1px solid #D5D5D5;
+                    
+                  }
+
+                  td {
+                    font-size: 14px;
+                    text-align: center;
+                    vertical-align: middle;
+                    color: #232539;
+
+                    @include mqSp() {
+                      padding: 0;
+                      padding: 0 6px;
+                      max-width: 90px;
+                    }
+
+                    p {
+                      // font-size: 14px;
+                      margin: 30px 0;
+                      text-align: center;
+                      // color: #232539;
+
+                      @include mqSp() {
+                        width: auto;
+                        margin: 6px auto;
+                        font-size: 12px;
+                      }
+
+                      span {
+                        font-size: 10px;
+                      }
+                    }
+                    
+                    // .text-pg01 {
+                    //   text-align: left;
+                    //   margin-top: -5px;
+                    // }
+                  }
+                  // .up01 {    
+                  //   margin-top: -35px;
+                  // }
+                  // .up02 {    
+                  //   margin-top: -40px;
+                  // }
+                  // .no-border {
+                  //   border-bottom: none;
+                  // }
+                }
+              }
+
+              p {
+                font-size: 14px;
+                text-align: right;
+                margin-top: 20px;
+
+                @include mqSp() {
+                  width: 90%;
+                  margin: 20px auto 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-reservation {
+    &-inn.sbprice-inn {
+      margin-bottom: 80px;
+      max-width: unset;
+      width: 100%;
+      background-color: unset;
+
+      .sbprice-content {
+        border: unset;
+
+        .reservation {
+          max-width: 800px;
+          width: 86%;
+          margin: auto;
+          padding: 5px;
+          border: 2px solid #E5C5BA;
+
+          @include mqSp() {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &-reservation.sbprice {
+    margin-top: 0;
+  }
+}
+
+#eyeliner-makeup .sl-pmakeup-inn-content .arti .price-list-wr-l {
+  margin-top: 10px;
+
+  ul {
+    margin-top: 0;
+  }
+}
+.sl-pl .mCSB_scrollTools .mCSB_draggerContainer {
+  border: 1px solid #D5D5D5;
+  border-radius: 10px;
+}
+.sl-pl .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  height: 4px;
+  opacity: 1;
+}
+.sl-pl .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar{
+  margin: auto;
+  background: #D5D5D5;
+}
+.sl-pl .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail{
+  display: none;
+}
+.sl-pl .mCustomScrollbar {
+    touch-action: initial;
+}
+.mCSB_horizontal.mCSB_inside > .mCSB_container {
+  min-width: 781px;
+}

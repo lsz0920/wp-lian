@@ -1,0 +1,273 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	about
+------------------------------------------------------------*/
+#main {
+	position: relative;
+	overflow: hidden;
+	background-color: #F3F1ED;
+}
+.comMenuBg .menuSub01 .menuLink li:nth-child(2) a {
+	opacity: 0.5;
+}
+.comMenuBg .spMenuSub .menuLink:first-child li:nth-child(2) a {
+	opacity: 0.5;
+}
+#main .topBox {
+	padding: 12.6rem 0 14.9rem;
+	position: relative;
+	z-index: 1;
+}
+#main .topBox .content {
+	color: #222;
+}
+#main .topBox h3 {
+	width: 45.5rem;
+	flex-shrink: 0;
+	font-weight: 500;
+	font-size: max(10px,2.8rem);
+	line-height: 1.86;
+	letter-spacing: 0.15em;
+}
+#main .topBox .textBox {
+	margin-top: 0.5rem;
+	font-weight: 500;
+}
+#main .topBox p {
+	margin-bottom: 3.3rem;
+	line-height: 2.26;
+	letter-spacing: 0.07em;
+}
+#main .topBox p:last-child {
+	margin-bottom: 0 !important;
+}
+#main .concept {
+	margin: 0 1.5rem -1px;
+	padding: 16.9rem 0 13.4rem;
+	position: relative;
+	z-index: 1;
+	border-radius: 2rem 2rem 0 0;
+	overflow: hidden;
+}
+#main .concept .pho {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 59.3rem;
+	mix-blend-mode: multiply;
+}
+#main .concept .content {
+	position: relative;
+}
+#main .concept .widBox {
+	width: 69rem;
+	margin: 0 auto;
+	color: #222;
+	font-weight: 500;
+}
+#main .concept .textBox {
+	margin-bottom: 9.7rem;
+}
+#main .concept .ttl {
+	margin-bottom: 4.3rem;
+	font-size: max(10px,2.7rem);
+	font-weight: 600;
+	letter-spacing: 0.12em;
+}
+#main .concept .text {
+	font-size: max(10px,1.6rem);
+	letter-spacing: 0.03em;
+	line-height: 2.125;
+}
+#main .concept .textInfo {
+	align-items: flex-start;
+}
+#main .concept .textInfo p {
+	width: 34.7rem;
+	padding: 1.4rem 0 0.3rem;
+	font-size: max(10px,1.6rem);
+	letter-spacing: 0.1em;
+	border-right: 1px solid #707070;
+}
+#main .concept .textInfo p .en {
+	margin-top: 0.7rem;
+	width: 100%;
+	align-items: center;
+	font-weight: 300;
+	font-size: 4.5rem;
+	letter-spacing: 0.03em;
+}
+#main .concept .textInfo p img {
+	width: 4.2rem;
+	margin: 0.7rem 2.3rem 0;
+}
+#main .concept ul {
+	width: calc(100% - 39.3rem);
+	margin-top: -0.3rem;
+}
+#main .concept li {
+	padding-bottom: 1.5rem;
+	font-size: max(10px,2.1rem);
+	letter-spacing: 0.12rem;
+}
+#main .concept li .en {
+	margin-left: 2.5rem;
+	color: #433F3D;
+	font-size: max(10px,1.5rem);
+	font-weight: 300;
+	letter-spacing: 0;
+}
+#main .comValue {
+	margin: 0 1.5rem;
+	padding-bottom: 11.6rem;
+}
+@media all and (min-width: 1000px) {
+	.pageTitle .photo img {
+		height: 50rem;
+	}
+	.pageTitle h2 {
+		transform: translateY(-27%);
+	}
+	#pagePath {
+		padding: 1.1rem 3.8rem 0;
+	}
+	#main .topBox .content {
+		display: flex;
+	}
+	#main .concept .headLine01 {
+		left: -1.5rem;
+		top: -5.5rem;
+		font-size: 6.8rem;
+		letter-spacing: 0.01em;
+	}
+	#main .comValue .headLine04 {
+		margin-bottom: 2.9rem;
+		font-size: 6.5rem;
+	}
+	#main .comMessage {
+		padding: 20rem 0 15.2rem;
+	}
+	#main .comMessage .headLine01 {
+		left: 3.2rem;
+		top: 19.8rem;
+		font-size: 7rem;
+		letter-spacing: 0;
+	}
+	#main .comMessage .photo {
+		border-radius: 2.5rem 0 0 3rem;
+	}
+	#main .comMessage .textBox {
+		width: 55.2rem;
+		font-family: YakuHanMP, "Noto Sans JP", sans-serif;
+	}
+	#main .comMessage p {
+		font-weight: 400;
+	}
+	#main .comAbout {
+		padding-bottom: 36.9rem;
+	}
+	#main .comAbout .headLine04 {
+		left: 4.4rem;
+		top: -1.2rem;
+		font-size: 6.5rem;
+		letter-spacing: 0;
+	}
+	#main .comAbout .comLink {
+		left: 22.2rem;
+	}
+}
+@media all and (max-width: 999px) {
+	#main .topBox {
+		padding: 5.6rem 3rem 7.7rem;
+	}
+	#main .topBox h3 {
+		width: auto;
+		font-size: 2rem;
+		text-align: center;
+		line-height: 1.9;
+		letter-spacing: 0.08em;
+	}
+	#main .topBox .textBox {
+		margin-top: 3.9rem;
+	}
+	#main .topBox p {
+		margin-bottom: 3.3rem;
+		line-height: 2.15;
+		letter-spacing: 0.01em;
+	}
+	#main .concept {
+		margin: 0 1rem -1px;
+		padding: 33.1rem 2rem 5.7rem;
+	}
+	#main .concept .headLine01 {
+		position: absolute;
+		left: -0.2rem;
+		top: -24rem;
+		writing-mode: vertical-rl;
+		margin: 0;
+		letter-spacing: 0.01em;
+	}
+	#main .concept .pho {
+		width: 28.4rem;
+	}
+	#main .concept .widBox {
+		width: auto;
+	}
+	#main .concept .textBox {
+		margin-bottom: 8rem;
+	}
+	#main .concept .ttl {
+		margin-bottom: 2.4rem;
+		font-size: 2rem;
+		text-align: center;
+		letter-spacing: 0.08em;
+	}
+	#main .concept .text {
+		font-size: 1.4rem;
+		letter-spacing: 0.01em;
+		line-height: 2;
+	}
+	#main .concept .textInfo {
+		display: block;
+	}
+	#main .concept .textInfo p {
+		width: auto;
+		padding: 0 0 1.7rem;
+		font-size: 1.5rem;
+		text-align: center;
+		letter-spacing: 0.05em;
+		border-right: none;
+		border-bottom: 1px solid #707070;
+	}
+	#main .concept .textInfo p .en {
+		margin-top: 1.5rem;
+		font-size: 3.5rem;
+		justify-content: center;
+	}
+	#main .concept .textInfo p img {
+		margin: 0.3rem 2.7rem 0;
+	}
+	#main .concept ul {
+		width: fit-content;
+		margin: 2.2rem auto 0;
+	}
+	#main .concept li {
+		padding-bottom: 1.5rem;
+		font-size: 1.8rem;
+		letter-spacing: 0.08rem;
+	}
+	#main .concept li .en {
+		margin-left: 2.5rem;
+		font-size: 1.3rem;
+	}
+	#main .comValue {
+		margin: 0 1rem;
+		padding: 0 1.2rem 7.7rem;
+	}
+	#main .comMessage {
+		padding-top: 9.2rem;
+	}
+	#main .comAbout {
+		padding-bottom: 18.2rem;
+	}
+}

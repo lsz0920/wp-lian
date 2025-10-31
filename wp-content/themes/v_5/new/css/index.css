@@ -1,0 +1,888 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	index
+------------------------------------------------------------*/
+body {
+	background-color: #F4F1ED;
+}
+#gHeader h1.logo {
+	display: none !important;
+}
+.fixPhoto {
+    position: fixed;
+    left: 1.5rem;
+    top: 1.5rem;
+    right: 1.5rem;
+    overflow: hidden;
+    height: calc(100vh - 1.5rem);
+    border-radius: 2.5rem 2.5rem 0 0;
+}
+.fixPhoto.hide {
+	opacity: 0;
+}
+.fixPhoto::before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10rem;
+    background-image:linear-gradient( to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%);
+    opacity: 0.25;
+    content: "";
+	z-index: 1;
+}
+.fixPhoto .photo {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+}
+.fixPhoto.active .photo {
+    animation: zoomout 9s linear forwards;
+}
+@keyframes zoomout {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.fixPhoto img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.fixPhoto picture {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+.mainVisual {
+	height: 100vh;
+	padding-top: 10.9rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	box-sizing: border-box;
+}
+.mainVisual .info {
+	text-align: center;
+	opacity: 0;
+	visibility: hidden;
+}
+.mainVisual.active .info {
+	opacity: 1;
+	visibility: visible;
+	transition: all ease 4s;
+}
+.mainVisual h1 {
+	width: 23.5rem;
+	margin: 0 auto 12.7rem;
+}
+.mainVisual p {
+	font-size: max(10px,2rem);
+	font-weight: 500;
+	letter-spacing: 0.16em;
+	color: #fff;
+}
+.mainVisual .news {
+	position: absolute;
+	left: 4.3rem;
+	bottom: 2.3rem;
+	font-size: max(10px,1.2rem);
+	opacity: 0;
+	visibility: hidden;
+}
+.mainVisual.active .news {
+	opacity: 1;
+	visibility: visible;
+	transition: all ease 1s;
+}
+.mainVisual .news a {
+	display: flex;
+	color: #fff;
+	letter-spacing: 0.02em;
+}
+.mainVisual .news .time {
+	margin: 0.2rem 1.8rem 0 0;
+	flex-shrink: 0;
+}
+.mainVisual .scroll {
+	position: absolute;
+	right: 3.3rem;
+	bottom: 2.2rem;
+	writing-mode: vertical-rl;
+	font-size: max(10px,1.1rem);
+	opacity: 0;
+	visibility: hidden;
+}
+.mainVisual.active .scroll {
+	opacity: 1;
+	visibility: visible;
+	transition: all ease 1s;
+}
+.mainVisual .scroll a {
+	padding-bottom: 1.5rem;
+	display: block;
+	letter-spacing: 0.04em;
+	color: #fff;
+	background: url(../img/common/icon04.png) no-repeat center bottom;
+	background-size: 0.9rem auto;
+}
+#main .mainBox {
+	padding-bottom: 17.2rem;
+	overflow: hidden;
+	position: relative;
+	background-color: #F4F1ED;
+}
+#main .media {
+	padding: 3.2rem 0 15.2rem;
+	overflow: hidden;
+}
+#main .media .ttl {
+	margin-bottom: 6.2rem;
+	position: relative;
+	padding-bottom: 0.3rem;
+	color: #4D4643;
+	line-height: 1.2;
+	font-size: 6.8rem;
+	font-weight: 100;
+	letter-spacing: 0.01em;
+	border-bottom: 1px solid #707070;
+}
+#main .media .ttl::before {
+	position: absolute;
+	left: 100%;
+	bottom: -1px;
+	height: 1px;
+	width: 1000rem;
+	background-color: #707070;
+	content: "";
+}
+#main .media .sns {
+	position: absolute;
+	right: 0;
+	top: 3.7rem;
+	color: #4D4643;
+	justify-content: flex-end;
+	align-items: center;
+}
+#main .media .sns p {
+	margin-right: 2.3rem;
+	letter-spacing: 0.07em;
+}
+#main .media .sns ul {
+	align-items: center;
+}
+#main .media .sns li {
+	margin-left: 2rem;
+}
+#main .media .sns li a {
+	display: inline-block;
+}
+#main .media .sns img {
+	height: 2.3rem;
+}
+#main .media .title {
+	font-size: max(10px,2rem);
+	letter-spacing: 0.01em;
+	font-weight: 400;
+	color: #4D4643;
+	background: url(../img/common/icon06.png) no-repeat top left 0.3rem;
+	background-size: 2.1rem auto;
+}
+#main .instagram {
+	margin-bottom: 7.1rem;
+	position: relative;
+	line-height: 1;
+}
+#main .instagram .instagramUl li {
+	width: 23%;
+}
+#main .instagram .instagramUl li a {
+	display: block;
+}
+#main .instagram .instagramUl li img {
+	width: 100%;
+	transition: .8s;
+}
+#main .jsSlideList {
+	margin: 0 -1.35rem;
+}
+#main .jsSlideList .slick-slide > div {
+	margin: 0 1.35rem;
+}
+#main .youtube {
+	position: relative;
+}
+#main .media .youtube .title {
+	background-image: url(../img/common/icon07.png);
+	background-size: 2.6rem auto;
+}
+#main .youtube .youtubeUl li {
+	width: 23%;
+	float: left;
+}
+#main .youtube li a {
+	display: block;
+}
+#main .youtube li .pho {
+	margin-bottom: 0.8rem;
+	height: 17.9rem;
+	position: relative;
+	overflow: hidden;
+}
+#main .youtube li .pho img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: .8s;
+}
+#main .youtube li p {
+	color: #222;
+	font-size: max(10px,1.2rem);
+	letter-spacing: 0.01em;
+}
+#main .youtube li .time {
+	margin-bottom: 0.2rem;
+	display: block;
+	color: #4D4643;
+	font-size: max(10px,1.2rem);
+}
+#main .menuSec {
+	padding: 14rem 0 35.5rem;
+}
+#main .menuSec .info {
+	margin: 0 5.5rem 6.8rem -5.5rem;
+}
+#main .menuSec .trouble {
+	width: 50rem;
+}
+#main .menuSec .troubleList {
+	margin-top: -2.1rem;
+	position: relative;
+}
+#main .menuSec .troubleList::after {
+	content: "";
+	width: 15.4rem;
+}
+#main .menuSec .troubleList li {
+	margin-top: 2.1rem;
+	width: 15.4rem;
+}
+#main .menuSec .troubleList a {
+	height: 15.3rem;
+	padding-top: 2.4rem;
+	display: block;
+	text-align: center;
+	color: #000;
+	font-weight: 500;
+	font-size: max(10px,1.4rem);
+	border: 1px solid #D5D3D0;
+	box-sizing: border-box;
+	border-radius: 8rem 8rem 0 0;
+}
+#main .menuSec .troubleList span {
+	margin-top: 1.2rem;
+	display: block;
+	letter-spacing: 0.02em;
+}
+#main .menuSec .troubleList .photo {
+	margin: 0 auto;
+	display: block;
+	width: 6.6rem;
+}
+#main .menuSec .find {
+	width: 39.4rem;
+}
+#main .menuSec .findList {
+	margin-top: -0.6rem;
+}
+#main .menuSec .findList li {
+	position: relative;
+}
+#main .menuSec .findList select {
+	display: block;
+	width: 100%;
+	padding: 2.8rem 0 1.7rem;
+	position: relative;
+	display: block;
+	color: #000;
+	font-weight: 500;
+	font-size: max(10px,1.5rem);
+	letter-spacing: 0.04em;
+	background: url(../img/common/icon08.png) no-repeat right 2.3rem bottom 2.2rem;
+	background-size: 1rem auto;
+	border: none;
+	border-bottom: 1px solid rgba(166,159,154,0.5);
+	appearance: none;
+	box-shadow: none;
+	cursor: pointer;
+	border-radius: 0;
+}
+#main .menuSec .findList li::after {
+	content: "";
+	height: 1px;
+	left: 0;
+	position: absolute;
+	bottom: 0;
+	background: #4D4643;
+	transition: .6s cubic-bezier(.645,.045,.355,1);
+	width: 0;
+}
+#main .value {
+	padding: 0.1rem 0 14.4rem;
+}
+#main .value .topPhoto {
+	margin: -22.6rem 7.1rem 10.8rem 0;
+	border-radius: 0 2rem 2rem 0;
+	overflow: hidden;
+}
+#main .value .topPhoto .jsParallax {
+	height: 60.8rem;
+}
+#main .value .topPhoto .parallax {
+	height: 149%;
+	top: -28%;
+}
+#main .value .comValue {
+	margin-top: -10.8rem;
+	padding-top: 10.8rem;
+}
+#main .recruit {
+	padding: 33.5rem 0 19.4rem;
+}
+#main .recruit .linkImg {
+	width: 110rem;
+	margin: 0 auto 17.4rem;
+	position: relative;
+	z-index: 1;
+}
+#main .recruit .linkImg a {
+	display: block;
+	overflow: hidden;
+}
+#main .recruit .linkImg img {
+	width: 100%;
+	transition: transform ease 0.6s;
+}
+#main .recruit .imgBox {
+	position: relative;
+	z-index: 2;
+	align-items: center;
+}
+#main .recruit .photo {
+	width: calc(50% + 10.7rem);
+	overflow: hidden;
+	border-radius: 0 2.2rem 2.2rem 0;
+}
+#main .recruit .photo img {
+	width: 100%;
+}
+#main .recruit .textBox {
+	width: 44rem;
+	margin: 0 0 0.8rem 9.2rem;
+}
+#main .recruit .headLine04 {
+	margin-bottom: 2.6rem;
+	text-align: left;
+	font-size: 6.8rem;
+	letter-spacing: 0;
+}
+#main .recruit .ttl {
+	margin-bottom: 4.7rem;
+	font-size: max(10px,2.2rem);
+	font-weight: 500;
+	line-height: 2.04;
+	letter-spacing: 0.02em;
+}
+#main .recruit .comLink {
+	margin-left: 0;
+	width: 15.2rem;
+}
+#main .recruit .comLink a {
+	padding-right: 1.1rem;
+	background: url(../img/common/icon29.png) no-repeat right 3.8rem top 55%;
+	background-size: 0.8rem auto;
+}
+#main .newsSec {
+	padding: 0.1rem 0 9.2rem;
+}
+#main .newsSec .checkBg {
+	border-radius: 2.1rem;
+	overflow: hidden;
+}
+#main .newsSec .headLine04 {
+	margin: -5.2rem -0.8rem 6.1rem;
+	text-align: left;
+	font-size: 7.5rem;
+	letter-spacing: 0.05em;
+}
+#main .newsSec .comLink {
+	margin-right: 0;
+}
+#main .newsSec .tabBox {
+	display: none;
+}
+#main .newsSec .tabBox:nth-child(1) {
+	display: block;
+}
+#main .access {
+	padding-bottom: 14.1rem;
+}
+#main .access .topPhoto .jsParallax {
+	height: 55.5rem;
+}
+#main .access .accessBox {
+	padding-top: 16rem;
+	position: relative;
+}
+#main .access .imgBox {
+	position: relative;
+	z-index: 1;
+	flex-direction: row-reverse;
+}
+#main .access .mapBox {
+	width: calc(50% - 0.3rem);
+}
+#main .access .map {
+    position: relative;
+    padding-bottom: 53.55%;
+    height: 0;
+    overflow: hidden;
+	filter: grayscale(100%);
+}
+#main .access .map iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#main .access .mapBox p {
+	margin-top: 0.7rem;
+	text-align: right;
+	font-size: max(10px,1.2rem);
+	letter-spacing: 0.02em;
+	font-family: YakuHanMP, "Roboto", sans-serif;
+}
+#main .access .mapBox a {
+	color: #222;
+	display: inline-block;
+	border-bottom: 1px solid #707070;
+}
+#main .access .textBox {
+	width: calc(50% - 8.9rem);
+	margin-top: 0.2rem;
+	position: relative;
+}
+#main .access dl {
+	font-size: max(10px,1.6rem);
+}
+#main .access dt {
+	float: left;
+	color: #4D4643;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+}
+#main .access dd {
+	padding: 0 0 3.1rem 6.1em;
+	opacity: 0.78;
+	line-height: 1.625;
+	letter-spacing: 0.02em;
+}
+@media all and (min-width: 1000px) {
+	.mainVisual .news a:hover {
+		opacity: 0.5;
+	}
+	.pad .mainVisual .news a:hover {
+		opacity: 1;
+	}
+	.mainVisual .scroll a:hover {
+		opacity: 0.5;
+	}
+	.pad .mainVisual .scroll a:hover {
+		opacity: 1;
+	}
+	#main .media .sns a:hover {
+		opacity: 0.5;
+	}
+	.pad #main .media .sns a:hover {
+		opacity: 1;
+	}
+	#main .instagram .instagramUl li {
+		margin-right: 2.66%;
+	}
+	#main .instagram .instagramUl li:nth-child(4n) {
+		margin-right: 0;
+	}
+	body:not(.pad) #main .instagram a:hover:hover img {
+		transform: scale(1.1);
+	}
+	#main .media .title {
+		position: absolute;
+		left: -5.3rem;
+		top: -0.2rem;
+		padding: 3.2rem 0 0 0.4rem;
+		writing-mode: vertical-rl;
+	}
+	#main .media .youtube .title {
+		left: -5.4rem;
+		top: -0.5rem;
+		padding: 3.4rem 0 0;
+	}
+	#main .youtube .youtubeUl li {
+		margin-right: 2.66%;
+	}
+	#main .youtube .youtubeUl li:nth-child(4n) {
+		margin-right: 0;
+	}
+	body:not(.pad) #main .youtube a:hover img {
+		transform: scale(1.1);
+	}
+	#main .menuSec .content {
+		width: 98.4rem;
+	}
+	#main .menuSec .headLine01 {
+		left: auto;
+		right: 6.7rem;
+		top: 14.1rem;
+		font-size: 7.3rem;
+	}
+	#main .menuSec .troubleList a:hover {
+		border-color: #4D4643;
+	}
+	.pad #main .menuSec .troubleList a:hover {
+		border-color: #D5D3D0;
+	}
+	#main .menuSec .findList li:hover::after {
+		width: 100%;
+	}
+	.pad #main .menuSec .findList li:hover::after {
+		width: 0;
+	}
+	#main .recruit .linkImg a:hover img {
+		transform: scale(1.05);
+	}
+	.pad #main .recruit .linkImg a:hover img {
+		transform: none;
+	}
+	#main .access .mapBox a:hover {
+		opacity: 0.5;
+	}
+	.pad #main .access .mapBox a:hover {
+		opacity: 1;
+	}
+	#main .access .headLine01 {
+		left: auto;
+		right: 2.2rem;
+		top: 0.2rem;
+		font-size: 7.5rem;
+		letter-spacing: 0;
+	}
+}
+@media all and (max-width: 999px) {
+	.fixPhoto {
+		left: 0.8rem;
+		top: 0.9rem;
+		right: 0.8rem;
+		border-radius: 1.5rem 1.5rem 0 0;
+		height: calc(100vh - 0.9rem);
+	}
+	.fixPhoto::before {
+		display: none;
+	}
+	.mainVisual {
+		padding-top: 13.8rem;
+	}
+	.mainVisual h1 {
+		width: 15.4rem;
+		margin: 0 auto 12.1rem;
+	}
+	.mainVisual p {
+		font-size: 1.5rem;
+		letter-spacing: 0.12em;
+	}
+	.mainVisual .news {
+		left: 1rem;
+		right: 1rem;
+		bottom: -3.2rem;
+		font-size: 1.2rem;
+		z-index: 2;
+	}
+	.mainVisual .news a {
+		color: #222;
+	}
+	.mainVisual .news .time {
+		margin: 0.4rem 0.9rem 0 0;
+		font-size: 1rem;
+		color: #4D4643;
+		letter-spacing: 0;
+	}
+	.mainVisual .news .text {
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		overflow: hidden;
+	}
+	.mainVisual .scroll {
+		display: none;
+	}
+	#main .mainBox {
+		padding-bottom: 9.1rem;
+	}
+	#main .media {
+		padding: 3.2rem 0 10rem 3rem;
+	}
+	#main .media .ttl {
+		margin-bottom: 4.8rem;
+		padding-bottom: 0.4rem;
+		font-size: 4.8rem;
+		letter-spacing: 0;
+	}
+	#main .media .ttl::before {
+		display: none;
+	}
+	#main .media .sns {
+		right: 3rem;
+		top: 0.7rem;
+		display: block;
+		text-align: right;
+	}
+	#main .media .sns p {
+		margin: 0 0 0.5rem;
+		letter-spacing: 0.03em;
+		font-size: 1.1rem;
+	}
+	#main .media .sns ul {
+		margin-right: 0.3rem;
+		justify-content: flex-end;
+	}
+	#main .media .sns img {
+		height: 2rem;
+	}
+	#main .media .title {
+		margin-bottom: 1.6rem;
+        padding: 0.3rem 0 0.2rem 2.8rem;
+        font-size: 1.6rem;
+        letter-spacing: 0;
+        background: url(../img/common/icon06.png) no-repeat top 0.1rem left;
+        background-size: 2rem auto;
+	}
+	#main .media .comArrow {
+		position: absolute;
+		right: 8.3rem;
+		top: 0.2rem;
+		margin-bottom: 0;
+		width: 6.7rem;
+	}
+	#main .instagram {
+		margin-bottom: 6.7rem;
+		position: relative;
+	}
+	#main .instagram .instagramUl li {
+		width: 25.2rem;
+		margin-right: 3rem;
+	}
+	#main .instagram .instagramUl li img {
+		width: 100%;
+	}
+	#main .media .youtube .title {
+		padding-top: 0;
+		margin-bottom: 1rem;
+		background-size: 2rem auto;
+	}
+	#main .jsSlideList .slick-list {
+		padding-right: 8.3rem !important;
+	}
+	#main .youtube {
+		position: relative;
+	}
+	#main .youtube .youtubeUl li {
+		width: 25.2rem;
+		margin-right: 3rem;
+	}
+	#main .youtube li .pho {
+		margin-bottom: 1.3rem;
+		height: 0;
+        padding-bottom: 73%;
+	}
+	#main .youtube li p {
+		font-size: 1.3rem;
+		line-height: 1.54;
+	}
+	#main .youtube li .time {
+		margin-bottom: 0.3rem;
+		font-size: 1.2rem;
+	}
+	#main .menuSec {
+		padding: 7.3rem 3rem 20.4rem;
+	}
+	#main .menuSec .info {
+		margin: 0 0 3.6rem;
+		display: block;
+	}
+	#main .menuSec .trouble {
+		margin-bottom: 4.5rem;
+		width: auto;
+	}
+	#main .menuSec .troubleList {
+		margin-top: -1rem;
+	}
+	#main .menuSec .troubleList li {
+		margin-top: 1rem;
+		width: 29.18%;
+	}
+	#main .menuSec .troubleList::after {
+		width: 29.18%;
+	}
+	#main .menuSec .troubleList a {
+		height: 12.5rem;
+		padding-top: 1.3rem;
+		font-size: 1.3rem;
+	}
+	#main .menuSec .troubleList .photo {
+		width: 6.2rem;
+	}
+	#main .menuSec .troubleList span {
+		margin-top: 0.3rem;
+	}
+	#main .menuSec .find {
+		width: auto;
+	}
+	#main .menuSec .findList {
+		margin-top: -1.2rem;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	#main .menuSec .findList li {
+		width: calc(50% - 1.2rem);
+	}
+	#main .menuSec .findList select {
+		padding: 2.1rem 0 0.4rem;
+		font-size: 1.3rem;
+		letter-spacing: 0.06em;
+		font-weight: 400;
+		background-position: right 0.8rem bottom 0.8rem;
+	}
+	#main .menuSec .findList li::after {
+		display: none;
+	}
+	#main .value {
+		padding: 0.1rem 2.4rem 6.7rem;
+	}
+	#main .value .topPhoto {
+		margin: -11.4rem 1.5rem 7.3rem -2.4rem;
+		border-radius: 0 1.4rem 1.4rem 0;
+	}
+	#main .value .topPhoto .jsParallax {
+		height: 22rem;
+	}
+	#main .value .topPhoto .parallax img {
+		object-position: left top;
+	}
+	#main .value .comValue {
+		margin-top: -7.3rem;
+		padding-top: 7.3rem;
+	}
+	#main .recruit {
+		padding: 14rem 0 13.3rem;
+	}
+	#main .recruit .linkImg {
+		width: auto;
+		margin: 0 1rem 10rem;
+	}
+	#main .recruit .imgBox {
+		display: block;
+	}
+	#main .recruit .photo {
+		margin-right: -0.2rem;
+		width: auto;
+		border-radius: 0;
+	}
+	#main .recruit .textBox {
+		width: auto;
+		margin: 2.5rem 3rem 0;
+	}
+	#main .recruit .headLine04 {
+		margin-bottom: 0.9rem;
+		font-size: 4.2rem;
+	}
+	#main .recruit .ttl {
+		margin-bottom: 2.7rem;
+		font-size: 1.5rem;
+		line-height: 1.73;
+		letter-spacing: 0.04em;
+	}
+	#main .recruit .comLink {
+		margin-left: 0.4rem;
+		width: 12.2rem;
+	}
+	#main .recruit .comLink a {
+		background-position: right 2.8rem top 55%;
+		background-size: 0.7rem auto;
+	}
+	#main .newsSec {
+		padding: 0.1rem 0 5.5rem;
+	}
+	#main .newsSec .checkBg {
+		border-radius: 0;
+	}
+	#main .newsSec .headLine04 {
+		margin: -4.1rem 3rem 3rem;
+		font-size: 4.8rem;
+		letter-spacing: 0.03em;
+	}
+	#main .newsSec .comLink {
+		margin: 0 auto;
+	}
+	#main .access {
+		padding-bottom: 8rem;
+	}
+	#main .access .topPhoto .jsParallax {
+		height: 26.2rem;
+	}
+	#main .access .accessBox {
+		padding-top: 5.7rem;
+	}
+	#main .access .imgBox {
+		display: block;
+	}
+	#main .access .mapBox {
+		margin-right: 3rem;
+		width: auto;
+	}
+	#main .access .map {
+		padding-bottom: 53.7%;
+	}
+	#main .access .mapBox p {
+		margin-top: 0.9rem;
+		font-size: 1rem;
+		letter-spacing: 0.01em;
+	}
+	#main .access .textBox {
+		width: auto;
+		margin: 0 3rem 1.5rem;
+	}
+	#main .access .headLine01 {
+		text-align: left;
+		font-size: 4.8rem;
+		letter-spacing: 0;
+	}
+	#main .access dl {
+		font-size: 1.3rem;
+	}
+	#main .access dt {
+		letter-spacing: 0.02em;
+		font-size: 1.4rem;
+	}
+	#main .access dd {
+		padding: 0 0 2.1rem 5.6em;
+		line-height: 1.54;
+		letter-spacing: 0.01em;
+	}
+}

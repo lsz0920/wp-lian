@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	case
+------------------------------------------------------------*/
+.comMenuBg .menuSub01 .menuLink li:nth-child(5) a {
+	opacity: 0.5;
+}
+.comMenuBg .spMenuSub .menuLink:first-child li:nth-child(5) a {
+	opacity: 0.5;
+}
+#main .mainBox {
+	padding-bottom: 14.7rem;
+	position: relative;
+}
+#main .headLine04 {
+	margin: -5.8rem 0 3.7rem;
+	text-align: left;
+	font-size: 8rem;
+	letter-spacing: 0.04em;
+}
+@media all and (max-width: 999px) {
+	#main .mainBox {
+		padding: 11.4rem 2.5rem 12.6rem;
+	}
+	#main .headLine04 {
+		margin: 0 0 3.8rem;
+		font-size: 4.2rem;
+		letter-spacing: 0.03em;
+	}
+}

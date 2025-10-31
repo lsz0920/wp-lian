@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="248" height="164" viewBox="0 0 248 164">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: #f4323b;
+      }
+
+      .cls-1 {
+        font-size: 16px;
+        font-family: HiraKakuPro-W3, Hiragino Kaku Gothic Pro;
+      }
+
+      .cls-1, .cls-3 {
+        letter-spacing: 0.1em;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #242025;
+      }
+
+      .cls-3 {
+        font-size: 40px;
+        font-family: YuGothicUI-Regular, Yu Gothic UI;
+      }
+
+      .cls-5 {
+        font-family: SegoeUI, Segoe UI;
+      }
+    </style>
+  </defs>
+  <g id="Group_721" data-name="Group 721" transform="translate(-190 -4236)">
+    <text id="メドビューティー_リクルート" data-name="メドビューティー リクルート" class="cls-1" transform="translate(190 4252)"><tspan x="0" y="0">メドビューティー</tspan><tspan class="cls-2" y="0" xml:space="preserve"> リクルート</tspan></text>
+    <text id="キミが変える_だから変わる_" data-name="キミが変える。
+だから変わる。" class="cls-3" transform="translate(190 4322)"><tspan x="0" y="0">キミが</tspan><tspan class="cls-4" y="0">変える</tspan><tspan y="0">。</tspan><tspan class="cls-5" y="0"></tspan><tspan x="0" y="68">だから</tspan><tspan class="cls-4" y="68">変わる</tspan><tspan y="68">。</tspan></text>
+  </g>
+</svg>

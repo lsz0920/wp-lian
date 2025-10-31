@@ -1,0 +1,7 @@
+/*!
+Theme Name: v_5
+Author: ICDL
+Author URI: http://ic-design-lab.co.jp
+Description: ic-design-lab.co.jp tokyo
+Version: 1.0.2
+*/.l-ft-inn-nav .sub-toggle{position:absolute;right:-20px;top:5px;width:4px;height:4px;border-top:1px solid #1b294d;border-right:1px solid #1b294d;transform:rotate(45deg)}@media screen and (max-width:768px){.l-ft-inn-nav .sub-toggle{right:20px}}.l-instagram-inn-posts{margin:18px 0 40px}.subpage-ttl__inner{font-size:26px;font-family:yu-mincho-pr6n,sans-serif;font-weight:500;text-align:center;letter-spacing:.1em;color:#1b294d}.sl-menu-content .menu-inn-ttl__inner{color:#1b294d;letter-spacing:.1em;font-weight:700}.sl-pl-inn-content .price-list-wr section{scroll-margin-top:70px}.l-ft .ft-sns-fixed{position:fixed;bottom:0;left:0;width:100%;z-index:100}@media (min-width:768px){.l-ft .ft-sns-fixed{height:0}}.l-ft .ft-sns-fixed li{width:33.333%}

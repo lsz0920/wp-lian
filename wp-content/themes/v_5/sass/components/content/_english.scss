@@ -1,0 +1,65 @@
+.en-US {
+    .l-philosophy-inn-content section h3 {
+        font-size: 28px;
+
+        @media screen and (min-width: 1000px) {
+            width: calc(100% + 200px);
+            margin-left: -100px;
+
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 24px;
+            width: calc(100% + 8px);
+            margin-left: -4px;
+
+        }
+    }
+
+    .l-why-inn-content .why-list article {
+        h2 {
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-end;
+
+            .title-cross {
+                display: block;
+                text-align: center;
+                width: 144px;
+                line-height: 0.3;
+            }
+        }
+    }
+
+    .l-menu-inn-content .menu-fl .menu-buttton {
+        @include mqSp {
+            min-width: 170px;
+        }
+    }
+
+    .l-company-inn-content .company-list section dl dd {
+        width: 90px;
+    }
+
+    .l-company-inn-content .company-list section dl dt {
+        width: calc(100% - 104px);
+    }
+
+    .sl-menu-content {
+        .defination-fl dl dt {
+            width: 130px;
+        }
+
+        .defination-fl dl dd {
+            width: calc(100% - 150px);
+
+            @include mqSp {
+                width: 100%;
+            }
+        }
+
+        .fl-style03-item h3 {
+            font-size: 18px;
+        }
+    }
+}

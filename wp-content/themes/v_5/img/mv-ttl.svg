@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="230" height="218" viewBox="0 0 230 218">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e83428;
+        font-size: 50px;
+        font-family: HiraMinPro-W3, Hiragino Mincho Pro, serif;
+        letter-spacing: 0.2em;
+      }
+
+      .cls-2 {
+        fill: #242025;
+      }
+    </style>
+  </defs>
+  <text id="変わる_だから_変われる" data-name="変わる
+だから
+変われる" class="cls-1" transform="translate(0 49)"><tspan x="0" y="0">変</tspan><tspan class="cls-2" y="0">わる</tspan><tspan class="cls-2"><tspan x="0" y="80">だから</tspan><tspan x="0" y="160">変われる</tspan></tspan></text>
+</svg>
