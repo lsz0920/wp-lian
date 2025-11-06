@@ -109,16 +109,16 @@
 			$doctor = @$_GET['doctor']?$_GET['doctor']:'';
 			$nurse = @$_GET['nurse']?$_GET['nurse']:'';
 
-			$meta_query = array(
+			/* $meta_query = array(
 				'relation' => 'AND',
 				array(
 					'key' => 'ff_showin',
 					'value' => 'clinic',
 					'compare' => 'LIKE',
 				),
-			);
+			); */
 			
-			if (!empty( $case_menu_ary ) && !empty( $menu ) ) {
+			/* if (!empty( $case_menu_ary ) && !empty( $menu ) ) {
 				$meta_query[] = array( 'relation' => 'OR' );
 				foreach ( $case_menu_ary as $id ) {
 					$meta_query[] = array(
@@ -127,7 +127,7 @@
 						'compare' => 'LIKE'
 					);
 				}
-			}
+			} */
 
 			/* if ( ! empty( $case_doctor_ary ) && ! empty( $doctor )) {
 				$meta_query[] = array( 'relation' => 'OR' );
@@ -154,7 +154,7 @@
 			$args = array(
 				'post_type' => 'case',
 				'posts_per_page' => 30,
-				'meta_query' => $meta_query
+				/* 'meta_query' => $meta_query */
 			);
 			
 			$query = new WP_Query($args);
@@ -169,9 +169,6 @@
 				}
 
 				$case_menu = get_field('ff_case_menu');
-				$staff_doctor = get_field('ff_staff_doctor');
-				$staff_nurse = get_field('ff_staff_nurse');
-
 				$case_menu_name = '';
 				if($case_menu){
 					$menu_num = 0;
@@ -186,6 +183,9 @@
 					}
 				} wp_reset_postdata();
 
+				$staff_doctor = get_field('ff_staff_doctor');
+				$staff_nurse = get_field('ff_staff_nurse');
+
 				$staff_doctor_name = '';
 				if($staff_doctor){
 					foreach($staff_doctor as $post){
@@ -194,7 +194,6 @@
 					}
 				} wp_reset_postdata();
 
-				
 				$staff_nurse_name = '';
 				if($staff_nurse){
 					foreach($staff_nurse as $post){

@@ -1,292 +1,324 @@
-<?php
+<?php get_header('renew2025'); ?>
+<div class="mainBox">
+	<div class="checkBg"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg05.jpg" alt=""></div>
+	<div id="pagePath">
+		<?php 
+			$case_menu = get_field('ff_case_menu');
+		?>
+		<ul>
+			<li><a href="<?php echo home_url();?>">Top</a>/</li>
+			<li><a href="<?php echo home_url();?>/case/">Case</a>/</li>
+			<li>
+				<?php if($case_menu){
+					$num=0;
+					foreach( $case_menu as $post ) {
+						setup_postdata($post);
+						$num++;
+						if($num != 1){
+							echo '＋';
+						}
+						echo get_the_title();
+					}
+				} wp_reset_postdata(); ?>
+			</li>
+		</ul>
+	</div>
+	<div class="comCaseDetail">
+		<section class="detail">
+			<h2 class="headLine06 maskFadeVPc maskFadeHSp"><a href="<?php echo home_url();?>/case/">Case</a></h2>
+			<div class="imgBox flex">
+				<?php 
+					$gallery = get_field('ff_gallery');
+					$summary = get_field('ff_summary');
+					$risks = get_field('ff_risks');
+					$price_clinic = get_field('ff_price_clinic');
+					if($gallery){
+				?>
+				<div class="photoBox swiper fadeInUp">
+					<div class="slide swiper-wrapper">
+						<?php foreach($gallery as $image) { ?>
+						<div class="photo swiper-slide"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"></div>
+						<?php } ?>
+					</div>
+					<div class="swiper-pagination"></div>
+					<ul class="comArrow flexB">
+						<li class="prev"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/prev.png" alt="" data-size="13x14"></li>
+						<li class="next"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/next.png" alt="" data-size="13x14"></li>
+					</ul>
+				</div>
+				<?php } ?>
+				<div class="textBox">
+					<div class="textInfo fadeInUp">
+						<?php 
+						$case_menu_ary = [];
+						if($case_menu){
+							$menu_num = 0;
+						?>
+						<h3>
+							<?php 
+							foreach( $case_menu as $post ) {
+								setup_postdata($post);
+								$menu_num++;
+								array_push($case_menu_ary, $post->ID);
+							?>
+							<?php if($menu_num != 1) {?>
+							<span href="#" class="ico">＋</span>
+							<?php } ?>
+							<a href="<?php the_permalink(); ?>" class="txt"><?php the_title(); ?></a>
+							<?php } ?>
+						</h3>
+						<?php } wp_reset_postdata();?>
+						<?php if($summary){ ?>
+						<h4>施術の説明</h4>
+						<?php echo $summary; ?>
+						<?php } ?>
+						<?php if($risks){ ?>
+						<h4>副作用・リスク</h4>
+						<?php echo $risks; ?>
+						<?php } ?>
+						<?php if($price_clinic) {?>
+						<h4>施術の価格<small>※価格は税込表記です。</small></h4>
+						<?php echo $price_clinic; ?>
+						<?php } ?>
+					</div>
+					<?php 
+						$staff_doctor = get_field('ff_staff_doctor');
+						$staff_nurse = get_field('ff_staff_nurse');
+					?>
+					<ul class="listUl flexB">
+						<?php 
+							if($staff_doctor){
+						?>
+						<li class="fadeInUp">
+							<p class="ttl">担当医師</p>
+							<ul class="comStaffList">
+								<?php 
+									foreach( $staff_doctor as $post ) {
+									setup_postdata($post);
 
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package v_1
- */
+									$thumbnail_id = get_post_thumbnail_id();
+									$thumbnail_data = wp_get_attachment_image_src($thumbnail_id, 'full');
+									$thumbnail_width = $thumbnail_data[1];
+									$thumbnail_height = $thumbnail_data[2];
+									$thumbnail = get_the_post_thumbnail_url($post->ID,'full');
+								?>
+								<li><a href="<?php the_permalink(); ?>">
+									<div class="photo"><img class="lazy" data-original="<?php echo $thumbnail; ?>" alt="" data-size="<?php echo $thumbnail_width; ?>x<?php echo $thumbnail_height; ?>"></div>
+									<p><span><?php the_title(); ?></span><?php echo CFS()->get('english_name'); ?></p>
+								</a></li>
+								<?php } ?>
+							</ul>
+						</li>
+						<?php } wp_reset_postdata(); ?>
 
-get_header();
-?>
-    <div id="primary" class="content-area">
-      <main id="main" class="site-main sl">
-      <div class="breadcrumbs breadcrumbs02">
-        <div class="breadcrumbs-inn">
-          <?php
-            if(function_exists( 'yoast_breadcrumb' )){
-              yoast_breadcrumb( '<div id="breadcrumbs">', '</div>');
-            }
-          ?>
-        </div>
-      </div>
-      <div id="case" class="sl-case">
-        <div class="sl-case-inn">
-          <div class="sl-case-inn-ttl subpage-ttl subpage-ttl02">
-            <h1 class="under-line page-title">症例写真</h1>
-          </div>
-          <div class="sl-case-inn-content">
+						<?php 
+							if($staff_nurse){
+						?>
+						<li class="fadeInUp">
+							<p class="ttl">担当看護師</p>
+							<ul class="comStaffList">
+								<?php 
+									foreach( $staff_nurse as $post ) {
+									setup_postdata($post);
+									$thumbnail_id = get_post_thumbnail_id();
+									$thumbnail_data = wp_get_attachment_image_src($thumbnail_id, 'full');
+									$thumbnail_width = $thumbnail_data[1];
+									$thumbnail_height = $thumbnail_data[2];
+									$thumbnail = get_the_post_thumbnail_url($post->ID,'full');
+								?>
+								<li><a href="<?php the_permalink(); ?>">
+									<div class="photo"><img class="lazy" data-original="<?php echo $thumbnail; ?>" alt="" data-size="<?php echo $thumbnail_width; ?>x<?php echo $thumbnail_height; ?>"></div>
+									<p><span><?php the_title(); ?></span><?php echo CFS()->get('english_name'); ?></p>
+								</a></li>
+								<?php } ?>
+							</ul>
+						</li>
+						<?php } wp_reset_postdata(); ?>
+					</ul>
+					<p class="note fadeInUp">※医師の指示のもと看護師が施術しております。</p>
+				</div>
+			</div>
+		</section>
+		<?php 
+			if($case_menu){
+		?>
+		<section class="price fadeInUp">
+			<div class="content">
+				<?php foreach( $case_menu as $post ) {
+					setup_postdata($post);
+					$case_menu_id = $post->ID;
+					$case_menu_title = get_the_title();
 
-            <div class="case-fl d-fl">
-              <?php
-                $i=1; if (have_posts()) : while ( have_posts() ) : the_post();
+					$args = array(
+						'post_type' => 'price',
+						'posts_per_page' => -1,
+						'meta_query' => array(
+							array(
+								'key' => 'ff_shopin',
+								'value' => 'clinic',
+								'compare' => '==',
+							),
+							array(
+								'key' => 'ff_menu',
+								'value' => '"' . $case_menu_id . '"',
+								'compare' => 'LIKE'
+							)
+						)
+					);
+					$query = new WP_Query($args);
+					if ( $query->have_posts() ) {
+					while ( $query->have_posts() ) { $query->the_post();
+						$table = get_field('ff_table');
+						$caption = get_field('ff_caption');
+				?>
+				<div class="tabBox">
+					<h3 class="headLine08"><?php echo $case_menu_title; ?>料金表</h3>
+					<p class="note">※価格は税込表記です。</p>
+					<div class="comTab">
+						<table>
+							<?php 
+								if ( ! empty( $table['header'] ) ) {
+									echo '<thead>';
+										echo '<tr>';
+											foreach ( $table['header'] as $th ) {
+												echo '<th>';
+													echo $th['c'];
+												echo '</th>';
+											}
+										echo '</tr>';
+									echo '</thead>';
+								}
+							?>
+							<tbody>
+								<?php 
+									foreach ( $table['body'] as $tr ) {
+										echo '<tr>';
+										$num=0;
+										foreach ( $tr as $td ) {
+											$num++;
+											$c = $td['c'];
+											if($c){
+												preg_match('|row(\d)+|', $c, $rowMatches);
+												if($rowMatches){
+													$row = ' rowspan="'.$rowMatches[1].'"';
+												}else{
+													$row = '';
+												}
+												preg_match('|col(\d)+|', $c, $colMatches);
+												if($colMatches){
+													$col = ' colspan="'.$colMatches[1].'"';
+												}else{
+													$col = '';
+												}
+												if($num == 1){
+													$tdHtml = '<th'.$row.$col.'>';
+												}else {
+													$tdHtml = '<td'.$row.$col.'>';
+												}
+												$c = preg_replace('/\|row(\d)+\|/', '', $c);
+												$c = preg_replace('/\|col(\d)+\|/', '', $c);
+												echo $tdHtml;
+													echo $c;
+												if($num == 1){
+													echo '</th>';
+												}else {
+													echo '</td>';
+												}
+											}
+										}
+										echo '</tr>';
+									}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<?php }}wp_reset_postdata(); ?>
+				<?php } ?>
+			</div>
+		</section>
+		<?php } wp_reset_postdata();?>
 
-                $terms = get_the_terms( get_the_ID(), 'case_category' );
-                if ( $terms && ! is_wp_error( $terms ) ) {
-                    // 各タームに対して処理
-                    $this_category = null;
-                    foreach ( $terms as $term ) {
-                        $term_slug = $term->slug; // タームのスラッグを取得
+		<?php 
+			$args = array(
+				'post_type' => 'case',
+				'posts_per_page' => 4,
+				'meta_query' => array(
+					array(
+						'key' => 'ff_showin',
+						'value' => 'clinic',
+						'compare' => '==',
+					),
+				)
+			);
+			foreach ( $case_menu_ary as $id ) {
+				$meta_query[] = array(
+					'key'     => 'ff_menu',
+					'value'   => '"' . $id . '"',
+					'compare' => 'LIKE'
+				);
+			}
+			$query = new WP_Query($args);
+			if ( $query->have_posts() ) {
+		?>
+		<section class="btmBox">
+			<div class="content">
+				<h3 class="headLine07 fadeInUp">Related Cases</h3>
+				<ul class="comCaseList flexB fadeAni">
+					<?php while ( $query->have_posts() ) { $query->the_post(); 
+						$image = get_field('ff_gallery')[0]['url'];
+						if(!$image){
+							$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+						}
 
-                        // スラッグに基づいて置換
-                        switch ( $term_slug ) {
-                            case 'hifu':
-                                $this_category = home_url('/service/').'hifu/';
-                                break;
-                            case 'ipl':
-                                $this_category = home_url('/service/').'photoipl/';
-                                break;
-                            case 'injection':
-                                $this_category = home_url('/service/').'artmake/';
-                                break;
-                            case 'thermagen':
-                                $this_category = home_url('/service/').'sarmagen/';
-                                break;
-                            case 'therma-needle':
-                                $this_category = null;
-                                break;
-                            case 'short-thread':
-                                $this_category = home_url('/service/').'thread/';
-                                break;
-                            case 'sagging-treatment':
-                                $this_category = home_url('/service/').'hifu/';
-                                break;
-                            case 'hyaluronic-acid':
-                                $this_category = home_url('/service/').'hyaluronic/';
-                                break;
-                            case 'botox':
-                                $this_category = home_url('/service/').'botox/';
-                                break;
-                            case 'fat-dissolving':
-                                $this_category = home_url('/service/').'fat-dissolve/';
-                                break;
-                            default:
-                                $this_category = null; 
-                      }
-                    }
-                  }else{
-                    $this_category = null; 
-                  }
-              ?>
+						$case_menu = get_field('ff_case_menu');
+						$case_menu_name = '';
+						if($case_menu){
+							$menu_num = 0;
+							foreach($case_menu as $post){
+								setup_postdata($post);
+								$menu_num++;
+								if($menu_num == 1){
+									$case_menu_name = get_the_title();
+								}else {
+									$case_menu_name = $case_menu_name.'＋'.get_the_title();
+								}
+							}
+						} wp_reset_postdata();
 
-                <div class="single-case__title sp" style="margin-bottom: 12px;"><?php echo $term->name; ?></div>
+						$staff_doctor = get_field('ff_staff_doctor');
+						$staff_nurse = get_field('ff_staff_nurse');
 
-                <div class="single-case__content">
+						$staff_doctor_name = '';
+						if($staff_doctor){
+							foreach($staff_doctor as $post){
+								setup_postdata($post);
+								$staff_doctor_name = $staff_doctor_name.'（医師）'.get_the_title().'<br>';
+							}
+						} wp_reset_postdata();
 
-                  <div class="single-case__images">
-
-                    <?php
-                      $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-
-                      $case_images = get_field('case_images');
-                      $case_image01 = isset($case_images['case_image01']) ? $case_images['case_image01'] : null;
-                      $case_image02 = isset($case_images['case_image02']) ? $case_images['case_image02'] : null;
-
-                      $show_thumbnail_slider = ($case_image01 || $case_image02);
-                    ?>
-
-                    <!-- メインスライダー -->
-                    <div class="single-case-slider">
-                      <div><img src="<?php echo esc_url($featured_image); ?>" alt="アイキャッチ画像"></div>
-                      <?php if ($case_image01): ?>
-                        <div><img src="<?php echo esc_url($case_image01['url']); ?>" alt="症例画像1"></div>
-                      <?php endif; ?>
-                      <?php if ($case_image02): ?>
-                        <div><img src="<?php echo esc_url($case_image02['url']); ?>" alt="症例画像2"></div>
-                      <?php endif; ?>
-                    </div>
-
-                    <?php if ($show_thumbnail_slider): ?>
-                      <!-- サムネイルスライダー -->
-                      <div class="single-case-nav">
-                        <div><img src="<?php echo esc_url($featured_image); ?>" alt="アイキャッチ画像"></div>
-                        <?php if ($case_image01): ?>
-                          <div><img src="<?php echo esc_url($case_image01['url']); ?>" alt="症例画像1"></div>
-                        <?php endif; ?>
-                        <?php if ($case_image02): ?>
-                          <div><img src="<?php echo esc_url($case_image02['url']); ?>" alt="症例画像2"></div>
-                        <?php endif; ?>
-                      </div>
-                    <?php endif; ?>
-
-
-                  </div>
-                    
-                  <div class="single-item">
-                    <div class="single-case__title pc"><?php echo $term->name; ?></div>
-                    <div class="content">
-                      <div class="content-inn">
-                        <?php  
-                          $items = CFS()->get('content'); 
-                          if($items != ''): 
-                              $firstItem = true; // 最初のアイテムを追跡するためのフラグ
-                              foreach($items as $item):
-                                  if($firstItem && $this_category): // 最初のアイテムでリンクがある場合
-                        ?>
-                            <dl>
-                              <dt><?php echo $item['title']; ?></dt>
-                              <dd>
-                                <?php if($this_category): ?>
-                                  <a href="<?php echo $this_category; ?>"><?php echo $item['description']; ?></a>
-                                <?php else: ?>
-                                  <?php echo $item['description']; ?><
-                                <?php endif; ?>  
-                              </dd>
-                            </dl>
-                        <?php else: ?>
-                            <dl>
-                              <dt><?php echo $item['title']; ?></dt>
-                              <dd><?php echo $item['description']; ?></dd>
-                            </dl>
-                        <?php
-                                  endif;
-                                  $firstItem = false; // 最初のアイテムではなくなったためフラグを下ろす
-                              endforeach; 
-                          endif;   
-                        ?>
-                      </div>
-                      <?php  if(CFS()->get('instagram')){?><p class="instagram-link"><?php echo CFS()->get('instagram');?></p><?php } ?>
-                    </div>
-                    <?php
-                      // タクソノミー 'case_doctor' と 'case_staff' のタームを取得
-                      $case_doctor_terms = get_the_terms(get_the_ID(), 'case_doctor');
-                      $case_staff_terms = get_the_terms(get_the_ID(), 'case_staff');
-
-                      // タームのスラッグから投稿IDを取得
-                      $case_doctor_id = !empty($case_doctor_terms) ? intval($case_doctor_terms[0]->slug) : null;
-                      $case_staff_id = !empty($case_staff_terms) ? intval($case_staff_terms[0]->slug) : null;
-
-                      // 両方空の場合、コンテンツ非表示
-                      if ($case_doctor_id || $case_staff_id):
-                    ?>
-                      <div class="single-case__staff">
-                        <?php if ($case_doctor_id): ?>
-                          <div class="case-staff-item">
-                            <h3 class="single-case__staff-position">担当医師</h3>
-                            <article>
-                              <a href="<?php echo esc_url(get_permalink($case_doctor_id)); ?>">
-                                <figure class="image">
-                                  <?php echo get_the_post_thumbnail($case_doctor_id, '', array('alt' => get_the_title($case_doctor_id))); ?>
-                                </figure>
-                                <div class="content">
-                                  <h3>
-                                    <?php if (CFS()->get('job_position', $case_doctor_id)): ?>
-                                      <span class="job-position"><?php echo esc_html(CFS()->get('job_position', $case_doctor_id)); ?></span>
-                                    <?php endif; ?>
-                                    <span class="jp-name"><?php echo esc_html(get_the_title($case_doctor_id)); ?></span>
-                                    <?php if (CFS()->get('english_name', $case_doctor_id)): ?>
-                                      <span class="eng-name"><?php echo esc_html(CFS()->get('english_name', $case_doctor_id)); ?></span>
-                                    <?php endif; ?>
-                                  </h3>
-                                </div>
-                              </a>
-                            </article>
-                          </div>
-                        <?php endif; ?>
-
-                        <?php if ($case_staff_id): ?>
-                          <div class="case-staff-item">
-                            <h3 class="single-case__staff-position">担当看護師</h3>
-                            <article>
-                              <a href="<?php echo esc_url(get_permalink($case_staff_id)); ?>">
-                                <figure class="image">
-                                  <?php echo get_the_post_thumbnail($case_staff_id, '', array('alt' => get_the_title($case_staff_id))); ?>
-                                </figure>
-                                <div class="content">
-                                  <h3>
-                                    <?php if (CFS()->get('job_position', $case_staff_id)): ?>
-                                      <span class="job-position"><?php echo esc_html(CFS()->get('job_position', $case_staff_id)); ?></span>
-                                    <?php endif; ?>
-                                    <span class="jp-name"><?php echo esc_html(get_the_title($case_staff_id)); ?></span>
-                                    <?php if (CFS()->get('english_name', $case_staff_id)): ?>
-                                      <span class="eng-name"><?php echo esc_html(CFS()->get('english_name', $case_staff_id)); ?></span>
-                                    <?php endif; ?>
-                                  </h3>
-                                </div>
-                              </a>
-                            </article>
-                          </div>
-                        <?php endif; ?>
-                      </div>
-                    <?php endif; ?>
-                  </div>
-
-                </div>
-
-                <?php
-                  // 現在の投稿ID
-                  $current_post_id = get_the_ID();
-
-                  // 現在の投稿のカテゴリーを取得
-                  $categories = wp_get_post_terms($current_post_id, 'case_category', array('fields' => 'ids'));
-
-                  if (!empty($categories)) {
-                      // 関連記事を取得するクエリ
-                      $args = array(
-                          'post_type' => 'case',             // カスタム投稿タイプ
-                          'posts_per_page' => 4,            // 表示する記事数
-                          'post__not_in' => array($current_post_id), // 現在の投稿を除外
-                          'tax_query' => array(
-                              array(
-                                  'taxonomy' => 'case_category',
-                                  'field'    => 'term_id',
-                                  'terms'    => $categories, // 現在の投稿のカテゴリー
-                              ),
-                          ),
-                      );
-
-                      $related_posts = new WP_Query($args);
-
-                      // 関連記事がある場合のみ表示
-                      if ($related_posts->have_posts()):
-                  ?>
-                      
-                      <div class="case-fl d-fl case-bottom">
-                        <div class="sl-problems-inn-ttl subpage-ttl menu-inn-ttl">
-                          <h2 class="under-line">関連症例</h2>
-                        </div>
-                        <ul>
-                            <?php while ($related_posts->have_posts()): $related_posts->the_post(); ?>
-                                <li>
-                                    <a href="<?php the_permalink(); ?>">
-                                      <?php the_post_thumbnail('thumbnail'); ?>
-                                    </a>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                        <div class="sl-faq-inn-ft case-more-btn">
-                          <div class="menu-btn more-btn">
-                            <a href="<?php echo home_url('/case/'); ?>" rel="alternate">VIEW MORE</a>
-                          </div>
-                        </div>
-                      </div>
-
-                  <?php
-                      endif;
-                      wp_reset_postdata();
-                    }
-                  ?>
-
-              <?php $i++; endwhile; endif;wp_reset_query();?>
-            </div>
-            
-          </div>
-          <!-- sl-case-inn-content -->
-        </div>
-      </div>
-      </main>
-    </div>
-
-<?php
-get_footer();
+						$staff_nurse_name = '';
+						if($staff_nurse){
+							foreach($staff_nurse as $post){
+								setup_postdata($post);
+								$staff_nurse_name = $staff_nurse_name.'（看護師）'.get_the_title().'<br>';
+							}
+						} wp_reset_postdata();
+					?>
+					<li class="fade"><a href="<?php the_permalink(); ?>">
+						<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="300x300"></div>
+						<p>
+							<span class="serif"><?php echo $case_menu_name; ?></span>
+							<?php echo $staff_doctor_name; ?>
+							<?php echo $staff_nurse_name; ?>
+						</p>
+					</a></li>
+					<?php } ?>
+				</ul>
+				<div class="comLink fadeInUp"><a href="<?php echo home_url();?>/case/">View More</a></div>
+			</div>
+		</section>
+		<?php } wp_reset_postdata();?>
+	</div>
+</div>
+<?php get_footer('renew2025'); ?>

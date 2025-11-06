@@ -1,6 +1,9 @@
-<?php get_header('new'); ?>
+<?php get_header('renew2025'); 
+	$postID = get_the_ID();
+	$postName = get_the_title();
+?>
 <div class="mainBox">
-	<div class="checkBg"><img src="<?php echo get_template_directory_uri(); ?>/new/img/common/com_bg05.jpg" alt=""></div>
+	<div class="checkBg"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg05.jpg" alt=""></div>
 	<div id="pagePath">
 		<ul>
 			<li><a href="<?php echo home_url();?>">Top</a>/</li>
@@ -10,28 +13,24 @@
 	</div>
 	<div class="pageTtl">
 		<h2><span class="maskFadeH"><?php the_title(); ?></span></h2>
-		<div class="photo"><img src="<?php echo get_template_directory_uri(); ?>/new/img/services/detail/page_title_bg.jpg" alt="<?php echo strip_tags(get_the_title()); ?>"></div>
+		<div class="photo"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/services/detail/page_title_bg.jpg" alt="<?php echo strip_tags(get_the_title()); ?>"></div>
 	</div>
 	<div class="detail">
 		<div class="naviLink">
 			<div class="subNavi">
 				<p class="roboto">Index</p>
-				<ul>
-					<li class="on"><a href="#a01">HIFUとは</a></li>
-					<li><a href="#a02">料金</a></li>
-					<li><a href="#a03">症例</a></li>
-					<li><a href="#a04">よくあるご質問</a></li>
+				<ul class="toc">
 				</ul>
 			</div>
 		</div>
 		<?php if( have_rows('ff_block') ): ?>
 		<div class="detailBox">
-			<?php while( have_rows('content') ): the_row(); ?>
+			<?php while( have_rows('ff_block') ): the_row(); ?>
 
 				<?php if( get_row_layout() == 'ff_colum1' ):
 					$colum1_text = get_sub_field('ff_colum1_text');
 				?>
-				<div class="info01">
+				<div class="info01 infoBox">
 					<div class="fadeInUp">
 						<?php echo $colum1_text; ?>
 					</div>
@@ -41,7 +40,7 @@
 					$colum2_left = get_sub_field('ff_colum2_left');
 					$colum2_right = get_sub_field('ff_colum2_right');
 				?>
-				<div class="info02 fadeInUp">
+				<div class="info02 fadeInUp infoBox">
 					<div class="imgBox flexB">
 						<div class="lBox"><?php echo $colum2_left; ?></div>
 						<div class="rBox">
@@ -55,7 +54,7 @@
 					$colum3_mid = get_sub_field('ff_colum3_mid');
 					$colum3_right = get_sub_field('ff_colum3_right');
 				?>
-				<div class="info03">
+				<div class="info03 infoBox">
 					<ul class="fadeInUp">
 						<li>
 							<?php echo $colum3_left; ?>
@@ -74,7 +73,7 @@
 					$colum4_img = get_sub_field('ff_colum4_img');
 					$colum4_note = get_sub_field('ff_colum4_note');
 				?>
-				<div class="info04 simpleBar fadeInUp">
+				<div class="info04 simpleBar fadeInUp infoBox">
 					<div class="pho">
 						<img class="lazy" data-original="<?php echo $colum4_img['url']; ?>" alt="<?php echo $colum4_img['alt']; ?>" data-size="<?php echo $colum4_img['width']; ?>x<?php echo $colum4_img['height']; ?>">
 					</div>
@@ -88,7 +87,7 @@
 					$colum5_img = get_sub_field('ff_colum5_img');
 					$colum5_note = get_sub_field('ff_colum5_note');
 				?>
-				<div class="info05 fadeInUp">
+				<div class="info05 fadeInUp infoBox">
 					<div class="photo">
 						<img class="lazy" data-original="<?php echo $colum5_img['url']; ?>" alt="<?php echo $colum5_img['alt']; ?>" data-size="<?php echo $colum5_img['width']; ?>x<?php echo $colum5_img['height']; ?>">
 					</div>
@@ -101,7 +100,7 @@
 					$colum6_note = get_sub_field('ff_colum6_note');
 					$colum6_text = get_sub_field('ff_colum6_text');
 				?>
-				<div class="info06 fadeInUp">
+				<div class="info06 fadeInUp infoBox">
 					<div class="pho">
 						<div class="image"><img class="lazy" data-original="<?php echo $colum6_img['url']; ?>" alt="<?php echo $colum6_img['alt']; ?>" data-size="<?php echo $colum6_img['width']; ?>x<?php echo $colum6_img['height']; ?>"></div>
 						<?php if($colum6_note) {?><span><?php echo $colum6_note; ?></span><?php } ?>
@@ -115,129 +114,256 @@
 				<?php elseif( get_row_layout() == 'ff_colum7' ):
 					$youtube = get_sub_field('ff_youtube');
 				?>
-				<div class="info07">
+				<div class="info07 infoBox">
 					<div class="movie fadeInUp"><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $youtube; ?>" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
 				</div>
 
-
-
-				
 			
 			
-			
-			
-			<div class="info08" id="a02" data-target="1">
+			<?php elseif( get_row_layout() == 'ff_colum8' ):
+				$menus = get_posts(array(
+					'post_type' => 'price',
+					'posts_per_page' => -1,
+					'meta_query' => array(
+						array(
+							'key'     => 'ff_menu',
+							'value'   => '"' . $postID . '"',
+							'compare' => 'LIKE',
+						),
+					),
+				));
+				if( $menus ) {
+			?>
+			<div class="info08 infoBox">
 				<div class="fadeInUp">
 					<h1>料金</h1>
 					<p class="note">※価格は全て税込表記です。</p>
-					<h2 class="headLine09">ポテンツァ</h2>
+					<?php foreach( $menus as $menu ){
+						$table = get_field('ff_table',$menu->ID);
+						$caption = get_field('ff_caption',$menu->ID);
+					?>
+					<h2 class="headLine09"><?php echo $postName; ?></h2>
 					<div class="comTab">
 						<table>
-							<thead>
-								<tr>
-									<th>対象部位</th>
-									<td>部位</td>
-									<td>回数</td>
-									<td>価格</td>
-								</tr>
-							</thead>
+							<?php 
+								if ( ! empty( $table['header'] ) ) {
+									echo '<thead>';
+										echo '<tr>';
+											foreach ( $table['header'] as $th ) {
+												echo '<th>';
+													echo $th['c'];
+												echo '</th>';
+											}
+										echo '</tr>';
+									echo '</thead>';
+								}
+							?>
 							<tbody>
-								<tr>
-									<th rowspan="3">血管拡張による赤み改善専用チップ（麻酔クリーム付き）</th>
-									<td rowspan="3">全顔</td>
-									<td>1回</td>
-									<td>49,500円</td>
-								</tr>
-								<tr>
-									<td>3回</td>
-									<td>133,650円</td>
-								</tr>
-								<tr>
-									<td>5回</td>
-									<td>210,375円</td>
-								</tr>
-									<tr>
-									<th rowspan="3">ニキビ1ニードル（麻酔なし）</th>
-									<td rowspan="3">全顔</td>
-									<td>5個まで</td>
-									<td>22,000円</td>
-								</tr>
-								<tr>
-									<td>10個まで</td>
-									<td>35,000円</td>
-								</tr>
-								<tr>
-									<td>打ち放題</td>
-									<td>55,000円</td>
-								</tr>
+								<?php 
+									foreach ( $table['body'] as $tr ) {
+										echo '<tr>';
+										$num=0;
+										foreach ( $tr as $td ) {
+											$num++;
+											$c = $td['c'];
+											if($c){
+												preg_match('|row(\d)+|', $c, $rowMatches);
+												if($rowMatches){
+													$row = ' rowspan="'.$rowMatches[1].'"';
+												}else{
+													$row = '';
+												}
+												preg_match('|col(\d)+|', $c, $colMatches);
+												if($colMatches){
+													$col = ' colspan="'.$colMatches[1].'"';
+												}else{
+													$col = '';
+												}
+												if($num == 1){
+													$tdHtml = '<th'.$row.$col.'>';
+												}else {
+													$tdHtml = '<td'.$row.$col.'>';
+												}
+												$c = preg_replace('/\|row(\d)+\|/', '', $c);
+												$c = preg_replace('/\|col(\d)+\|/', '', $c);
+												echo $tdHtml;
+													echo $c;
+												if($num == 1){
+													echo '</th>';
+												}else {
+													echo '</td>';
+												}
+											}
+										}
+										echo '</tr>';
+									}
+								?>
 							</tbody>
 						</table>
+						<?php if($caption) {?>
+						<div class="noteList">
+							<p><?php echo $caption; ?></p>
+						</div>
+						<?php } ?>
 					</div>
+					<?php } ?>
 				</div>
 			</div>
-			<div class="info09" id="a03" data-target="2">
+			<?php } wp_reset_postdata(); ?>
+
+			<?php elseif( get_row_layout() == 'ff_colum9' ):
+				$cases = get_posts(array(
+					'post_type' => 'case',
+					'posts_per_page' => 3,
+					'meta_query' => array(
+						array(
+							'key'     => 'ff_case_menu',
+							'value'   => '"' . $postID . '"',
+							'compare' => 'LIKE',
+						),
+					),
+				));
+				if( $cases ) {
+			?>
+			<div class="info09 infoBox">
 				<div class="fadeInUp">
 					<h1>症例</h1>
 					<ul class="comCaseList">
-						<li><a href="#">
-							<div class="pho"><img class="lazy" data-original="/img/services/detail/photo10.jpg" alt="" data-size="250x250"></div>
-							<p><span class="serif">デザイニングハイフ</span>（看護師）坂本 伶奈</p>
+						<?php foreach( $cases as $case ){
+							$image = get_field('ff_gallery',$case->ID)[0]['url'];
+							if(!$image){
+								$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+							}
+
+							$case_menu = get_field('ff_case_menu',$case->ID);
+							$case_menu_name = '';
+							if($case_menu){
+								$menu_num = 0;
+								foreach($case_menu as $post){
+									setup_postdata($post);
+									$menu_num++;
+									if($menu_num == 1){
+										$case_menu_name = get_the_title();
+									}else {
+										$case_menu_name = $case_menu_name.'＋'.get_the_title();
+									}
+								}
+							} wp_reset_postdata();
+
+							$staff_doctor = get_field('ff_staff_doctor',$case->ID);
+							$staff_nurse = get_field('ff_staff_nurse',$case->ID);
+
+							$staff_doctor_name = '';
+							if($staff_doctor){
+								foreach($staff_doctor as $post){
+									setup_postdata($post);
+									$staff_doctor_name = $staff_doctor_name.'（医師）'.get_the_title().'<br>';
+								}
+							} wp_reset_postdata();
+
+							$staff_nurse_name = '';
+							if($staff_nurse){
+								foreach($staff_nurse as $post){
+									setup_postdata($post);
+									$staff_nurse_name = $staff_nurse_name.'（看護師）'.get_the_title().'<br>';
+								}
+							} wp_reset_postdata();
+						?>
+						<li><a href="<?php the_permalink(); ?>">
+							<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="250x250"></div>
+							<p><span class="serif"><?php echo $case_menu_name; ?></span>
+							<?php echo $staff_doctor_name; ?>
+							<?php echo $staff_nurse_name; ?></p>
 						</a></li>
-						<li><a href="#">
-							<div class="pho"><img class="lazy" data-original="/img/services/detail/photo11.jpg" alt="" data-size="250x250"></div>
-							<p><span class="serif">デザイニングハイフ</span>（看護師）坂本 伶奈</p>
-						</a></li>
-						<li><a href="#">
-							<div class="pho"><img class="lazy" data-original="/img/services/detail/photo12.jpg" alt="" data-size="250x250"></div>
-							<p><span class="serif">デザイニングハイフ</span>（看護師）白鳥 裕子</p>
-						</a></li>
+						<?php } ?>
 					</ul>
 					<ul class="comArrow flexB">
-						<li class="prev"><img src="/img/common/prev.png" alt="" data-size="13x14"></li>
-						<li class="next"><img src="/img/common/next.png" alt="" data-size="13x14"></li>
+						<li class="prev"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/prev.png" alt="" data-size="13x14"></li>
+						<li class="next"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/next.png" alt="" data-size="13x14"></li>
 					</ul>
-					<div class="comLink"><a href="/case/">View More</a></div>
+					<div class="comLink"><a href="<?php echo home_url();?>/case/">View More</a></div>
 				</div>
 			</div>
-			<div class="info10" id="a04" data-target="3">
+			<?php } wp_reset_postdata(); ?>
+
+			<?php elseif( get_row_layout() == 'ff_colum10' ):
+				$faq_args = array(
+					'post_type' => 'faq',
+					'posts_per_page' => -3,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'faq_category',
+							'field'    => 'name',
+							'terms'    => $postName,
+						),
+					),
+				);
+				$faq_query = new WP_Query($faq_args);
+				if ( $faq_query->have_posts() ) {  
+			?>
+			<div class="info10 infoBox">
 				<div class="fadeInUp">
 					<h1>よくあるご質問</h1>
 					<dl>
-						<dt>効果はどのくらい持続しますか？</dt>
-						<dd>ご希望の方は表面麻酔をご使用いただけます。<br>表面麻酔：¥2,200（税込）</dd>
-						<dt>副作用・ダウンタイムはありますか？</dt>
-						<dd>ご希望の方は表面麻酔をご使用いただけます。<br>表面麻酔：¥2,200（税込）</dd>
-						<dt>麻酔は使用できますか？</dt>
-						<dd>ご希望の方は表面麻酔をご使用いただけます。<br>表面麻酔：¥2,200（税込）</dd>
+						<?php while ( $faq_query->have_posts() ) { $faq_query->the_post(); ?>
+						<dt><?php the_title(); ?></dt>
+						<dd><?php the_content(); ?></dd>
+						<?php }  ?>
 					</dl>
 				</div>
 			</div>
+			<?php } wp_reset_postdata(); ?>
 
 			<?php elseif( get_row_layout() == 'ff_colum11' ):
 				$colum11_text = get_sub_field('ff_colum11_text');
 				$staff = get_sub_field('ff_staff');
 			?>
-			<div class="info11">
+			<div class="info11 infoBox">
 				<div class="fadeInUp">
 					<h2>監修者情報</h2>
 					<div class="textInfo flexB">
 						<div class="imgBox flexB">
-							<div class="pho"><img class="lazy" data-original="/img/services/detail/photo13.jpg" alt="" data-size="126x143"><span>リアンクリニック院長<span>藤尾 謙太</span></span></div>
+							<?php 
+								if($staff){
+									foreach( $staff as $post ):
+									setup_postdata($post);
+									$staff_msg = get_field('ff_staff_msg');
+
+									$thumbnail_id = get_post_thumbnail_id();
+									$thumbnail_data = wp_get_attachment_image_src($thumbnail_id, 'full');
+									$thumbnail_width = $thumbnail_data[1];
+									$thumbnail_height = $thumbnail_data[2];
+
+									$thumbnail = get_the_post_thumbnail_url($post->ID,'full');
+							?>
+							<div class="pho">
+								<?php if($thumbnail) {?>
+								<div class="image">
+									<img class="lazy" data-original="<?php echo $thumbnail; ?>" alt="" data-size="<?php echo $thumbnail_width; ?>x<?php echo $thumbnail_height; ?>">
+								</div>
+								<?php } ?>
+								<span>リアンクリニック院長<span><?php the_title(); ?></span></span>
+							</div>
+							<?php endforeach; ?>
+							<?php } wp_reset_postdata(); ?>
+							<?php if($staff_msg) {?>
 							<div class="textBox">
 								<h3>プロフィール</h3>
-								<p>昭和大学卒業<br>順天堂大学の医局入職<br>大手美容皮膚科勤務<br>2023年博士号取得<br><a href="#">日本美容皮膚科医学会所属</a></p>
+								<p><?php echo $staff_msg; ?></p>
 							</div>
+							<?php } ?>
 						</div>
+						<?php if($colum11_text) {?>
 						<div class="textSub">
+							<h3>医師からのメッセージ</h3>
 							<?php echo $colum11_text; ?>
 						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
 
-
 			<?php endif; ?>
-
 			<?php endwhile; ?>
 
 		</div>
@@ -249,34 +375,21 @@
 		if($colum12){
 			$colum12_ttl = get_sub_field('ff_colum12_ttl');
 		}
-		$problem_terms = get_the_terms($post->ID,'problem');
-		$problem_ary = [];
-		if($problem_terms){
-			foreach($problem_terms as $problem_term){
-				array_push($problem_ary,$problem_term->term_id);
-			}
-		}
-		$treatment_terms = get_the_terms($post->ID,'treatment');
-		$treatment_ary = [];
-		if($treatment_terms){
-			foreach($treatment_terms as $treatment_term){
-				array_push($treatment_ary,$treatment_term->term_id);
+		$services_terms = get_the_terms($post->ID,'services_cat');
+		$services_ary = [];
+		if($services_terms){
+			foreach($services_terms as $services_term){
+				array_push($services_ary,$services_term->term_id);
 			}
 		}
 		$args = array(
 			'post_type' => 'services',
 			'posts_per_page' => 5,
 			'tax_query' => array(
-				'relation' => 'OR',
 				array(
-					'taxonomy' => 'problem',
+					'taxonomy' => 'services_cat',
 					'field'    => 'term_id',
-					'terms'    => $problem_ary,
-				),
-				array(
-					'taxonomy' => 'treatment',
-					'field'    => 'term_id',
-					'terms'    => $treatment_ary,
+					'terms'    => $services_ary,
 				),
 			),
 			'post__not_in' => array(get_the_ID()),
@@ -284,7 +397,7 @@
 		$query = new WP_Query($args);
 		if ( $query->have_posts() ) {
 	?>
-	<div class="info12">
+	<div class="info12 infoBox">
 		<h2 class="fadeInUp"><?php echo $colum12_ttl; ?>に効果的な治療</h2>
 		<?php 
 			while ( $query->have_posts() ) { $query->the_post();
@@ -310,6 +423,6 @@
 	</div>
 	<?php } wp_reset_postdata(); ?>
 
-	<?php get_template_part('new/inc/com_reservation'); ?>
+	<?php get_template_part('renew2025/inc/com_reservation'); ?>
 </div>
-<?php get_footer('new'); ?>
+<?php get_footer('renew2025'); ?>

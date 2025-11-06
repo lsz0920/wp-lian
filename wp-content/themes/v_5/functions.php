@@ -757,9 +757,36 @@ function getPageName(){
 	else if(is_singular('services')){
 		$pname = 'services_detail';
 	}
+	else if(is_post_type_archive('price')){
+		$pname = 'price';
+	}
 	else{
 		$pname ='';
 	}
 	return $pname;
 }
 
+
+if(function_exists('acf_add_options_page') ) {
+	acf_add_options_page(array(
+		'page_title'    => 'Lian clinicのPriceの基本料金',
+		'menu_title'    => 'Lian clinicのPriceの基本料金',
+		'menu_slug'     => 'price_basic',
+		'capability'    => 'edit_posts',
+		'redirect'      => false
+	));
+	acf_add_options_page(array(
+		'page_title'    => 'LIAN RESERVEのPriceの基本料金',
+		'menu_title'    => 'LIAN RESERVEのPriceの基本料金',
+		'menu_slug'     => 'price_basic02',
+		'capability'    => 'edit_posts',
+		'redirect'      => false
+	));
+}
+
+
+add_filter('wp_terms_checklist_args','wp_terms_checklist_args');
+function wp_terms_checklist_args($args) {
+	$args['checked_ontop'] = false;
+	return $args;
+}
