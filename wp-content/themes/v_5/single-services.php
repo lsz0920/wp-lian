@@ -118,8 +118,6 @@
 					<div class="movie fadeInUp"><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $youtube; ?>" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
 				</div>
 
-			
-			
 			<?php elseif( get_row_layout() == 'ff_colum8' ):
 				$menus = get_posts(array(
 					'post_type' => 'price',
@@ -149,10 +147,18 @@
 								if ( ! empty( $table['header'] ) ) {
 									echo '<thead>';
 										echo '<tr>';
+										$thNum=0;
 											foreach ( $table['header'] as $th ) {
-												echo '<th>';
-													echo $th['c'];
-												echo '</th>';
+												$thNum++;
+												if($thNum == 1){
+													echo '<th>';
+														echo $th['c'];
+													echo '</th>';
+												}else {
+													echo '<td>';
+														echo $th['c'];
+													echo '</td>';
+												}
 											}
 										echo '</tr>';
 									echo '</thead>';

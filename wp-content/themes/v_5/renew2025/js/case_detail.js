@@ -17,4 +17,10 @@ $(function(){
 			clickable: true,
 		},
 	});
+
+	$('.comCaseDetail .price').each(function(){
+		if($(this).find('.comTab').length == 0){
+			$(this).remove();
+		}
+	})
 })

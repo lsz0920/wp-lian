@@ -1,9 +1,9 @@
 <?php get_header('renew2025'); ?>
 <section class="pageTitle">
-	<div class="photo"><img class="nolazy" src="<?php echo get_template_directory_uri(); ?>/renew2025/img/services/page_title_bg.jpg" alt=""></div>
+	<div class="photo"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/services/page_title_bg.jpg" alt=""></div>
 	<h2><span class="maskFadeH">Menu</span></h2>
 </section>
-<div class="mainBox">
+<div class="mainBox jsMainTop">
 	<div class="checkBg"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg05.jpg" alt=""></div>
 	<div id="pagePath">
 		<ul>
@@ -36,7 +36,7 @@
 				$sml_terms = get_terms( $sml_args );
 				if($sml_terms){
 				foreach($sml_terms as $sml_term) { ?>
-				<dl>
+				<dl id="term<?php echo $sml_term->term_id; ?>">
 					<dt class="fadeInUp"><?php echo $sml_term->name; ?></dt>
 					<?php 
 						$args = array(

@@ -72,6 +72,10 @@ $(function(){
 		});
 	}
 
+	if($('#wpadminbar').length){
+		$('#wpadminbar img').addClass('noCheckImg');
+	}
+
 	BackgroundCheck.init({
 		targets: '.target',
 		images: $('img:visible:not(.noCheckImg)')
@@ -99,7 +103,6 @@ $(function(){
 	var scrollpos;
 	var statePop = false;
 	var scrollPop;
-
 	$('.menu').on('click', function(){
 		if(state == false) {
 			scrollpos = $(window).scrollTop();
@@ -108,6 +111,9 @@ $(function(){
 			$('.menu').addClass('on nolink');
 			$('.menu').removeClass('hover');
 			$('.menu').addClass('active');
+			if($('.menuBg').length){
+				$('.menuBg').fadeIn();
+			}
 			setTimeout(function(){
 				$('.menu').removeClass('active nolink');
 			},600);
@@ -138,6 +144,9 @@ $(function(){
 			setTimeout(function(){
 				$('.menu').removeClass('active nolink');
 			},600);
+			if($('.menuBg').length){
+				$('.menuBg').fadeOut();
+			}
 			gheader.removeClass('white');
 			state = false;
 		}
@@ -289,6 +298,14 @@ $(function(){
 			}
 		}
 
+		if($('.jsMainTop').length){
+			if($(window).scrollTop() > $('.jsMainTop').offset().top - 50){
+				$('#gHeader').removeClass('whiteShow');
+			}else {
+				$('#gHeader').addClass('whiteShow');
+			}
+		}
+
 	}).trigger('scroll');
 });
 
@@ -310,6 +327,7 @@ $(window).on('load',function(){
 	}
 
 	$('body').addClass('hideCover');
+	$('.dli-loading-1').addClass('hide');
 
 	setLazyImgPop();
 	setLazyImg();

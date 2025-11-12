@@ -1,4 +1,4 @@
-<header id="gHeader" <?php if(@$pageClass == 'index'){ echo 'class="whiteShow"';} ?>>
+<header id="gHeader" <?php if(is_home()||is_front_page()||is_post_type_archive('services')||is_post_type_archive('price')){ echo 'class="whiteShow"';} ?>>
 	<div class="language target">
 		<p class="roboto">Language</p>
 		<ul>
@@ -39,7 +39,7 @@
 					<ul class="menuList roboto">
 						<li><a href="#">Column</a></li>
 						<li><a href="#">Youtube</a></li>
-						<li class="target"><a href="#" target="_blank">TIES</a></li>
+						<li class="target"><a href="https://ties-cosme.co.jp/shop/" target="_blank">TIES</a></li>
 					</ul>
 				</div>
 				<div class="menuNavi">
@@ -47,52 +47,67 @@
 					<ul class="flexB">
 						<li>
 							<p class="menuNaviTitle">お悩みから探す</p>
-							<ul class="menuNaviList">
-								<li><a href="#">たるみ</a></li>
-								<li><a href="#">しわ</a></li>
-								<li><a href="#">ほうれい線</a></li>
-								<li><a href="#">毛穴・赤み</a></li>
-								<li><a href="#">ニキビ跡</a></li>
-							</ul>
-						</li>
+							<?php
+								$terms = get_terms( 
+									array(
+										'taxonomy'   => 'services_cat',
+										'hide_empty' => false,
+										'parent' => 496
+									)
+								);
+								echo '<ul class="menuNaviList">';
+								foreach ( $terms as $term ) {
+									$query = new WP_Query( array(
+										'post_type'      => 'services',
+										'posts_per_page' => 1,
+										'tax_query'      => array(
+											array(
+												'taxonomy' => 'services_cat',
+												'field'    => 'term_id',
+												'terms'    => $term->term_id,
+											),
+										),
+									));
+									if($query->have_posts()) {
+										echo '<li><a class="noFade" href="' .home_url() . '/services/#term'.$term->term_id.'">' . esc_html( $term->name ) . '</a></li>';
+									}
+									wp_reset_postdata();
+								}
+								echo '</ul>';
+							?>
 						<li>
 							<p class="menuNaviTitle">施術から探す</p>
 							<ul class="menuNaviUl">
-								<li><select>
-										<option value="">機械治療</option>
-										<option value="HIFU">HIFU</option>
-										<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-										<option value="サーマジェン">サーマジェン</option>
+								<?php 
+								$args = array(
+									'taxonomy' => 'services_cat',
+									'hide_empty' => 1,
+									'parent' => 497,
+								);
+								$terms = get_terms( $args );
+								if($terms){
+									foreach($terms as $term) { 
+									$query = new WP_Query( array(
+										'post_type'      => 'services',
+										'posts_per_page' => -1,
+										'tax_query'      => array(
+											array(
+												'taxonomy' => 'services_cat',
+												'field'    => 'term_id',
+												'terms'    => $term->term_id,
+											),
+										),
+									));
+									if($query->have_posts()) {
+								?>
+								<li><select onchange="document.location.href=this.options[this.selectedIndex].value;">
+										<option value=""><?php echo $term->name; ?></option>
+										<?php while ( $query->have_posts() ) { $query->the_post(); ?>
+										<option value="<?php the_permalink(); ?>"><?php the_title(); ?></option>
+										<?php } ?>
 									</select>
 								</li>
-								<li><select>
-										<option value="">注入治療</option>
-										<option value="HIFU">HIFU</option>
-										<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-										<option value="サーマジェン">サーマジェン</option>
-									</select>
-								</li>
-								<li><select>
-										<option value="">糸リフト</option>
-										<option value="HIFU">HIFU</option>
-										<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-										<option value="サーマジェン">サーマジェン</option>
-									</select>
-								</li>
-								<li><select>
-										<option value="">美肌治療</option>
-										<option value="HIFU">HIFU</option>
-										<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-										<option value="サーマジェン">サーマジェン</option>
-									</select>
-								</li>
-								<li><select>
-										<option value="">アートメイク</option>
-										<option value="HIFU">HIFU</option>
-										<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-										<option value="サーマジェン">サーマジェン</option>
-									</select>
-								</li>
+								<?php } wp_reset_postdata(); } }?>
 							</ul>
 						</li>
 					</ul>
@@ -148,7 +163,7 @@
 					<ul class="menuList roboto">
 						<li><a href="#">Column</a></li>
 						<li><a href="#">Youtube</a></li>
-						<li class="target"><a href="#" target="_blank">TIES</a></li>
+						<li class="target"><a href="https://ties-cosme.co.jp/shop/" target="_blank">TIES</a></li>
 					</ul>
 					<ul class="menuList jp">
 						<li><a href="#">プライバシーポリシー</a></li>
@@ -164,7 +179,6 @@
 				</div>
 			</div>
 		</div>
-		<address class="roboto sp">Copyright &copy; LIAN clinic</address>
 	</div>
 </div>
 <div class="menuBg"></div>
@@ -178,3 +192,4 @@
 		<li><a href="javascript:;" class="popLink noFade" data-pop="whatsapp"><img class="lazy noCheckImg" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/fix_link_img06.png" alt="" data-size="20x18"></a></li>
 	</ul>
 </div>
+<span class="dli-loading-1"></span>

@@ -33,6 +33,8 @@ $(function(){
 			return false;
 		}
 	});
+
+	$('#main .detailBox .info03 p:has(img)').addClass('pho');
 })
 
 $(window).on('load',function(){

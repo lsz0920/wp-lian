@@ -248,6 +248,9 @@
 	font-size: max(10px,1.1rem);
 	letter-spacing: 0.01em;
 }
+#main .detailBox .info08 .comTab:not(:last-of-type) {
+	margin-bottom: 5rem;
+}
 #main .detailBox .info09 {
 	margin-bottom: 7.2rem;
 }
@@ -597,8 +600,14 @@
 		display: block;
 	}
 	#main .detailBox .info02 .lBox {
-		margin: 0 -3rem;
+		margin: 0;
 		width: auto;
+	}
+	#main .detailBox .info02 .lBox img {
+		margin: 0 -3rem;
+		width: calc(100% + 6rem);
+		display: block;
+		max-width: inherit;
 	}
 	#main .detailBox .info02 .rBox {
 		width: auto;

@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*------------------------------------------------------------
+	lian-reserve/access
+------------------------------------------------------------*/
+.fNavi li:nth-child(4) {
+	opacity: 0.5;
+}
+#main .mainBox {
+	position: relative;
+}
+@media all and (min-width: 1000px) {
+	#main .mainBox {
+		padding-top: 1.6rem;
+	}
+	#main #pagePath {
+		margin-bottom: -3.2rem;
+		padding-bottom: 0;
+	}
+	.comLocation {
+		align-items: center;
+	}
+	.comLocation .textBox {
+		margin-top: 4.6rem;
+	}
+}
+@media all and (max-width: 999px) {
+	.comLocation {
+		padding: 7.8rem 0 9.7rem;
+	}
+}

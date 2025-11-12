@@ -12,11 +12,17 @@
 #main .menuSec {
 	margin-bottom: 6.8rem;
 }
+#main .info.hide {
+	display: none;
+}
 #main .info:not(:last-child) {
 	margin-bottom: 4.8rem;
 }
 #main .info dl {
 	margin: 0 0.2rem;
+}
+#main .info dl:not(:has(dd)){
+	display: none;
 }
 #main .info dt {
 	padding: 0.7rem 2rem 0.8rem;

@@ -515,18 +515,6 @@ function custom_mime_types( $mimes ) {
    */
   add_filter("big_image_size_threshold", "__return_false");
 
-/// case post_per_page
-function wpd_testimonials_query($query)
-{
-	if (
-		!is_admin()
-		&& $query->is_post_type_archive('case')
-		&& $query->is_main_query()
-	) {
-		$query->set('posts_per_page', 15);
-	}
-}
-add_action('pre_get_posts', 'wpd_testimonials_query');
   
 /*
 * カスタム投稿のパーマリンクを調整
@@ -542,7 +530,7 @@ add_rewrite_rule('case/([^/]+)/page/([0-9]+)/?$', 'index.php?case_category=$matc
 */
 
 // ① タクソノミー登録（変更なし）
-function register_case_doctor_taxonomy() {
+/* function register_case_doctor_taxonomy() {
     register_taxonomy(
         'case_doctor',
         'case',
@@ -571,7 +559,7 @@ function register_case_staff_taxonomy() {
         )
     );
 }
-add_action('init', 'register_case_staff_taxonomy');
+add_action('init', 'register_case_staff_taxonomy'); */
 
 // ② 単一選択メタボックスの表示（変更なし）
 function single_term_meta_box($post, $box) {
@@ -645,56 +633,6 @@ function prevent_new_term_creation($post_id) {
 }
 add_action('save_post', 'prevent_new_term_creation', 20);
 
-// タクソノミーと投稿を同期し、不要なタームを削除
-function sync_staff_with_taxonomies($post_id) {
-    // 投稿タイプが 'staff' または 'case' の場合のみ実行
-    if (!in_array(get_post_type($post_id), ['staff', 'case'])) {
-        return;
-    }
-
-    // 対象のタクソノミー
-    $taxonomies = ['case_staff', 'case_doctor'];
-
-    // 1. 全ての staff 投稿を取得
-    $staff_posts = get_posts(array(
-        'post_type' => 'staff',
-        'post_status' => 'publish',
-        'numberposts' => -1,
-    ));
-
-    // 2. 現在の staff 投稿に基づくターム情報を収集
-    $valid_terms = [];
-    foreach ($staff_posts as $staff) {
-        $post_title = $staff->post_title;
-        $post_id = $staff->ID;
-
-        foreach ($taxonomies as $taxonomy) {
-            // 有効なタームリストを収集
-            $valid_terms[$taxonomy][$post_id] = $post_title;
-
-            // 存在しない場合はタームを作成
-            if (!get_term_by('slug', $post_id, $taxonomy)) {
-                wp_insert_term($post_title, $taxonomy, ['slug' => $post_id]);
-            }
-        }
-    }
-
-    // 3. すべてのタームを取得してクリーンアップ
-    foreach ($taxonomies as $taxonomy) {
-        $terms = get_terms([
-            'taxonomy' => $taxonomy,
-            'hide_empty' => false,
-        ]);
-
-        foreach ($terms as $term) {
-            // staff 投稿に存在しないタームを削除
-            if (!isset($valid_terms[$taxonomy][$term->slug])) {
-                wp_delete_term($term->term_id, $taxonomy);
-            }
-        }
-    }
-}
-add_action('save_post', 'sync_staff_with_taxonomies');
 
 
 function change_post_menu_label() {
@@ -733,6 +671,9 @@ function change_post_object_label() {
 add_action('init', 'change_post_object_label');
 
 
+function needRemoveP() {
+	remove_filter('the_content', 'wpautop');
+}
 
 
 /**
@@ -745,10 +686,17 @@ function getPageName(){
 		$pageId = get_the_ID();
 		$curPage = get_page($pageId);
 		$curPageParent = $curPage->post_parent;
-		if($curPageParent == 0){
+		if(is_page('price')){
+			$pname = 'reserve_price';
+		}
+		else if(is_page('access')){
+			$pname = 'reserve_access';
+		}
+		else if(is_page('case')){
+			$pname = 'reserve_case';
+		}
+		else{
 			$pname = $curPage->post_name;
-		}else{
-			$pname = get_page(get_top_parent_page_id())->post_name;
 		}
 	}
 	else if(is_post_type_archive('services')){
@@ -759,6 +707,20 @@ function getPageName(){
 	}
 	else if(is_post_type_archive('price')){
 		$pname = 'price';
+	}
+	else if(is_post_type_archive('case')){
+		$pname = 'case';
+	}
+	else if(is_singular( 'case' )){
+		$showin = get_field('ff_showin');
+		if($showin == 'reserve'){
+			$pname = 'reserve_case_detail';
+		}else {
+			$pname = 'case_detail';
+		}
+	}
+	else if(is_home()||is_front_page()){
+		$pname = 'index';
 	}
 	else{
 		$pname ='';
@@ -790,3 +752,49 @@ function wp_terms_checklist_args($args) {
 	$args['checked_ontop'] = false;
 	return $args;
 }
+
+
+// Customize mce editor font sizes
+if ( ! function_exists( 'wpex_mce_text_sizes' ) ) {
+	function wpex_mce_text_sizes( $initArray ){
+		$initArray['fontsize_formats'] = "1rem 1.1rem 1.2rem 1.3rem 1.4rem 1.5rem 1.6rem 1.7rem 1.8rem 1.9rem 2rem 2.1rem 2.2rem 2.3rem 2.4rem 2.5rem 2.6rem 2.7rem 2.8rem 2.9rem 3rem 3.1rem 3.2rem 3.3rem 3.4rem 3.5rem 3.6rem 3.7rem 3.8rem 3.9rem 4rem 4.1rem 4.2rem 4.3rem 4.4rem 4.5rem 4.6rem 4.7rem 4.8rem 4.9rem 5rem";
+		return $initArray;
+	}
+}
+add_filter( 'tiny_mce_before_init', 'wpex_mce_text_sizes' );
+
+
+function my_remove_pagenavi_css() {
+	if ( is_page('case')||is_post_type_archive('case') ) {
+		wp_deregister_style('wp-pagenavi'); 
+		wp_dequeue_style('wp-pagenavi');
+	}
+}
+add_action('wp_enqueue_scripts', 'my_remove_pagenavi_css', 100);
+
+
+add_filter('wpseo_opengraph_image', 'custom_og_image_for_specific_pages');
+function custom_og_image_for_specific_pages($image) {
+	if (is_page('lian-reserve')||is_page('lian-reserve/case')||is_page('lian-reserve/price')||is_page('lian-reserve/access')||is_page('lian-reserve/about')) {
+		return home_url() . '/wp-content/uploads/ogp_reserve.jpg';
+	}
+	if(is_singular('case')){
+		$showin = get_field('ff_showin');
+		if($showin == 'reserve'){
+			return home_url() . '/wp-content/uploads/ogp_reserve.jpg';
+		}
+	}
+	return $image;
+}
+
+
+function customize_main_query($q) {
+	if ( is_admin() || !$q->is_main_query() ) {
+		return;
+	}
+	if($q->is_post_type_archive('case')||is_page('case')) {
+		$q->set('posts_per_page', '30');
+		return;
+	}
+}
+add_action('pre_get_posts', 'customize_main_query' );

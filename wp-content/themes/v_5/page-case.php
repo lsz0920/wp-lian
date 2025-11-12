@@ -1,14 +1,34 @@
-<?php get_header('renew2025'); ?>
-<section class="mainBox">
-	<div class="checkBg"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg05.jpg" alt=""></div>
-	<div id="pagePath">
+<?php get_header('reserve'); ?>
+<div class="mainImg fullH">
+	<div class="bg fullH">
+		<picture>
+			<source srcset="<?php echo get_template_directory_uri(); ?>/renew2025/img/lian-reserve/case/main_img_sp.jpg" media="(max-width: 999px)">
+			<img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/lian-reserve/case/main_img.jpg" alt="">
+		</picture>
+	</div>
+	<div class="textBg">
+		<picture>
+			<source srcset="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/main_img_bg_sp.png" media="(max-width: 999px)">
+			<img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/main_img_bg.png" alt="">
+		</picture>
+	</div>
+	<h2><span class="en fadeTxt">CASE</span><span class="jp">豊富な症例実績と世界レベルの技術力</span></h2>
+	<div class="comScroll jsHoverTxt"><a href="#scroll">
+		<span class="scroll">
+			<span class="scrTxt off">SCROLL</span>
+			<span class="scrTxt hover">SCROLL</span>
+		</span>
+	</a></div>
+</div>
+<div class="mainBox" id="scroll">
+	<div id="pagePath" class="reserve">
 		<ul>
-			<li><a href="<?php echo home_url();?>">Top</a>/</li>
-			<li>Case</li>
+			<li><a href="<?php echo home_url();?>/lian-reserve/">TOP</a></li>
+			<li>CASE</li>
 		</ul>
 	</div>
+	<div class="checkBg"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg02.jpg" alt=""></div>
 	<div class="content">
-		<h2 class="headLine04"><span class="maskFadeH">Case</span></h2>
 		<?php 
 			$menu_id = @$_GET['menu']?$_GET['menu']:'';
 			$doctor_id = @$_GET['doctor']?$_GET['doctor']:'';
@@ -25,7 +45,7 @@
 					'relation' => 'AND',
 					array(
 						'key' => 'ff_showin',
-						'value' => 'clinic',
+						'value' => 'reserve',
 						'compare' => 'LIKE',
 					),
 				)
@@ -76,8 +96,8 @@
 				}
 			} wp_reset_postdata();
 		?>
-		<form role="search" method="get" action="<?php echo home_url( '/' ); ?>">
-			<input type="hidden" name="post_type" value="case">
+		<form role="search" method="get" action="<?php echo home_url( '/' ); ?>lian-reserve/case/">
+			<?php /* ?><input type="hidden" name="post_type" value="case"><?php */ ?>
 			<ul class="comSelectList flexB fadeInUp">
 				<li><select name="menu" onchange="this.form.submit()">
 						<option value="">施術から探す</option>
@@ -155,7 +175,7 @@
 					'relation' => 'AND',
 					array(
 						'key' => 'ff_showin',
-						'value' => 'clinic',
+						'value' => 'reserve',
 						'compare' => 'LIKE',
 					),
 					$menuAry,
@@ -173,11 +193,11 @@
 				if(!$image){
 					$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
 				}
-				$permalink = get_the_permalink();
 
 				$case_menu = get_field('ff_case_menu');
 				$staff_doctor = get_field('ff_staff_doctor');
 				$staff_nurse = get_field('ff_staff_nurse');
+				$permalink = get_the_permalink();
 
 				$case_menu_name = '';
 				if($case_menu){
@@ -238,4 +258,4 @@
 		</div>
 	</div>
 </section>
-<?php get_footer('renew2025'); ?>
+<?php get_footer('reserve'); ?>

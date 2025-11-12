@@ -1,20 +1,12 @@
-
-<?php get_header('renew2025'); 
-
-$showin = get_field('ff_showin');
-if($showin == 'reserve'){
-	get_template_part('single-case-reserve');
-}else {
-?>
 <div class="mainBox">
-	<div class="checkBg"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg05.jpg" alt=""></div>
-	<div id="pagePath">
+	<div class="checkBg"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg02.jpg" alt=""></div>
+	<div id="pagePath" class="reserve">
 		<?php 
 			$case_menu = get_field('ff_case_menu');
 		?>
 		<ul>
-			<li><a href="<?php echo home_url();?>">Top</a>/</li>
-			<li><a href="<?php echo home_url();?>/case/">Case</a>/</li>
+			<li><a href="<?php echo home_url();?>/lian-reserve/">TOP</a></li>
+			<li><a href="<?php echo home_url();?>/lian-reserve/case/">CASE</a></li>
 			<li>
 				<?php if($case_menu){
 					$num=0;
@@ -32,13 +24,13 @@ if($showin == 'reserve'){
 	</div>
 	<div class="comCaseDetail">
 		<section class="detail">
-			<h2 class="headLine06 maskFadeVPc maskFadeHSp"><a href="<?php echo home_url();?>/case/">Case</a></h2>
+			<h2 class="headLine06 maskFadeVPc maskFadeHSp"><a href="<?php echo home_url();?>/lian-reserve/case/">CASE</a></h2>
 			<div class="imgBox flex">
 				<?php 
 					$gallery = get_field('ff_gallery');
 					$summary = get_field('ff_summary');
 					$risks = get_field('ff_risks');
-					$price_clinic = get_field('ff_price_clinic');
+					$price_reserve = get_field('ff_price_reserve');
 					if($gallery){
 				?>
 				<div class="photoBox swiper fadeInUp">
@@ -83,9 +75,9 @@ if($showin == 'reserve'){
 						<h4>副作用・リスク</h4>
 						<?php echo $risks; ?>
 						<?php } ?>
-						<?php if($price_clinic) {?>
+						<?php if($price_reserve) {?>
 						<h4>施術の価格<small>※価格は税込表記です。</small></h4>
-						<p><?php echo $price_clinic; ?></p>
+						<p><?php echo $price_reserve; ?></p>
 						<?php } ?>
 					</div>
 					<?php 
@@ -248,36 +240,30 @@ if($showin == 'reserve'){
 		<?php } wp_reset_postdata();?>
 
 		<?php 
-			$meta_query = array(
-				array(
-					'key' => 'ff_showin',
-					'value' => 'clinic',
-					'compare' => '=',
-				),
-			);
-
-			if ( !empty($case_menu_ary) ) {
-				$meta_menu = array( 'relation' => 'OR' );
-				foreach ( $case_menu_ary as $id ) {
-					$meta_menu[] = array(
-						'key'     => 'ff_case_menu',
-						'value'   => '"' . $id . '"',
-						'compare' => 'LIKE',
-					);
-				}
-				$meta_query[] = $meta_menu;
-			}
 			$args = array(
 				'post_type' => 'case',
 				'posts_per_page' => 4,
-				'meta_query'     => $meta_query,
+				'meta_query' => array(
+					array(
+						'key' => 'ff_showin',
+						'value' => 'reserve',
+						'compare' => '==',
+					),
+				)
 			);
+			foreach ( $case_menu_ary as $id ) {
+				$meta_query[] = array(
+					'key'     => 'ff_menu',
+					'value'   => '"' . $id . '"',
+					'compare' => 'LIKE'
+				);
+			}
 			$query = new WP_Query($args);
 			if ( $query->have_posts() ) {
 		?>
 		<section class="btmBox">
 			<div class="content">
-				<h3 class="headLine07 fadeInUp">Related Cases</h3>
+				<h3 class="headLine07 fadeInUp">RELATED CASES</h3>
 				<ul class="comCaseList flex fadeAni">
 					<?php while ( $query->have_posts() ) { $query->the_post(); 
 						$image = get_field('ff_gallery')[0]['url'];
@@ -286,10 +272,6 @@ if($showin == 'reserve'){
 						}
 
 						$case_menu = get_field('ff_case_menu');
-						$staff_doctor = get_field('ff_staff_doctor');
-						$staff_nurse = get_field('ff_staff_nurse');
-						$permalink = get_the_permalink();
-
 						$case_menu_name = '';
 						if($case_menu){
 							$menu_num = 0;
@@ -303,6 +285,9 @@ if($showin == 'reserve'){
 								}
 							}
 						} wp_reset_postdata();
+
+						$staff_doctor = get_field('ff_staff_doctor');
+						$staff_nurse = get_field('ff_staff_nurse');
 
 						$staff_doctor_name = '';
 						if($staff_doctor){
@@ -320,7 +305,7 @@ if($showin == 'reserve'){
 							}
 						} wp_reset_postdata();
 					?>
-					<li class="fade"><a href="<?php echo $permalink; ?>">
+					<li class="fade"><a href="<?php the_permalink(); ?>">
 						<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="300x300"></div>
 						<p>
 							<span class="serif"><?php echo $case_menu_name; ?></span>
@@ -330,11 +315,14 @@ if($showin == 'reserve'){
 					</a></li>
 					<?php } ?>
 				</ul>
-				<div class="comLink fadeInUp"><a href="<?php echo home_url();?>/case/">View More</a></div>
+				<div class="comBtn jsHoverTxt"><a href="<?php echo home_url();?>/lian-reserve/case/">
+					<span class="scroll">
+						<span class="scrTxt off">VIEW MORE</span>
+						<span class="scrTxt hover">VIEW MORE</span>
+					</span>
+				</a></div>
 			</div>
 		</section>
 		<?php } wp_reset_postdata();?>
 	</div>
 </div>
-<?php } ?>
-<?php get_footer('renew2025'); ?>
