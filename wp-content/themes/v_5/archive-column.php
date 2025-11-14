@@ -13,20 +13,20 @@ get_header();
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main sl">
-    <div class="breadcrumbs">
-      <div class="breadcrumbs-inn">
-        <?php
-          if(function_exists( 'yoast_breadcrumb' )){
-            yoast_breadcrumb( '<div id="breadcrumbs">', '</div>');
-          }
-        ?>
-      </div>
-    </div>
+    <div class="mainBox">
+		<div class="checkBg"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg01.jpg" alt=""></div>
+		<div class="comInfo">
+			<div id="pagePath">
+				<ul>
+					<li><a href="<?php echo home_url();?>">Top</a>/</li>
+					<li>コラム</li>
+				</ul>
+			</div>
     <div id="column" class="sl-column">
       <div class="sl-column-inn">
-        <div class="sl-column-inn-ttl subpage-ttl">
-          <h1 class="under-line">コラム</h1>
-        </div>
+        
+          <h2 class="heading01">コラム</h2>
+       
         <div class="d-fl sl-column-inn-content">
           <div class="column-cate">
             <div class="column-cate-wr category column-cate-sp-dropdown">
@@ -77,7 +77,7 @@ get_header();
       </div>
     </div>
 
-	  <?php get_template_part( 'footer-company' );?>
+		</div></div>
   </main>
 </div>
 

@@ -695,22 +695,22 @@ get_header();
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main sl">
-    <div class="breadcrumbs">
-      <div class="breadcrumbs-inn">
-        <?php
-          if(function_exists( 'yoast_breadcrumb' )){
-            yoast_breadcrumb( '<div id="breadcrumbs">', '</div>');
-          }
-        ?>
-      </div>
-    </div>
+       <div class="mainBox">
+		<div class="checkBg"><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg01.jpg" alt=""></div>
+		<div class="comInfo">
+			<div id="pagePath">
+				<ul>
+					<li><a href="<?php echo home_url();?>">Top</a>/</li>
+					<li>FAQ</li>
+				</ul>
+			</div>
     <?php $locale = get_locale();
     if ('en_US' == $locale  ) { ?>
       <div id="faq" class="sl-faq">
         <div class="sl-faq-inn">
-          <div class="sl-faq-inn-ttl subpage-ttl">
-            <h1 class="under-line">FAQ</h1>
-          </div>
+        
+            <h2 class="heading01 roboto">FAQ</h2>
+        
           <div class="d-fl sl-faq-inn-content">
             <div class="faq-cate faq-cate-sp-dropdown">
               <h3 class="faq-cate-ttl">CATEGORY</h3>
@@ -894,9 +894,7 @@ get_header();
     <?php } else { ?>
     <div id="faq" class="sl-faq">
       <div class="sl-faq-inn">
-        <div class="sl-faq-inn-ttl subpage-ttl">
-          <h1 class="under-line">FAQ</h1>
-        </div>
+       <h2 class="heading01 roboto">FAQ</h2>
         <div class="d-fl sl-faq-inn-content">
           <div class="faq-cate faq-cate-sp-dropdown">
             <h3 class="faq-cate-ttl">CATEGORY</h3>
@@ -976,7 +974,7 @@ get_header();
     </div>
     <?php } ?>
 
-    <?php get_template_part( 'footer-company' );?>
+		</div></div>
   </main>
 </div>
 

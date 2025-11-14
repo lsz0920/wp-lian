@@ -84,30 +84,76 @@
 				<h2 class="headLine10 fadeInUp"><span class="en">Extensive Clinical Experience</span>豊富な症例実績</h2>
 				<p class="topText serif fadeInUp">たるみ治療に特化した美容医療クリニックとして、<br>豊富な症例実績と高い技術力で<br class="sp">多くのお客様に選ばれています。</p>
 				<ul class="topLink flexC fadeInUp">
-					<li><a href="#">高周波 800件</a></li>
-					<li><a href="#">HIFU 800件</a></li>
-					<li><a href="#">ECM製剤 800件</a></li>
-					<li><a href="#">ヒアルロン酸 800件以上</a></li>
+					<li><span>高周波 800件</span></li>
+					<li><span>HIFU 800件</span></li>
+					<li><span>ECM製剤 800件</span></li>
+					<li><span>ヒアルロン酸 800件以上</span></li>
 				</ul>
 				<p class="popText fadeInUp"><a href="javascript:;" class="popLink noFade" data-pop="pop01">※2022年～2025年8月末現在</a></p>
+				<?php $args = array(
+					'post_type' => 'case',
+					'posts_per_page' => 4,
+					'meta_query' => array(
+						'relation' => 'AND',
+						array(
+							'key'     => 'ff_pickup',
+							'value'   => 1,
+						),
+						array(
+							'key' => 'ff_showin',
+							'value' => '"reserve"',
+							'compare' => 'LIKE',
+						),
+					),
+				);
+				$query = new WP_Query( $args );
+				if($query->have_posts()): ?>
 				<div class="fadeInUp">
 					<ul class="caseList">
-						<li><a href="#">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo01.jpg" alt="" data-size="220x220"></div>
-							<p><span>ショートスレッド</span>（医師）松井 泉</p>
+						<?php while($query->have_posts()): $query->the_post();
+							$image = @get_field('ff_gallery')[0]['url'];
+							if(!$image){
+								$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+							}
+							$permalink = get_the_permalink();
+							$case_menu = get_field('ff_case_menu');
+							$staff_doctor = get_field('ff_staff_doctor');
+							$staff_nurse = get_field('ff_staff_nurse');
+						
+							$case_menu_name = '';
+							if($case_menu){
+								$menu_num = 0;
+								foreach($case_menu as $post){
+									setup_postdata($post);
+									$menu_num++;
+									if($menu_num == 1){
+										$case_menu_name = get_the_title();
+									}else {
+										$case_menu_name = $case_menu_name.'＋'.get_the_title();
+									}
+								}
+							} wp_reset_postdata();
+
+							$staff_doctor_name = '';
+							if($staff_doctor){
+								foreach($staff_doctor as $post){
+									setup_postdata($post);
+									$staff_doctor_name = $staff_doctor_name.'（医師）'.get_the_title().'<br>';
+								}
+							} wp_reset_postdata();
+						
+							$staff_nurse_name = '';
+							if($staff_nurse){
+								foreach($staff_nurse as $post){
+									setup_postdata($post);
+									$staff_nurse_name = $staff_nurse_name.'（看護師）'.get_the_title().'<br>';
+								}
+							} wp_reset_postdata(); ?>
+						<li><a href="<?php echo $permalink; ?>">
+							<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="220x220"></div>
+							<p><span><?php echo $case_menu_name; ?></span><?php echo $staff_doctor_name.$staff_nurse_name; ?></p>
 						</a></li>
-						<li><a href="#">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo02.jpg" alt="" data-size="220x220"></div>
-							<p><span>ヒアルロン酸</span>（医師）藤尾 謙太</p>
-						</a></li>
-						<li><a href="#">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo03.jpg" alt="" data-size="220x220"></div>
-							<p><span>サーマジェン</span>（看護師）藤尾 有紀</p>
-						</a></li>
-						<li><a href="#">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo04.jpg" alt="" data-size="220x220"></div>
-							<p><span>ボルニューマ</span>（医師）藤尾 謙太（看護師）弓田 有沙</p>
-						</a></li>
+						<?php endwhile; wp_reset_postdata(); ?>
 					</ul>
 					<ul class="comArrow flexB">
 						<li class="prev"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/prev_white.png" alt="" data-size="13x14"></li>
@@ -115,11 +161,12 @@
 					</ul>
 				</div>
 				<div class="comBtn jsHoverTxt  white fadeInUp roboto"><a href="<?php echo home_url();?>/lian-reserve/case/">
-				<span class="scroll">
-					<span class="scrTxt off">CASE</span>
-					<span class="scrTxt hover">CASE</span>
-				</span>
-			</a></div>
+					<span class="scroll">
+						<span class="scrTxt off">CASE</span>
+						<span class="scrTxt hover">CASE</span>
+					</span>
+				</a></div>
+				<?php endif; ?>
 			</div>
 		</section>
 	</div>

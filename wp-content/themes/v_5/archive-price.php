@@ -37,12 +37,40 @@
 							<table>
 								<?php 
 									if ( ! empty( $price_table['header'] ) ) {
+										$theadNum03=0;
 										echo '<thead>';
 											echo '<tr>';
 												foreach ( $price_table['header'] as $th ) {
-													echo '<th>';
-														echo $th['c'];
-													echo '</th>';
+													$theadNum03++;
+													$c = $th['c'];
+													if($c){
+														preg_match('|row(\d+)|', $c, $rowMatches);
+														if($rowMatches){
+															$row = ' rowspan="'.$rowMatches[1].'"';
+														}else{
+															$row = '';
+														}
+														preg_match('|col(\d+)|', $c, $colMatches);
+														if($colMatches){
+															$col = ' colspan="'.$colMatches[1].'"';
+														}else{
+															$col = '';
+														}
+														if($theadNum03 == 1){
+															$tdHtml = '<th'.$row.$col.'>';
+														}else {
+															$tdHtml = '<td'.$row.$col.'>';
+														}
+														$c = preg_replace('/\|row(\d+)\|/', '', $c);
+														$c = preg_replace('/\|col(\d+)\|/', '', $c);
+														echo $tdHtml;
+															echo $c;
+														if($theadNum03 == 1){
+															echo '</th>';
+														}else {
+															echo '</td>';
+														}
+													}
 												}
 											echo '</tr>';
 										echo '</thead>';
@@ -57,13 +85,13 @@
 												$topNum++;
 												$c = $td['c'];
 												if($c){
-													preg_match('|row(\d)+|', $c, $rowMatches);
+													preg_match('|row(\d+)|', $c, $rowMatches);
 													if($rowMatches){
 														$row = ' rowspan="'.$rowMatches[1].'"';
 													}else{
 														$row = '';
 													}
-													preg_match('|col(\d)+|', $c, $colMatches);
+													preg_match('|col(\d+)|', $c, $colMatches);
 													if($colMatches){
 														$col = ' colspan="'.$colMatches[1].'"';
 													}else{
@@ -74,8 +102,8 @@
 													}else {
 														$tdHtml = '<td'.$row.$col.'>';
 													}
-													$c = preg_replace('/\|row(\d)+\|/', '', $c);
-													$c = preg_replace('/\|col(\d)+\|/', '', $c);
+													$c = preg_replace('/\|row(\d+)\|/', '', $c);
+													$c = preg_replace('/\|col(\d+)\|/', '', $c);
 													echo $tdHtml;
 														echo $c;
 													if($topNum == 1){
@@ -122,7 +150,14 @@
 											'value' => 'clinic',
 											'compare' => '==',
 										),
-									)
+									),
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'services_cat',
+											'field' => 'term_id',
+											'terms' => array(497),
+										),
+									),
 								);
 								$all_query = new WP_Query($all_args);
 								if ( $all_query->have_posts() ) { 
@@ -132,7 +167,7 @@
 									if($services_terms){
 										foreach($services_terms as $term){
 											$services_name = $term->name;
-											if(!in_array($services_name,$category_ary)){
+											if(!in_array($services_name,$category_ary) && $term->parent == 497){
 												array_push($category_ary, $services_name);
 											}
 										}
@@ -172,234 +207,291 @@
 					</ul>
 				</div>
 			</div>
-			<div class="whiteBg fadeInUp jsBox">
-				<div class="content">
-					<?php 
+			<div class="jsBox">
+			<?php 
+			$args = array(
+				'taxonomy' => 'services_cat',
+				'hide_empty' => 1,
+				'exclude' => '',
+				'parent' => 497,
+			);
+			$terms = get_terms( $args );
+			$terms = array_filter($terms, function($term) {
+				return $term->parent != 0;
+			});
+			if($terms){
+				foreach($terms as $term) {
 					$args = array(
-						'taxonomy' => 'services_cat',
-						'hide_empty' => 1,
-						'exclude' => '',
+						'post_type' => 'price',
+						'posts_per_page' => -1,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'services_cat',
+								'field' => 'slug',
+								'terms' => $term->slug
+							)
+						),
+						'meta_query' => array(
+							array(
+								'key' => 'ff_shopin',
+								'value' => 'clinic',
+								'compare' => '==',
+							),
+						)
 					);
-					$terms = get_terms( $args );
-					$terms = array_filter($terms, function($term) {
-						return $term->parent != 0;
-					});
-					if($terms){
-						foreach($terms as $term) {
-					?>
-						<div class="priceBox" data-category="<?php echo $term->name; ?>">
-							<?php 
-								$args = array(
-									'post_type' => 'price',
-									'posts_per_page' => -1,
-									'tax_query' => array(
-										array(
-											'taxonomy' => 'services_cat',
-											'field' => 'slug',
-											'terms' => $term->slug
-										)
-									),
-									'meta_query' => array(
-										array(
-											'key' => 'ff_shopin',
-											'value' => 'clinic',
-											'compare' => '==',
-										),
-									)
-								);
-								$query = new WP_Query($args);
-								if ( $query->have_posts() ) { 
-							?>
-							<h4 class="headLine08"><?php echo $term->name; ?></h4>
-							<?php
-							while ( $query->have_posts() ) { $query->the_post();
-								$menu = get_field('ff_menu');
-								$table = get_field('ff_table');
-								$caption = get_field('ff_caption');
-								if($menu){
-									foreach( $menu as $post ):
-									setup_postdata($post);
-									$menu_title = get_the_title();
-									endforeach;
-								}
-							?>
-							<div class="subBox" data-menu="<?php if($menu){ echo $menu_title; } ?>">
-								<h5 class="headLine09"><?php if($menu){ echo $menu_title; }else { the_title(); } ?></h5>
-								<div class="comTab">
-									<table>
-										<?php 
-											if ( ! empty( $table['header'] ) ) {
-												echo '<thead>';
-													echo '<tr>';
-														foreach ( $table['header'] as $th ) {
-															echo '<th>';
-																echo $th['c'];
-															echo '</th>';
-														}
-													echo '</tr>';
-												echo '</thead>';
-											}
-										?>
-										<tbody>
-											<?php 
-												foreach ( $table['body'] as $tr ) {
-													echo '<tr>';
-													$num=0;
-													foreach ( $tr as $td ) {
-														$num++;
-														$c = $td['c'];
-														if($c){
-															preg_match('|row(\d)+|', $c, $rowMatches);
-															if($rowMatches){
-																$row = ' rowspan="'.$rowMatches[1].'"';
-															}else{
-																$row = '';
-															}
-															preg_match('|col(\d)+|', $c, $colMatches);
-															if($colMatches){
-																$col = ' colspan="'.$colMatches[1].'"';
-															}else{
-																$col = '';
-															}
-															if($num == 1){
-																$tdHtml = '<th'.$row.$col.'>';
-															}else {
-																$tdHtml = '<td'.$row.$col.'>';
-															}
-															$c = preg_replace('/\|row(\d)+\|/', '', $c);
-															$c = preg_replace('/\|col(\d)+\|/', '', $c);
-															echo $tdHtml;
-																echo $c;
-															if($num == 1){
-																echo '</th>';
-															}else {
-																echo '</td>';
-															}
-														}
-													}
-													echo '</tr>';
-												}
-											?>
-										</tbody>
-									</table>
-								</div>
-								<?php if($caption) {?>
-								<div class="noteList">
-									<p><?php echo $caption; ?></p>
-								</div>
-								<?php } ?>
-							</div>
-							<?php } } wp_reset_postdata(); ?>
-						</div>
-					<?php } } ?>
-				</div>
-			</div>			
-			<div class="whiteBg fadeInUp">
+					$query = new WP_Query($args);
+					if ( $query->have_posts() ) {
+			?>
+			<div class="whiteBg fadeInUp" data-category="<?php echo $term->name; ?>">
 				<div class="content">
-					<?php 
-					$args2 = array(
-						'taxonomy' => 'price_cat',
-						'hide_empty' => 1,
-						'exclude' => '',
-					);
-					$terms2 = get_terms( $args2 );
-					if($terms2){
-						foreach($terms2 as $term2) {
-					?>
-						<div class="priceBox">
-							<?php 
-								$args2 = array(
-									'post_type' => 'price',
-									'posts_per_page' => -1,
-									'tax_query' => array(
-										array(
-											'taxonomy' => 'price_cat',
-											'field' => 'slug',
-											'terms' => $term2->slug
-										)
-									),
-									'meta_query' => array(
-										array(
-											'key' => 'ff_shopin',
-											'value' => 'clinic',
-											'compare' => '==',
-										),
-									)
-								);
-								$priceQuery = new WP_Query($args2);
-								if ( $priceQuery->have_posts() ) { 
-							?>
-							<h4 class="headLine08"><?php echo $term2->name; ?></h4>
-							<?php
-							while ( $priceQuery->have_posts() ) { $priceQuery->the_post();
-								$table = get_field('ff_table');
-							?>
-							<div class="subBox">
-								<h5 class="headLine09"><?php the_title(); ?></h5>
-								<div class="comTab">
-									<table>
-										<?php 
-											if ( ! empty( $table['header'] ) ) {
-												echo '<thead>';
-													echo '<tr>';
-														foreach ( $table['header'] as $th ) {
-															echo '<th>';
-																echo $th['c'];
-															echo '</th>';
-														}
-													echo '</tr>';
-												echo '</thead>';
-											}
-										?>
-										<tbody>
-											<?php 
-												foreach ( $table['body'] as $tr ) {
-													echo '<tr>';
-													$num=0;
-													foreach ( $tr as $td ) {
-														$num++;
-														$c = $td['c'];
+					<div class="priceBox">
+						<h4 class="headLine08"><?php echo $term->name; ?></h4>
+						<?php
+						while ( $query->have_posts() ) { $query->the_post();
+							$menu = get_field('ff_menu');
+							$table = get_field('ff_table');
+							$caption = get_field('ff_caption');
+							if($menu){
+								foreach( $menu as $post ):
+								setup_postdata($post);
+								$menu_title = get_the_title();
+								endforeach;
+							}
+						?>
+						<div class="subBox" data-menu="<?php if($menu){ echo $menu_title; } ?>">
+							<h5 class="headLine09"><?php if($menu){ echo $menu_title; }else { the_title(); } ?></h5>
+							<div class="comTab">
+								<table>
+									<?php 
+										if ( ! empty( $table['header'] ) ) {
+											$theadNum=0;
+											echo '<thead>';
+												echo '<tr>';
+													foreach ( $table['header'] as $th ) {
+														$theadNum++;
+														$c = $th['c'];
 														if($c){
-															preg_match('|row(\d)+|', $c, $rowMatches);
+															preg_match('|row(\d+)|', $c, $rowMatches);
 															if($rowMatches){
 																$row = ' rowspan="'.$rowMatches[1].'"';
 															}else{
 																$row = '';
 															}
-															preg_match('|col(\d)+|', $c, $colMatches);
+															preg_match('|col(\d+)|', $c, $colMatches);
 															if($colMatches){
 																$col = ' colspan="'.$colMatches[1].'"';
 															}else{
 																$col = '';
 															}
-															if($num == 1){
+															if($theadNum == 1){
 																$tdHtml = '<th'.$row.$col.'>';
 															}else {
 																$tdHtml = '<td'.$row.$col.'>';
 															}
-															$c = preg_replace('/\|row(\d)+\|/', '', $c);
-															$c = preg_replace('/\|col(\d)+\|/', '', $c);
+															$c = preg_replace('/\|row(\d+)\|/', '', $c);
+															$c = preg_replace('/\|col(\d+)\|/', '', $c);
 															echo $tdHtml;
 																echo $c;
-															if($num == 1){
+															if($theadNum == 1){
 																echo '</th>';
 															}else {
 																echo '</td>';
 															}
 														}
 													}
-													echo '</tr>';
+												echo '</tr>';
+											echo '</thead>';
+										}
+									?>
+									<tbody>
+										<?php 
+											foreach ( $table['body'] as $tr ) {
+												echo '<tr>';
+												$num=0;
+												foreach ( $tr as $td ) {
+													$num++;
+													$c = $td['c'];
+													if($c){
+														preg_match('|row(\d+)|', $c, $rowMatches);
+														if($rowMatches){
+															$row = ' rowspan="'.$rowMatches[1].'"';
+														}else{
+															$row = '';
+														}
+														preg_match('|col(\d+)|', $c, $colMatches);
+														if($colMatches){
+															$col = ' colspan="'.$colMatches[1].'"';
+														}else{
+															$col = '';
+														}
+														if($num == 1){
+															$tdHtml = '<th'.$row.$col.'>';
+														}else {
+															$tdHtml = '<td'.$row.$col.'>';
+														}
+														$c = preg_replace('/\|row(\d+)\|/', '', $c);
+														$c = preg_replace('/\|col(\d+)\|/', '', $c);
+														echo $tdHtml;
+															echo $c;
+														if($num == 1){
+															echo '</th>';
+														}else {
+															echo '</td>';
+														}
+													}
 												}
-											?>
-										</tbody>
-									</table>
-								</div>
+												echo '</tr>';
+											}
+										?>
+									</tbody>
+								</table>
 							</div>
-							<?php } } wp_reset_postdata(); ?>
+							<?php if($caption) {?>
+							<div class="noteList">
+								<p><?php echo $caption; ?></p>
+							</div>
+							<?php } ?>
 						</div>
-					<?php } } ?>
+						<?php } ?>
+					</div>
 				</div>
 			</div>
+			<?php } wp_reset_postdata(); ?>
+			<?php } } ?>
+			</div>
+			<?php 
+			$args2 = array(
+				'taxonomy' => 'price_cat',
+				'hide_empty' => 1,
+				'exclude' => '',
+			);
+			$terms2 = get_terms( $args2 );
+			if($terms2){
+				foreach($terms2 as $term2) {
+					$args2 = array(
+						'post_type' => 'price',
+						'posts_per_page' => -1,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'price_cat',
+								'field' => 'slug',
+								'terms' => $term2->slug
+							)
+						),
+						'meta_query' => array(
+							array(
+								'key' => 'ff_shopin',
+								'value' => 'clinic',
+								'compare' => '==',
+							),
+						)
+					);
+					$priceQuery = new WP_Query($args2);
+					if ( $priceQuery->have_posts() ) { 
+				?>
+			<div class="whiteBg fadeInUp">
+				<div class="content">
+					<div class="priceBox">
+						<h4 class="headLine08"><?php echo $term2->name; ?></h4>
+						<?php
+						while ( $priceQuery->have_posts() ) { $priceQuery->the_post();
+							$table = get_field('ff_table');
+						?>
+						<div class="subBox">
+							<h5 class="headLine09"><?php the_title(); ?></h5>
+							<div class="comTab">
+								<table>
+									<?php 
+										if ( ! empty( $table['header'] ) ) {
+											$theadNum02=0;
+											echo '<thead>';
+												echo '<tr>';
+													foreach ( $table['header'] as $th ) {
+														$theadNum02++;
+														$c = $th['c'];
+														if($c){
+															preg_match('|row(\d+)|', $c, $rowMatches);
+															if($rowMatches){
+																$row = ' rowspan="'.$rowMatches[1].'"';
+															}else{
+																$row = '';
+															}
+															preg_match('|col(\d+)|', $c, $colMatches);
+															if($colMatches){
+																$col = ' colspan="'.$colMatches[1].'"';
+															}else{
+																$col = '';
+															}
+															if($theadNum02 == 1){
+																$tdHtml = '<th'.$row.$col.'>';
+															}else {
+																$tdHtml = '<td'.$row.$col.'>';
+															}
+															$c = preg_replace('/\|row(\d+)\|/', '', $c);
+															$c = preg_replace('/\|col(\d+)\|/', '', $c);
+															echo $tdHtml;
+																echo $c;
+															if($theadNum02 == 1){
+																echo '</th>';
+															}else {
+																echo '</td>';
+															}
+														}
+													}
+												echo '</tr>';
+											echo '</thead>';
+										}
+									?>
+									<tbody>
+										<?php 
+											foreach ( $table['body'] as $tr ) {
+												echo '<tr>';
+												$num=0;
+												foreach ( $tr as $td ) {
+													$num++;
+													$c = $td['c'];
+													if($c){
+														preg_match('|row(\d+)|', $c, $rowMatches);
+														if($rowMatches){
+															$row = ' rowspan="'.$rowMatches[1].'"';
+														}else{
+															$row = '';
+														}
+														preg_match('|col(\d+)|', $c, $colMatches);
+														if($colMatches){
+															$col = ' colspan="'.$colMatches[1].'"';
+														}else{
+															$col = '';
+														}
+														if($num == 1){
+															$tdHtml = '<th'.$row.$col.'>';
+														}else {
+															$tdHtml = '<td'.$row.$col.'>';
+														}
+														$c = preg_replace('/\|row(\d+)\|/', '', $c);
+														$c = preg_replace('/\|col(\d+)\|/', '', $c);
+														echo $tdHtml;
+															echo $c;
+														if($num == 1){
+															echo '</th>';
+														}else {
+															echo '</td>';
+														}
+													}
+												}
+												echo '</tr>';
+											}
+										?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+			<?php } wp_reset_postdata(); ?>
+			<?php } } ?>
 		</section>
 		<div class="btmBox">
 			<div class="content fadeInUp">

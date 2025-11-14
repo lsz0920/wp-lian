@@ -150,14 +150,34 @@
 										$thNum=0;
 											foreach ( $table['header'] as $th ) {
 												$thNum++;
-												if($thNum == 1){
-													echo '<th>';
-														echo $th['c'];
-													echo '</th>';
-												}else {
-													echo '<td>';
-														echo $th['c'];
-													echo '</td>';
+												$c = $th['c'];
+												if($c){
+													preg_match('|row(\d+)|', $c, $rowMatches);
+													if($rowMatches){
+														$row = ' rowspan="'.$rowMatches[1].'"';
+													}else{
+														$row = '';
+													}
+													preg_match('|col(\d+)|', $c, $colMatches);
+													if($colMatches){
+														$col = ' colspan="'.$colMatches[1].'"';
+													}else{
+														$col = '';
+													}
+													if($thNum == 1){
+														$tdHtml = '<th'.$row.$col.'>';
+													}else {
+														$tdHtml = '<td'.$row.$col.'>';
+													}
+													$c = preg_replace('/\|row(\d+)\|/', '', $c);
+													$c = preg_replace('/\|col(\d+)\|/', '', $c);
+													echo $tdHtml;
+														echo $c;
+													if($thNum == 1){
+														echo '</th>';
+													}else {
+														echo '</td>';
+													}
 												}
 											}
 										echo '</tr>';
@@ -173,13 +193,13 @@
 											$num++;
 											$c = $td['c'];
 											if($c){
-												preg_match('|row(\d)+|', $c, $rowMatches);
+												preg_match('|row(\d+)|', $c, $rowMatches);
 												if($rowMatches){
 													$row = ' rowspan="'.$rowMatches[1].'"';
 												}else{
 													$row = '';
 												}
-												preg_match('|col(\d)+|', $c, $colMatches);
+												preg_match('|col(\d+)|', $c, $colMatches);
 												if($colMatches){
 													$col = ' colspan="'.$colMatches[1].'"';
 												}else{
@@ -190,8 +210,8 @@
 												}else {
 													$tdHtml = '<td'.$row.$col.'>';
 												}
-												$c = preg_replace('/\|row(\d)+\|/', '', $c);
-												$c = preg_replace('/\|col(\d)+\|/', '', $c);
+												$c = preg_replace('/\|row(\d+)\|/', '', $c);
+												$c = preg_replace('/\|col(\d+)\|/', '', $c);
 												echo $tdHtml;
 													echo $c;
 												if($num == 1){
@@ -379,7 +399,7 @@
 	<?php 
 		$colum12 = get_field('ff_colum12');
 		if($colum12){
-			$colum12_ttl = get_sub_field('ff_colum12_ttl');
+			$colum12_ttl = $colum12['ff_colum12_ttl'];
 		}
 		$services_terms = get_the_terms($post->ID,'services_cat');
 		$services_ary = [];

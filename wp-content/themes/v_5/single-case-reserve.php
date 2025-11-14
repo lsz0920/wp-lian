@@ -63,7 +63,7 @@
 							<?php if($menu_num != 1) {?>
 							<span class="ico">＋</span>
 							<?php } ?>
-							<a href="<?php the_permalink(); ?>" class="txt"><?php the_title(); ?></a>
+							<a href="<?php the_permalink(); ?>" class="txt nolink"><?php the_title(); ?></a>
 							<?php } ?>
 						</h3>
 						<?php } wp_reset_postdata();?>
@@ -161,7 +161,7 @@
 							array(
 								'key' => 'ff_shopin',
 								'value' => 'reserve',
-								'compare' => '==',
+								'compare' => '=',
 							),
 						)
 					);
@@ -178,12 +178,40 @@
 						<table>
 							<?php 
 								if ( ! empty( $table['header'] ) ) {
+									$theadNum=0;
 									echo '<thead>';
 										echo '<tr>';
 											foreach ( $table['header'] as $th ) {
-												echo '<th>';
-													echo $th['c'];
-												echo '</th>';
+												$theadNum++;
+												$c = $th['c'];
+												if($c){
+													preg_match('|row(\d+)|', $c, $rowMatches);
+													if($rowMatches){
+														$row = ' rowspan="'.$rowMatches[1].'"';
+													}else{
+														$row = '';
+													}
+													preg_match('|col(\d+)|', $c, $colMatches);
+													if($colMatches){
+														$col = ' colspan="'.$colMatches[1].'"';
+													}else{
+														$col = '';
+													}
+													if($theadNum == 1){
+														$tdHtml = '<th'.$row.$col.'>';
+													}else {
+														$tdHtml = '<td'.$row.$col.'>';
+													}
+													$c = preg_replace('/\|row(\d+)\|/', '', $c);
+													$c = preg_replace('/\|col(\d+)\|/', '', $c);
+													echo $tdHtml;
+														echo $c;
+													if($theadNum == 1){
+														echo '</th>';
+													}else {
+														echo '</td>';
+													}
+												}
 											}
 										echo '</tr>';
 									echo '</thead>';
@@ -198,13 +226,13 @@
 											$num++;
 											$c = $td['c'];
 											if($c){
-												preg_match('|row(\d)+|', $c, $rowMatches);
+												preg_match('|row(\d+)|', $c, $rowMatches);
 												if($rowMatches){
 													$row = ' rowspan="'.$rowMatches[1].'"';
 												}else{
 													$row = '';
 												}
-												preg_match('|col(\d)+|', $c, $colMatches);
+												preg_match('|col(\d+)|', $c, $colMatches);
 												if($colMatches){
 													$col = ' colspan="'.$colMatches[1].'"';
 												}else{
@@ -215,8 +243,8 @@
 												}else {
 													$tdHtml = '<td'.$row.$col.'>';
 												}
-												$c = preg_replace('/\|row(\d)+\|/', '', $c);
-												$c = preg_replace('/\|col(\d)+\|/', '', $c);
+												$c = preg_replace('/\|row(\d+)\|/', '', $c);
+												$c = preg_replace('/\|col(\d+)\|/', '', $c);
 												echo $tdHtml;
 													echo $c;
 												if($num == 1){
@@ -246,7 +274,7 @@
 				'meta_query' => array(
 					array(
 						'key' => 'ff_showin',
-						'value' => 'reserve',
+						'value' => '"reserve"',
 						'compare' => '==',
 					),
 				)
@@ -271,7 +299,11 @@
 							$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
 						}
 
+						$permalink = get_the_permalink();
 						$case_menu = get_field('ff_case_menu');
+						$staff_doctor = get_field('ff_staff_doctor');
+						$staff_nurse = get_field('ff_staff_nurse');
+
 						$case_menu_name = '';
 						if($case_menu){
 							$menu_num = 0;
@@ -286,8 +318,6 @@
 							}
 						} wp_reset_postdata();
 
-						$staff_doctor = get_field('ff_staff_doctor');
-						$staff_nurse = get_field('ff_staff_nurse');
 
 						$staff_doctor_name = '';
 						if($staff_doctor){
@@ -305,7 +335,7 @@
 							}
 						} wp_reset_postdata();
 					?>
-					<li class="fade"><a href="<?php the_permalink(); ?>">
+					<li class="fade"><a href="<?php echo $permalink;; ?>">
 						<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="300x300"></div>
 						<p>
 							<span class="serif"><?php echo $case_menu_name; ?></span>

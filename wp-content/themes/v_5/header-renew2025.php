@@ -37,17 +37,19 @@ if(is_singular( 'case' )){
 </head>
 <body>
 <div id="container">
-	<div id="cover"></div>
 	<?php 
 		if(is_singular( 'case' )){
 			$showin = get_field('ff_showin');
 			if($showin == 'reserve'){
 				get_template_part('renew2025/inc/reserve_header');
+				echo '<div id="cover" class="reserve"></div>';
 			}else {
 				get_template_part('renew2025/inc/header');
+				echo '<div id="cover"></div>';
 			}
 		}else {
 			get_template_part('renew2025/inc/header');
+			echo '<div id="cover"></div>';
 		}
 	?>
 	<main id="main">

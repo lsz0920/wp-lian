@@ -29,16 +29,16 @@
 			<div class="menuSub flex">
 				<div class="menuSub01 pc">
 					<ul class="menuLink roboto">
-						<li><a href="#">News</a></li>
+						<li><a href="<?php echo home_url();?>/category/news/">News</a></li>
 						<li><a href="<?php echo home_url();?>/about/">About</a></li>
 						<li><a href="<?php echo home_url();?>/staff/">Staff</a></li>
 						<li><a href="<?php echo home_url();?>/price/">Price</a></li>
 						<li><a href="<?php echo home_url();?>/case/">Case</a></li>
-						<li><a href="#">Access</a></li>
+						<li><a href="<?php echo home_url();?>/access/">Access</a></li>
 					</ul>
 					<ul class="menuList roboto">
-						<li><a href="#">Column</a></li>
-						<li><a href="#">Youtube</a></li>
+						<li><a href="<?php echo home_url();?>/column/">Column</a></li>
+						<li><a href="<?php echo home_url();?>/campaign/">Youtube</a></li>
 						<li class="target"><a href="https://ties-cosme.co.jp/shop/" target="_blank">TIES</a></li>
 					</ul>
 				</div>
@@ -52,7 +52,7 @@
 									array(
 										'taxonomy'   => 'services_cat',
 										'hide_empty' => false,
-										'parent' => 496
+										'parent' => 502
 									)
 								);
 								echo '<ul class="menuNaviList">';
@@ -115,31 +115,31 @@
 				</div>
 				<div class="menuSub02 pc">
 					<ul class="menuLink roboto">
-						<li><a href="#">Faq</a></li>
-						<li><a href="#">Reservation</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="<?php echo home_url();?>/faq/">Faq</a></li>
+						<li><a href="<?php echo home_url();?>/reserve/">Reservation</a></li>
+						<li><a href="<?php echo home_url();?>/inquiry/">Contact</a></li>
 						<li class="target"><a href="https://lianclinic.net/recruit/" target="_blank">Recruit</a></li>
 					</ul>
 					<ul class="menuList jp">
-						<li><a href="#">プライバシーポリシー</a></li>
-						<li><a href="#">医療広告ガイドライン</a></li>
-						<li><a href="#">当院のキャンセルポリシーについて</a></li>
-						<li><a href="#">特定商取引法に基づく表示</a></li>
+						<li><a href="<?php echo home_url();?>/privacy-policy/">プライバシーポリシー</a></li>
+						<li><a href="<?php echo home_url();?>/guideline/">医療広告ガイドライン</a></li>
+						<li><a href="<?php echo home_url();?>/cancelpolicy/">当院のキャンセルポリシーについて</a></li>
+						<li><a href="<?php echo home_url();?>/tradelaw/">特定商取引法に基づく表示</a></li>
 					</ul>
 				</div>
 				<div class="spMenuSub sp clearfix">
 					<ul class="menuLink roboto">
-						<li><a href="#">News</a></li>
+						<li><a href="<?php echo home_url();?>/category/news/">News</a></li>
 						<li><a href="<?php echo home_url();?>/about/">About</a></li>
 						<li><a href="<?php echo home_url();?>/staff/">Staff</a></li>
 						<li><a href="<?php echo home_url();?>/price/">Price</a></li>
 						<li><a href="<?php echo home_url();?>/case/">Case</a></li>
 					</ul>
 					<ul class="menuLink roboto">
-						<li><a href="#">Access</a></li>
-						<li><a href="#">Faq</a></li>
-						<li><a href="#">Reservation</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="<?php echo home_url();?>/access/">Access</a></li>
+						<li><a href="<?php echo home_url();?>/faq/">Faq</a></li>
+						<li><a href="<?php echo home_url();?>/reserve/">Reservation</a></li>
+						<li><a href="<?php echo home_url();?>/inquiry/">Contact</a></li>
 						<li class="target"><a href="https://lianclinic.net/recruit/" target="_blank">Recruit</a></li>
 					</ul>
 				</div>
@@ -161,15 +161,15 @@
 				</div>
 				<div class="spMenuInner sp clearfix">
 					<ul class="menuList roboto">
-						<li><a href="#">Column</a></li>
-						<li><a href="#">Youtube</a></li>
+						<li><a href="<?php echo home_url();?>/column/">Column</a></li>
+						<li><a href="<?php echo home_url();?>/campaign/">Youtube</a></li>
 						<li class="target"><a href="https://ties-cosme.co.jp/shop/" target="_blank">TIES</a></li>
 					</ul>
 					<ul class="menuList jp">
-						<li><a href="#">プライバシーポリシー</a></li>
-						<li><a href="#">医療広告ガイドライン</a></li>
-						<li><a href="#">キャンセルポリシーについて</a></li>
-						<li><a href="#">特定商取引法に基づく表示</a></li>
+						<li><a href="<?php echo home_url();?>/privacy-policy/">プライバシーポリシー</a></li>
+						<li><a href="<?php echo home_url();?>/guideline/">医療広告ガイドライン</a></li>
+						<li><a href="<?php echo home_url();?>/cancelpolicy/">当院のキャンセルポリシーについて</a></li>
+						<li><a href="<?php echo home_url();?>/tradelaw/">特定商取引法に基づく表示</a></li>
 					</ul>
 				</div>
 				<div class="menuBtn"><a href="<?php echo home_url();?>/lian-reserve/" target="_blank"><img class="popLazy pc" data-src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/menu_btn_img.png" alt="完全紹介制プライベートクリニック LIAN RESERVE" data-size="443x72"><img class="popLazy sp" data-src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/menu_btn_img_sp.png" alt="完全紹介制プライベートクリニック LIAN RESERVE" data-size="303x89"></a></div>

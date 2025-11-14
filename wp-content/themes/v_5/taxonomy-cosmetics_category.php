@@ -9,6 +9,8 @@
  */
 
 get_header();
+$cat = get_queried_object();
+$catName = $cat->name;
 ?>
 
 <div id="primary" class="content-area">

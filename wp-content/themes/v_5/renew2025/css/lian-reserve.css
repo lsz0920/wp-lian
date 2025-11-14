@@ -266,6 +266,9 @@
 	border-bottom-color: rgba(219,219,219,0.35);
 	background-image: url(../img/common/icon27.png);
 }
+#main .comCase .caseList {
+	display: block;
+}
 #main .comCase .caseList a {
 	background-color: #1C1C1E;
 }

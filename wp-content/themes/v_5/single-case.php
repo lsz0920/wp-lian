@@ -168,8 +168,8 @@ if($showin == 'reserve'){
 							),
 							array(
 								'key' => 'ff_shopin',
-								'value' => 'reserve',
-								'compare' => '==',
+								'value' => 'clinic',
+								'compare' => '=',
 							),
 						)
 					);
@@ -186,12 +186,40 @@ if($showin == 'reserve'){
 						<table>
 							<?php 
 								if ( ! empty( $table['header'] ) ) {
+									$theadNum=0;
 									echo '<thead>';
 										echo '<tr>';
 											foreach ( $table['header'] as $th ) {
-												echo '<th>';
-													echo $th['c'];
-												echo '</th>';
+												$theadNum++;
+												$c = $th['c'];
+												if($c){
+													preg_match('|row(\d+)|', $c, $rowMatches);
+													if($rowMatches){
+														$row = ' rowspan="'.$rowMatches[1].'"';
+													}else{
+														$row = '';
+													}
+													preg_match('|col(\d+)|', $c, $colMatches);
+													if($colMatches){
+														$col = ' colspan="'.$colMatches[1].'"';
+													}else{
+														$col = '';
+													}
+													if($theadNum == 1){
+														$tdHtml = '<th'.$row.$col.'>';
+													}else {
+														$tdHtml = '<td'.$row.$col.'>';
+													}
+													$c = preg_replace('/\|row(\d+)\|/', '', $c);
+													$c = preg_replace('/\|col(\d+)\|/', '', $c);
+													echo $tdHtml;
+														echo $c;
+													if($theadNum == 1){
+														echo '</th>';
+													}else {
+														echo '</td>';
+													}
+												}
 											}
 										echo '</tr>';
 									echo '</thead>';
@@ -206,13 +234,13 @@ if($showin == 'reserve'){
 											$num++;
 											$c = $td['c'];
 											if($c){
-												preg_match('|row(\d)+|', $c, $rowMatches);
+												preg_match('|row(\d+)|', $c, $rowMatches);
 												if($rowMatches){
 													$row = ' rowspan="'.$rowMatches[1].'"';
 												}else{
 													$row = '';
 												}
-												preg_match('|col(\d)+|', $c, $colMatches);
+												preg_match('|col(\d+)|', $c, $colMatches);
 												if($colMatches){
 													$col = ' colspan="'.$colMatches[1].'"';
 												}else{
@@ -223,8 +251,8 @@ if($showin == 'reserve'){
 												}else {
 													$tdHtml = '<td'.$row.$col.'>';
 												}
-												$c = preg_replace('/\|row(\d)+\|/', '', $c);
-												$c = preg_replace('/\|col(\d)+\|/', '', $c);
+												$c = preg_replace('/\|row(\d+)\|/', '', $c);
+												$c = preg_replace('/\|col(\d+)\|/', '', $c);
 												echo $tdHtml;
 													echo $c;
 												if($num == 1){
@@ -251,7 +279,7 @@ if($showin == 'reserve'){
 			$meta_query = array(
 				array(
 					'key' => 'ff_showin',
-					'value' => 'clinic',
+					'value' => '"clinic"',
 					'compare' => '=',
 				),
 			);

@@ -136,6 +136,9 @@ body {
 	position: relative;
 	background-color: #F4F1ED;
 }
+#main .comCase .caseList {
+	display: block;
+}
 #main .media {
 	padding: 3.2rem 0 15.2rem;
 	overflow: hidden;

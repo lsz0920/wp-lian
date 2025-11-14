@@ -6,36 +6,24 @@
 		<div class="comLink"><a href="<?php echo home_url();?>/staff/">View More</a></div>
 	</div>
 </div>
+<?php $args = array(
+	'post_type' => 'staff',
+	'posts_per_page' => -1,
+);
+$the_query = new WP_Query( $args );
+if($the_query->have_posts()): ?>
 <div class="photoUl fadeInUp">
 	<div class="swiper jsPhotoList">
 		<ul class="swiper-wrapper">
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo01.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo02.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo03.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo04.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo05.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo06.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo07.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo08.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo09.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo10.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo11.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo12.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo13.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo01.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo02.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo03.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo04.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo05.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo06.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo07.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo08.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo09.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo10.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo11.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo12.jpg"></li>
-			<li class="swiper-slide"><span class="bgLazy" data-bg="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/about_photo13.jpg"></li>
+			<?php while($the_query->have_posts()): $the_query->the_post();
+			$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+			if(has_post_thumbnail()){
+				$image = get_the_post_thumbnail_url($post->ID,'full');
+			} ?>
+			<li class="swiper-slide"><a href="<?php the_permalink(); ?>" class="bgLazy" data-bg="<?php echo $image; ?>"></a></li>
+			<?php endwhile; ?>
 		</ul>
 	</div>
 </div>
+<?php endif; ?>
 <p class="enText roboto fadeInUp">Doctors &amp; Nurses</p>

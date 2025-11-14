@@ -20,6 +20,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/imagesloaded.pkgd.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/simplebar/simplebar.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/slick/slick.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/jquery.matchHeight.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/common.js"></script>
 <?php if(is_home()||is_front_page()) {?>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/index.js"></script>

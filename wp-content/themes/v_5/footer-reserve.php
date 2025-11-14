@@ -8,6 +8,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/imagesloaded.pkgd.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/slick/slick.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/infiniteslidev2.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/jquery.matchHeight.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/common.js"></script>
 <?php if(is_page('lian-reserve')) {?>
 <script src="<?php echo get_template_directory_uri(); ?>/renew2025/js/lian-reserve.js"></script>

@@ -620,6 +620,9 @@
 		padding-bottom: 0;
 		display: block;
 	}
+	#main .detailBox .info02 .rBox ul {
+		margin-top: -2.5rem;
+	}
 	#main .detailBox .info02 li {
 		width: auto;
 		padding: 1.4rem 2.5rem 1.2rem;

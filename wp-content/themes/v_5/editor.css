@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.acf-table .acf-table-optionbox > label {
+	font-size: 0;
+}
+.acf-table .acf-table-optionbox > label::before {
+	content: '表頭列の表示';
+	font-size: 13px;
+}

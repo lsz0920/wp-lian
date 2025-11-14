@@ -45,7 +45,7 @@
 					'relation' => 'AND',
 					array(
 						'key' => 'ff_showin',
-						'value' => 'reserve',
+						'value' => '"reserve"',
 						'compare' => 'LIKE',
 					),
 				)
@@ -97,7 +97,6 @@
 			} wp_reset_postdata();
 		?>
 		<form role="search" method="get" action="<?php echo home_url( '/' ); ?>lian-reserve/case/">
-			<?php /* ?><input type="hidden" name="post_type" value="case"><?php */ ?>
 			<ul class="comSelectList flexB fadeInUp">
 				<li><select name="menu" onchange="this.form.submit()">
 						<option value="">施術から探す</option>
@@ -175,7 +174,7 @@
 					'relation' => 'AND',
 					array(
 						'key' => 'ff_showin',
-						'value' => 'reserve',
+						'value' => '"reserve"',
 						'compare' => 'LIKE',
 					),
 					$menuAry,
@@ -257,5 +256,5 @@
 			));}?>
 		</div>
 	</div>
-</section>
+</div>
 <?php get_footer('reserve'); ?>

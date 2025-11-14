@@ -722,6 +722,12 @@ function getPageName(){
 	else if(is_home()||is_front_page()){
 		$pname = 'index';
 	}
+	else if(is_post_type_archive('staff')){
+		$pname = 'staff';
+	}
+	else if(is_singular( 'staff' )){
+		$pname = 'staff_detail';
+	}
 	else{
 		$pname ='';
 	}
@@ -741,6 +747,20 @@ if(function_exists('acf_add_options_page') ) {
 		'page_title'    => 'LIAN RESERVEのPriceの基本料金',
 		'menu_title'    => 'LIAN RESERVEのPriceの基本料金',
 		'menu_slug'     => 'price_basic02',
+		'capability'    => 'edit_posts',
+		'redirect'      => false
+	));
+	acf_add_options_page(array(
+		'page_title'    => 'TOP 症例実績管理',
+		'menu_title'    => 'TOP 症例実績管理',
+		'menu_slug'     => 'theme_top_settings',
+		'capability'    => 'edit_posts',
+		'redirect'      => false
+	));
+	acf_add_options_page(array(
+		'page_title'    => '院長メッセージ管理',
+		'menu_title'    => '院長メッセージ管理',
+		'menu_slug'     => 'theme_message_settings',
 		'capability'    => 'edit_posts',
 		'redirect'      => false
 	));
@@ -798,3 +818,13 @@ function customize_main_query($q) {
 	}
 }
 add_action('pre_get_posts', 'customize_main_query' );
+
+
+/** 
+ * editor add css 
+ */
+function mytheme_enqueue_options_style() {
+	wp_enqueue_style( 'mytheme-options-style', get_template_directory_uri() . '/editor.css' );
+	wp_enqueue_script( 'mytheme-options-script', get_template_directory_uri() . '/editor.js' );
+}
+add_action( 'admin_enqueue_scripts', 'mytheme_enqueue_options_style' );

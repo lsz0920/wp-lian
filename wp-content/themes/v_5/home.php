@@ -12,7 +12,24 @@
 		<h1><img data-skip-lazy src="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/h1_img.png" alt="LIAN clinic"></h1>
 		<p class="serif">結果重視のたるみ治療の専門拠点</p>
 	</div>
-	<div class="news"><a href="#"><time class="time roboto" datetime="2025-07-25">2025.07.25</time><span class="text">【休診日変更と料金改定のお知らせ】いつもリアンクリニックをご利用いただきありがとう...</span></a></div>
+	<?php $args = array(
+		'post_type' => 'post',
+		'posts_per_page' => -1,
+		'meta_query' => array(
+			array(
+				'key'     => 'ff_home_show',
+				'value'   => 1,
+			),
+		),
+	);
+	$query = new WP_Query( $args );
+	if($query->have_posts()): ?>
+	<div class="news">
+		<?php while($query->have_posts()): $query->the_post(); ?>
+		<a href="<?php the_permalink(); ?>"><time class="time roboto" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time><span class="text"><?php echo wp_trim_words( get_the_title(), 41, '...' ) ?></span></a>
+		<?php endwhile; wp_reset_postdata(); ?>
+	</div>
+	<?php endif; ?>
 	<div class="scroll roboto"><a href="#case">Scroll</a></div>
 </div>
 <div class="mainBox">
@@ -23,31 +40,94 @@
 		<div class="content">
 			<h3 class="headLine02 fadeInUp">豊富な症例実績</h3>
 			<p class="topText serif fadeInUp">リアンクリニックは、<br class="sp">たるみ治療に特化した美容医療クリニックとして、<br>豊富な症例実績と高い技術力で<br class="sp">多くのお客様に選ばれています。</p>
+			<?php
+			$text01 = get_field('ff_top_casetxt01','options');
+			$text02 = get_field('ff_top_casetxt02','options');
+			$text03 = get_field('ff_top_casetxt03','options');
+			$text04 = get_field('ff_top_casetxt04','options');
+			if($text01 || $text02 || $text03 || $text04){ ?>
 			<ul class="topLink flexC fadeInUp">
-				<li><a href="#">高周波 800件</a></li>
-				<li><a href="#">HIFU 800件</a></li>
-				<li><a href="#">ECM製剤 800件</a></li>
-				<li><a href="#">ヒアルロン酸 800件以上</a></li>
+				<?php if($text01){ ?>
+				<li><span><?php echo $text01; ?></span></li>
+				<?php } if($text02){ ?>
+				<li><span><?php echo $text02; ?></span></li>
+				<?php } if($text03){ ?>
+				<li><span><?php echo $text03; ?></span></li>
+				<?php } if($text04){ ?>
+				<li><span><?php echo $text04; ?></span></li>
+				<?php } ?>
 			</ul>
-			<p class="popText fadeInUp"><a href="javascript:;" class="popLink noFade" data-pop="pop01">※2022年～2025年8月末現在</a></p>
+			<?php };
+			$pop_text = get_field('ff_top_case_btn','options');
+			if($pop_text){ ?>
+			<p class="popText fadeInUp"><a href="javascript:;" class="popLink noFade" data-pop="pop01"><?php echo $pop_text; ?></a></p>
+			<?php } ?>
+			<?php 
+				$args = array(
+					'post_type' => 'case',
+					'posts_per_page' => 4,
+					'meta_query' => array(
+						'relation' => 'AND',
+						array(
+							'key'     => 'ff_pickup',
+							'value'   => 1,
+						),
+						array(
+							'key' => 'ff_showin',
+							'value' => '"clinic"',
+							'compare' => 'LIKE',
+						),
+					),
+				);
+				$query = new WP_Query( $args );
+				if($query->have_posts()): 
+			?>
 			<div class="fadeInUp">
 				<ul class="caseList">
-					<li><a href="#">
-						<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo01.jpg" alt="" data-size="220x220"></div>
-						<p><span class="serif">ショートスレッド</span>（医師）松井 泉</p>
+					<?php while($query->have_posts()): $query->the_post();
+					$image = @get_field('ff_gallery')[0]['url'];
+					if(!$image){
+						$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+					}
+					$permalink = get_the_permalink();
+					$case_menu = get_field('ff_case_menu');
+					$staff_doctor = get_field('ff_staff_doctor');
+					$staff_nurse = get_field('ff_staff_nurse');
+				
+					$case_menu_name = '';
+					if($case_menu){
+						$menu_num = 0;
+						foreach($case_menu as $post){
+							setup_postdata($post);
+							$menu_num++;
+							if($menu_num == 1){
+								$case_menu_name = get_the_title();
+							}else {
+								$case_menu_name = $case_menu_name.'＋'.get_the_title();
+							}
+						}
+					} wp_reset_postdata();
+
+					$staff_doctor_name = '';
+					if($staff_doctor){
+						foreach($staff_doctor as $post){
+							setup_postdata($post);
+							$staff_doctor_name = $staff_doctor_name.'（医師）'.get_the_title().'<br>';
+						}
+					} wp_reset_postdata();
+				
+					$staff_nurse_name = '';
+					if($staff_nurse){
+						foreach($staff_nurse as $post){
+							setup_postdata($post);
+							$staff_nurse_name = $staff_nurse_name.'（看護師）'.get_the_title().'<br>';
+						}
+					} wp_reset_postdata(); ?>
+					<li><a href="<?php echo $permalink; ?>">
+						<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="220x220"></div>
+						<p><span class="serif"><?php echo $case_menu_name; ?></span><?php echo $staff_doctor_name.$staff_nurse_name; ?></p>
 					</a></li>
-					<li><a href="#">
-						<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo02.jpg" alt="" data-size="220x220"></div>
-						<p><span class="serif">ヒアルロン酸</span>（医師）藤尾 謙太</p>
-					</a></li>
-					<li><a href="#">
-						<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo03.jpg" alt="" data-size="220x220"></div>
-						<p><span class="serif">サーマジェン</span>（看護師）藤尾 有紀</p>
-					</a></li>
-					<li><a href="#">
-						<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/case_photo04.jpg" alt="" data-size="220x220"></div>
-						<p><span class="serif">ボルニューマ</span>（医師）藤尾 謙太（看護師）弓田 有沙</p>
-					</a></li>
+					<?php endwhile; wp_reset_postdata(); ?>
 				</ul>
 				<ul class="comArrow flexB">
 					<li class="prev"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/prev.png" alt="" data-size="13x14"></li>
@@ -55,6 +135,7 @@
 				</ul>
 			</div>
 			<div class="comLink fadeInUp"><a href="<?php echo home_url();?>/case/">View More</a></div>
+			<?php endif; ?>
 		</div>
 	</section>
 	<section class="media">
@@ -74,6 +155,7 @@
 				<h3 class="title roboto">Instagram</h3>
 				<div class="jsSlideBox">
 					<ul class="instagramUl clearfix jsSlideList">
+						<?php // echo do_shortcode('[instagram-feed feed=3]'); ?>
 						<li><a href="#" target="_blank"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/media_ins_photo01.jpg" alt="" data-size="245x306"></a></li>
 						<li><a href="#" target="_blank"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/media_ins_photo02.jpg" alt="" data-size="245x306"></a></li>
 						<li><a href="#" target="_blank"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/media_ins_photo03.jpg" alt="" data-size="245x306"></a></li>
@@ -85,30 +167,27 @@
 					</ul>
 				</div>
 			</section>
+			<?php $args = array(
+				'post_type' => 'campaign',
+				'posts_per_page' => 4,
+			);
+			$query = new WP_Query( $args );
+			if($query->have_posts()): ?>
 			<section class="youtube fadeInUp">
 				<h3 class="title roboto">YouTube</h3>
 				<div class="jsSlideBox">
 					<ul class="youtubeUl clearfix jsSlideList">
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/media_youtube_photo01.jpg" alt="" data-size="245x179"></div>
-							<time class="time roboto" datetime="2025-08-02">2025.08.02</time>
-							<p>【Youtube】スタッフもやっている人気たるみ治療BEST3についての動画をUPしました！</p>
+						<?php while($query->have_posts()): $query->the_post();
+						$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+						if(has_post_thumbnail()){
+							$image = get_the_post_thumbnail_url($post->ID,'full');
+						} ?>
+						<li><a href="<?php the_permalink(); ?>">
+							<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="245x179"></div>
+							<time class="time roboto" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
+							<p><?php the_title(); ?></p>
 						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/media_youtube_photo02.jpg" alt="" data-size="245x179"></div>
-							<time class="time roboto" datetime="2025-07-26">2025.07.26</time>
-							<p>【Youtube】アジアでも注目されている高周波たるみ治療「XERF’ザーフ’」についての動画をUPしました。</p>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/media_youtube_photo03.jpg" alt="" data-size="245x179"></div>
-							<time class="time roboto" datetime="2025-07-19">2025.07.19</time>
-							<p>【Youtube】切らずに自然に若返る美容治療TOP5についての動画をUPしました！</p>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/media_youtube_photo04.jpg" alt="" data-size="245x179"></div>
-							<time class="time roboto" datetime="2025-07-1">2025.07.1</time>
-							<p>【Youtube】人気水光注射‼︎ ジャルスパーハイドロ症例解説動画をUPしました！</p>
-						</a></li>
+						<?php endwhile; ?>
 					</ul>
 					<ul class="comArrow flexB">
 						<li class="prev"><img src="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/prev.png" alt="" data-size="13x14"></li>
@@ -116,6 +195,7 @@
 					</ul>
 				</div>
 			</section>
+			<?php endif; ?>
 		</div>
 	</section>
 	<section class="menuSec">
@@ -123,56 +203,61 @@
 		<h2 class="headLine01 maskFadeVPc maskFadeHSp">Menu</h2>
 		<div class="content">
 			<div class="info flexB">
+				<?php $args = array(
+					'taxonomy' => 'services_cat',
+					'hide_empty' => 1,
+					'exclude' => '',
+					'parent' => 502,
+				);
+				$terms = get_terms($args);
+				if($terms): ?>
 				<div class="trouble fadeInUp">
 					<h3 class="headLine03">お悩みから探す</h3>
 					<ul class="troubleList flexB">
-						<li><a href="#"><span class="photo"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/trouble_img01.png" alt="たるみ" data-size="66x88"></span><span>たるみ</span></a></li>
-						<li><a href="#"><span class="photo"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/trouble_img02.png" alt="しわ" data-size="66x88"></span><span>しわ</span></a></li>
-						<li><a href="#"><span class="photo"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/trouble_img03.png" alt="ほうれい線" data-size="66x88"></span><span>ほうれい線</span></a></li>
-						<li><a href="#"><span class="photo"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/trouble_img04.png" alt="毛穴・赤み" data-size="66x88"></span><span>毛穴・赤み</span></a></li>
-						<li><a href="#"><span class="photo"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/trouble_img05.png" alt="ニキビ跡" data-size="66x88"></span><span>ニキビ跡</span></a></li>
+						<?php foreach($terms as $term): $img = get_field('ff_catimg',$term); ?>
+						<li><a href="<?php echo home_url(); ?>/services/#term<?php echo $term->term_id; ?>">
+							<span class="photo"><?php if($img){ ?><img class="lazy" data-original="<?php echo $img['url']; ?>" alt="<?php echo $term->name; ?>" data-size="66x88"><?php } ?></span>
+							<span><?php echo $term->name; ?></span>
+						</a></li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
+				<?php endif; ?>
+				<?php $args = array(
+					'taxonomy' => 'services_cat',
+					'hide_empty' => 1,
+					'exclude' => '',
+					'parent' => 503,
+				);
+				$terms = get_terms($args);
+				if($terms): ?>
 				<div class="find fadeInUp">
 					<h3 class="headLine03">施術から探す</h3>
 					<ul class="findList">
-						<li><select>
-								<option value="">機械治療</option>
-								<option value="HIFU">HIFU</option>
-								<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-								<option value="サーマジェン">サーマジェン</option>
+						<?php foreach($terms as $term){ ?>
+						<li><select onchange="location.href=value;">
+								<option value=""><?php echo $term->name; ?></option>
+								<?php $post_args = array(
+									'post_type' => 'services',
+									'posts_per_page' => -1,
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'services_cat',
+											'field'    => 'term_id',
+											'terms'    => $term->term_id,
+										)
+									)
+								);
+								$post_query = new WP_Query($post_args);
+								if($post_query->have_posts()): while($post_query->have_posts()): $post_query->the_post(); ?>
+								<option value="<?php the_permalink(); ?>"><?php the_title(); ?></option>
+								<?php endwhile; wp_reset_postdata(); endif; ?>
 							</select>
 						</li>
-						<li><select>
-								<option value="">注入治療</option>
-								<option value="HIFU">HIFU</option>
-								<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-								<option value="サーマジェン">サーマジェン</option>
-							</select>
-						</li>
-						<li><select>
-								<option value="">糸リフト</option>
-								<option value="HIFU">HIFU</option>
-								<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-								<option value="サーマジェン">サーマジェン</option>
-							</select>
-						</li>
-						<li><select>
-								<option value="">美肌治療</option>
-								<option value="HIFU">HIFU</option>
-								<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-								<option value="サーマジェン">サーマジェン</option>
-							</select>
-						</li>
-						<li><select>
-								<option value="">アートメイク</option>
-								<option value="HIFU">HIFU</option>
-								<option value="コラーゲンハイフ">コラーゲンハイフ</option>
-								<option value="サーマジェン">サーマジェン</option>
-							</select>
-						</li>
+						<?php } ?>
 					</ul>
 				</div>
+				<?php endif; ?>
 			</div>
 			<div class="comLink fadeInUp"><a href="<?php echo home_url();?>/services/">View More</a></div>
 		</div>
@@ -211,6 +296,12 @@
 			</div>
 		</div>
 	</section>
+	<?php $all_args = array(
+		'post_type' => 'post',
+		'posts_per_page' => 4,
+	);
+	$all_query = new WP_Query($all_args);
+	if($all_query->have_posts()): ?>
 	<section class="newsSec">
 		<div class="checkBg"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/common/com_bg02.jpg" alt=""></div>
 		<div class="content">
@@ -219,144 +310,66 @@
 				<p class="roboto">Category</p>
 				<ul class="flex">
 					<li class="on"><a href="#">すべて</a></li>
-					<li><a href="#">学術発表</a></li>
-					<li><a href="#">ニュース</a></li>
-					<li><a href="#">Youtube</a></li>
+					<?php $cats_args = array(
+						'show_count' => 0,
+						'hide_empty' => 1,
+						'child_of' => 0,
+						'title_li' => ''
+					);
+					$categories = get_categories($cats_args);
+					if($categories): foreach($categories as $category): ?>
+					<li><a href="#"><?php echo $category->name; ?></a></li>
+					<?php endforeach; endif; ?>
 				</ul>
 			</div>
 			<div class="tBox fadeInUp">
 				<div class="tabBox">
 					<ul class="comNewsList flex">
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo01.jpg" alt="" data-size="250x183"></div>
+						<?php while($all_query->have_posts()): $all_query->the_post();
+						$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+						if(has_post_thumbnail()){
+							$image = get_the_post_thumbnail_url($post->ID,'full');
+						} ?>
+						<li><a href="<?php the_permalink(); ?>">
+							<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="250x183"></div>
 							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-20">2025.06.20</time>
-								<p>【イベント】第4回美容医療シンポジウム 登壇</p>
+								<time class="time roboto" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
+								<p><?php the_title(); ?></p>
 							</div>
 						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo02.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-16">2025.06.16</time>
-								<p>【イベント】AMI Japan Symposium 2025に参加しました</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo03.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【イベント】IMCAS Asia 2025登壇</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo04.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【重要】指名料導入のお知らせ</p>
-							</div>
-						</a></li>
+						<?php endwhile; wp_reset_postdata(); ?>
 					</ul>
 				</div>
+				<?php if($categories): foreach($categories as $category): ?>
 				<div class="tabBox">
 					<ul class="comNewsList flex">
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo01.jpg" alt="" data-size="250x183"></div>
+						<?php $sub_args = array(
+							'post_type' => 'post',
+							'category__in' => array($category->term_id),
+							'posts_per_page' => 4
+						);
+						$sub_query = new WP_Query($sub_args);
+						if($sub_query->have_posts()): while($sub_query->have_posts()): $sub_query->the_post();
+						$image = get_template_directory_uri().'/renew2025/img/noimg.jpg';
+						if(has_post_thumbnail()){
+							$image = get_the_post_thumbnail_url($post->ID,'full');
+						}  ?>
+						<li><a href="<?php the_permalink(); ?>">
+							<div class="pho"><img class="lazy" data-original="<?php echo $image; ?>" alt="" data-size="250x183"></div>
 							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-20">2025.06.20</time>
-								<p>【イベント】第4回美容医療シンポジウム 登壇</p>
+								<time class="time roboto" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
+								<p><?php the_title(); ?></p>
 							</div>
 						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo02.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-16">2025.06.16</time>
-								<p>【イベント】AMI Japan Symposium 2025に参加しました</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo03.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【イベント】IMCAS Asia 2025登壇</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo04.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【重要】指名料導入のお知らせ</p>
-							</div>
-						</a></li>
+						<?php endwhile; wp_reset_postdata(); endif; ?>
 					</ul>
 				</div>
-				<div class="tabBox">
-					<ul class="comNewsList flex">
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo01.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-20">2025.06.20</time>
-								<p>【イベント】第4回美容医療シンポジウム 登壇</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo02.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-16">2025.06.16</time>
-								<p>【イベント】AMI Japan Symposium 2025に参加しました</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo03.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【イベント】IMCAS Asia 2025登壇</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo04.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【重要】指名料導入のお知らせ</p>
-							</div>
-						</a></li>
-					</ul>
-				</div>
-				<div class="tabBox">
-					<ul class="comNewsList flex">
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo01.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-20">2025.06.20</time>
-								<p>【イベント】第4回美容医療シンポジウム 登壇</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo02.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-16">2025.06.16</time>
-								<p>【イベント】AMI Japan Symposium 2025に参加しました</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo03.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【イベント】IMCAS Asia 2025登壇</p>
-							</div>
-						</a></li>
-						<li><a href="#" target="_blank">
-							<div class="pho"><img class="lazy" data-original="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/news_photo04.jpg" alt="" data-size="250x183"></div>
-							<div class="textBox">
-								<time class="time roboto" datetime="2025-06-15">2025.06.15</time>
-								<p>【重要】指名料導入のお知らせ</p>
-							</div>
-						</a></li>
-					</ul>
-				</div>
+				<?php endforeach; endif; ?>
 			</div>
-			<div class="comLink fadeInUp"><a href="#">View More</a></div>
+			<div class="comLink fadeInUp"><a href="<?php echo home_url(); ?>/category/news/">View More</a></div>
 		</div>
 	</section>
+	<?php endif; ?>
 	<section class="access">
 		<div class="topPhoto">
 			<div class="jsParallax">
@@ -392,6 +405,8 @@
 	</section>
 	<?php get_template_part('renew2025/inc/com_reservation'); ?> 
 </div>
+<?php $pop_img = get_field('ff_top_case_img','options');;
+if($pop_img) { ?>
 <div class="pop" id="pop01" data-pop="pop01">
 	<div class="popBg"></div>
 	<div class="popClose">
@@ -406,8 +421,9 @@
 	</div>
 	<div class="popInfo">
 		<div class="simpleBar">
-			<div class="popImg"><img class="popLazy noCheckImg" src="<?php echo get_template_directory_uri(); ?>/renew2025/img/index/pop01_img.png" alt="対象期間：2022年～2025年8月末現在" data-size="660x220"></div>
+			<div class="popImg"><img class="popLazy noCheckImg" src="<?php echo $pop_img['url']; ?>" alt="<?php echo $pop_img['alt']; ?>" data-size="660x220"></div>
 		</div>
 	</div>
 </div>
+<?php } ?>
 <?php get_footer('renew2025'); ?>

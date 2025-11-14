@@ -25,7 +25,7 @@
 					'relation' => 'AND',
 					array(
 						'key' => 'ff_showin',
-						'value' => 'clinic',
+						'value' => '"clinic"',
 						'compare' => 'LIKE',
 					),
 				)
@@ -155,7 +155,7 @@
 					'relation' => 'AND',
 					array(
 						'key' => 'ff_showin',
-						'value' => 'clinic',
+						'value' => '"clinic"',
 						'compare' => 'LIKE',
 					),
 					$menuAry,
